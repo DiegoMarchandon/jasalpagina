@@ -8,6 +8,7 @@ import Portfolio from './pages/Portfolio';
 import Blog from './pages/Blog';
 import Contacto from './pages/Contacto';
 import Footer from './components/Footer';
+import Header from './components/Header';
 import './App.css';
 
 function App() {
