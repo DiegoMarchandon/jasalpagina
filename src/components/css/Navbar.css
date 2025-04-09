@@ -1,0 +1,30 @@
+.navbar {
+    background-color: #1e1e1e;
+    color: white;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-links li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-links li a:hover {
+    color: #ff4081;
+  }
+  
