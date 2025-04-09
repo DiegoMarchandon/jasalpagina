@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DiegoMarchandon/jasalpagina/static/css/main.93a0497a.css",
+    "main.js": "/DiegoMarchandon/jasalpagina/static/js/main.d65e901e.js",
+    "static/js/453.0bc2e5df.chunk.js": "/DiegoMarchandon/jasalpagina/static/js/453.0bc2e5df.chunk.js",
+    "index.html": "/DiegoMarchandon/jasalpagina/index.html",
+    "main.93a0497a.css.map": "/DiegoMarchandon/jasalpagina/static/css/main.93a0497a.css.map",
+    "main.d65e901e.js.map": "/DiegoMarchandon/jasalpagina/static/js/main.d65e901e.js.map",
+    "453.0bc2e5df.chunk.js.map": "/DiegoMarchandon/jasalpagina/static/js/453.0bc2e5df.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93a0497a.css",
+    "static/js/main.d65e901e.js"
+  ]
+}
