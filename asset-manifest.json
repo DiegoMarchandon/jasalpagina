@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/DiegoMarchandon/jasalpagina/static/css/main.93a0497a.css",
-    "main.js": "/DiegoMarchandon/jasalpagina/static/js/main.d65e901e.js",
-    "static/js/453.0bc2e5df.chunk.js": "/DiegoMarchandon/jasalpagina/static/js/453.0bc2e5df.chunk.js",
-    "index.html": "/DiegoMarchandon/jasalpagina/index.html",
-    "main.93a0497a.css.map": "/DiegoMarchandon/jasalpagina/static/css/main.93a0497a.css.map",
-    "main.d65e901e.js.map": "/DiegoMarchandon/jasalpagina/static/js/main.d65e901e.js.map",
-    "453.0bc2e5df.chunk.js.map": "/DiegoMarchandon/jasalpagina/static/js/453.0bc2e5df.chunk.js.map"
+    "main.css": "/static/css/main.93a0497a.css",
+    "main.js": "/static/js/main.4c133a44.js",
+    "static/js/453.0bc2e5df.chunk.js": "/static/js/453.0bc2e5df.chunk.js",
+    "index.html": "/index.html",
+    "main.93a0497a.css.map": "/static/css/main.93a0497a.css.map",
+    "main.4c133a44.js.map": "/static/js/main.4c133a44.js.map",
+    "453.0bc2e5df.chunk.js.map": "/static/js/453.0bc2e5df.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.93a0497a.css",
-    "static/js/main.d65e901e.js"
+    "static/js/main.4c133a44.js"
   ]
 }
