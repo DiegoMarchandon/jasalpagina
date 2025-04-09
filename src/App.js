@@ -12,9 +12,20 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      {/* acá irían el Router y las páginas */}
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/sobre-mi" element={<SobreMi />} />
+          <Route path="/servicios" element={<Servicios />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contacto" element={<Contacto />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
