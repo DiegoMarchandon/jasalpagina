@@ -1,0 +1,39 @@
+.site-inicio {
+    background-color:hwb(from color h w b);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .inicio-content {
+    max-width: 800px;
+    margin: 0 auto;
+    backdrop-filter: brightness(0.7);
+  }
+  
+  .site-inicio h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .site-inicio p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .inicio-btn {
+    background-color: #ff6600;
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .inicio-btn:hover {
+    background-color: #e65500;
+  }
+  

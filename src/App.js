@@ -15,6 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        {/* <Inicio /> */}
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />

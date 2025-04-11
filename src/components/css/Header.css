@@ -1,41 +1,25 @@
 /* src/components/Header.css */
 
-.site-header {
-    background-color:hwb(from color h w b);
-    color: white;
-    padding: 100px 20px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .header-content {
-    max-width: 800px;
-    margin: 0 auto;
-    backdrop-filter: brightness(0.7);
-  }
-  
-  .site-header h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .site-header p {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .header-btn {
-    background-color: #ff6600;
-    padding: 12px 24px;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-  }
-  
-  .header-btn:hover {
-    background-color: #e65500;
-  }
-  
+.header-artista {
+  background-color: #DABEC3;
+  color: #B84A3C;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-bottom: 5px solid #F6E5B3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.titulo-principal {
+  font-size: 3rem;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  letter-spacing: 2px;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  color: #F6E5B3;
+  margin-top: 0.5rem;
+  font-style: italic;
+  text-shadow: 1px 1px 2px #B84A3C;
+}

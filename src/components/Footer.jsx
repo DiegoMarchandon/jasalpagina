@@ -13,7 +13,7 @@ function Footer(){
                 <p>&copy; {new Date().getFullYear()} Jasal. Todos los derechos reservados.</p>
                 <div className="social-icons">
                     <div>
-                        <li><Link to="www.youtube.com/@jasalmusica">Youtube</Link></li>
+                        <li><Link to="https://www.youtube.com/@jasalmusica">Youtube</Link></li>
                         <img src={YoutubeLogo} alt="youtube logo" className="icon-container"/>
                     </div>
                     <div>
