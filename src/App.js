@@ -1,11 +1,11 @@
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Inicio from './pages/Inicio';
-import SobreMi from './pages/SobreMi';
-import Servicios from './pages/Servicios';
-import Portfolio from './pages/Portfolio';
-import Blog from './pages/Blog';
-import Contacto from './pages/Contacto';
+import Inicio from './pages/Inicio/Inicio';
+import SobreMi from './pages/SobreMi/SobreMi';
+import Servicios from './pages/Servicios/Servicios';
+import Portfolio from './pages/Portfolio/Portfolio';
+import Blog from './pages/Blog/Blog';
+import Contacto from './pages/Contacto/Contacto';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import './App.css';
