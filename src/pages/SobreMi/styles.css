@@ -4,21 +4,53 @@
     color: #b84a3c;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  
+
+  #sobre-mi-title-container {
+    position: relative;
+    width: 100%;
+    /* margin-top: 50px; */
+    height: 400px; /* o el alto que quieras */
+    overflow: hidden;
+  }
+
+  #sobre-mi-title-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(50%); /* oscurece la imagen */
+    transform: translateY(-47%);
+  }
+
+  #sobre-mi-title{
+    font-family: cursive;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F6E5B3; /* uno de los colores que usás */
+  font-size: 3rem;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra para resaltar el texto */
+  }
+
+  .sobre-mi-section{
+    display: flex;
+  }
+
   .sobre-mi-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     gap: 2.5rem;
   }
   
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     .sobre-mi-container {
       flex-direction: row;
       align-items: center;
     }
-  }
+  } */
   
   .sobre-mi-img {
     flex: 1;

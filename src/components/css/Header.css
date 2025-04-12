@@ -17,9 +17,10 @@
 }
 
 .subtitulo {
-  font-size: 1.2rem;
+  font-family: 'Great Vibes';
+  font-size: 1.8rem;
   color: #F6E5B3;
   margin-top: 0.5rem;
-  font-style: italic;
-  text-shadow: 1px 1px 2px #B84A3C;
+  /* font-style: italic; */
+  text-shadow: 1px 1px 5px #B84A3C;
 }
