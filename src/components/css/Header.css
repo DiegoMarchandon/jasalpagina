@@ -9,6 +9,23 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.logo-artista{
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background-color: #fcdede; /* solo si querés fondo visible */
+  box-shadow:
+    0 -60px 0 -10px #B84A3C,
+    0 60px 0 -10px #B84A3C,
+    -60px 0 0 -10px #B84A3C,
+    60px 0 0 -10px #B84A3C,
+    -42px -42px 0 -10px #B84A3C,
+    42px -42px 0 -10px #B84A3C,
+    -42px 42px 0 -10px #B84A3C,
+    42px 42px 0 -10px #B84A3C;
+}
+
 .titulo-principal {
   font-size: 3rem;
   margin: 0;
