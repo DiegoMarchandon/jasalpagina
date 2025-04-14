@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.f7c377c1.css",
-    "main.js": "/static/js/main.a6189ec1.js",
+    "main.css": "/static/css/main.5965e689.css",
+    "main.js": "/static/js/main.8d43e135.js",
     "static/media/JasalCaptura.png": "/static/media/JasalCaptura.aade137824e8cb063298.png",
     "static/media/jasalSobreMiSeccion.jpg": "/static/media/jasalSobreMiSeccion.8cffd27663c94b0558ab.jpg",
+    "static/media/JasalFuente.png": "/static/media/JasalFuente.3e57a5f9519432632f62.png",
     "static/media/thumb-tack.png": "/static/media/thumb-tack.5d4eb331cb0c0a0dc97f.png",
     "static/media/instagramLogo.png": "/static/media/instagramLogo.e719d8b29f452a16302d.png",
     "static/media/tik-tokLogo.png": "/static/media/tik-tokLogo.8a9452a0a4c037d9de63.png",
     "static/media/youtubeLogo.png": "/static/media/youtubeLogo.a18905bdec536c578e09.png",
     "static/media/spotifyLogo.png": "/static/media/spotifyLogo.20d95606bd5c24809c0e.png",
     "index.html": "/index.html",
-    "main.f7c377c1.css.map": "/static/css/main.f7c377c1.css.map",
-    "main.a6189ec1.js.map": "/static/js/main.a6189ec1.js.map"
+    "main.5965e689.css.map": "/static/css/main.5965e689.css.map",
+    "main.8d43e135.js.map": "/static/js/main.8d43e135.js.map"
   },
   "entrypoints": [
-    "static/css/main.f7c377c1.css",
-    "static/js/main.a6189ec1.js"
+    "static/css/main.5965e689.css",
+    "static/js/main.8d43e135.js"
   ]
 }
