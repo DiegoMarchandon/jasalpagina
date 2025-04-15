@@ -5,7 +5,7 @@ import SobreMi from './pages/SobreMi/SobreMi';
 import Servicios from './pages/Servicios/Servicios';
 import Portfolio from './pages/Portfolio/Portfolio';
 import Blog from './pages/Blog/Blog';
-import Contacto from './pages/Contacto/Contacto';
+import Galeria from './pages/Galeria/Galeria';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import './App.css';
@@ -23,7 +23,7 @@ function App() {
           <Route path="/servicios" element={<Servicios />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/Galeria" element={<Galeria />} />
         </Routes>
         <Footer />
       </div>

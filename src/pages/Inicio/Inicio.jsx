@@ -26,7 +26,7 @@ function Inicio() {
       <div className="inicio-content">
         <h1>Bienvenido a mi página</h1>
         <p>Escribo para quienes se enamoran rápido y se olvidan lento 🥀🪞</p>
-        <a href="#contacto" className="inicio-btn">Contáctame</a>
+        <a href="#Contacto" className="inicio-btn">Contáctame</a>
       </div>
       <section id="eventos">
         <h2>Próximos Eventos!</h2>
@@ -54,6 +54,5 @@ function Inicio() {
     </div>
   );
 }
-  
   export default Inicio;
   
