@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.f168d1ff.css",
-    "main.js": "/static/js/main.3248d031.js",
+    "main.css": "/static/css/main.96c5fef1.css",
+    "main.js": "/static/js/main.31753c5f.js",
+    "static/media/1742315860763.jpg": "/static/media/1742315860763.a930e88380e38cf7f893.jpg",
     "static/media/IMG_6546.jpeg": "/static/media/IMG_6546.cd3ce9029823c9c99226.jpeg",
     "static/media/JasalCaptura.png": "/static/media/JasalCaptura.aade137824e8cb063298.png",
     "static/media/jasalSobreMiSeccion.jpg": "/static/media/jasalSobreMiSeccion.8cffd27663c94b0558ab.jpg",
@@ -12,11 +13,11 @@
     "static/media/youtubeLogo.png": "/static/media/youtubeLogo.a18905bdec536c578e09.png",
     "static/media/spotifyLogo.png": "/static/media/spotifyLogo.20d95606bd5c24809c0e.png",
     "index.html": "/index.html",
-    "main.f168d1ff.css.map": "/static/css/main.f168d1ff.css.map",
-    "main.3248d031.js.map": "/static/js/main.3248d031.js.map"
+    "main.96c5fef1.css.map": "/static/css/main.96c5fef1.css.map",
+    "main.31753c5f.js.map": "/static/js/main.31753c5f.js.map"
   },
   "entrypoints": [
-    "static/css/main.f168d1ff.css",
-    "static/js/main.3248d031.js"
+    "static/css/main.96c5fef1.css",
+    "static/js/main.31753c5f.js"
   ]
 }
