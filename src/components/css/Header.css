@@ -2,8 +2,12 @@
 
 .header-artista {
   background-color: #DABEC3;
+  background-image: url(../../assets/1742315860763.jpg);
+  background-size:cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
   color: #B84A3C;
-  padding: 3rem 1rem;
+  padding: 8.5rem 1rem;
   text-align: center;
   border-bottom: 5px solid #F6E5B3;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -14,16 +18,7 @@
   height: auto;
   margin-bottom: 1rem;
   border-radius: 50%;
-  background-color: #fcdede; /* solo si querés fondo visible */
-  box-shadow:
-    0 -60px 0 -10px #B84A3C,
-    0 60px 0 -10px #B84A3C,
-    -60px 0 0 -10px #B84A3C,
-    60px 0 0 -10px #B84A3C,
-    -42px -42px 0 -10px #B84A3C,
-    42px -42px 0 -10px #B84A3C,
-    -42px 42px 0 -10px #B84A3C,
-    42px 42px 0 -10px #B84A3C;
+  background-color: rgba(222, 203, 56, 0.2) /* solo si querés fondo visible */
 }
 
 .titulo-principal {
@@ -39,5 +34,5 @@
   color: #F6E5B3;
   margin-top: 0.5rem;
   /* font-style: italic; */
-  text-shadow: 1px 1px 5px #B84A3C;
+  text-shadow: 1px 5px 10px #B84A3C;
 }
