@@ -1,41 +1,83 @@
+#merch-main-title{
+  text-align: center;
+}
+
+.images-container{
+  overflow: hidden; /* para que el degradado no se salga */
+  position: relative;
+  grid-column: 1;
+  grid-row: 1/4; /* para ocupar las 3 filas. desde la primera a la cuarta línea */
+}
+
 .merch-container{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
-.item-title {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .item-price {
-    grid-column: 2;
-    grid-row: 2;
-  }
-  .item-description {
-    grid-column: 2;
-    grid-row: 3;
-  }
-  
 
 .merch-item{
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 20% 20% 60%;
     /* flex-direction: column; */
     /* justify-content: center; */
     /* align-items: center; */
-    width: 500px;
-    height: auto;
+    width: 400px;
+    height: 200px;
     margin: 10px;
-    background-color: rgba(173, 216, 230, 0.537);
+    background-image: linear-gradient(to right, rgb(247, 247, 0) , rgb(251, 167, 0));
+    /* background-color: rgba(230, 162, 15, 0.537); */
+    border-radius: 30px;
 }
+
+.item-title {
+  grid-column: 2;
+  grid-row: 1;
+}
+.item-price {
+  grid-column: 2;
+  grid-row: 2;
+}
+.item-description {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.item-button{
+  background: none;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 40%;
+  z-index: 1;
+}
+
+.prev{
+  left: 5%;
+}
+
+.next{
+  right: 5%;
+}
+
+
+.item-button img{
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+
+.item-button img:hover{
+  opacity: 1;
+}
+
 .item-image{
-    grid-column: 1;
-    grid-row: 1/4; /* para ocupar las 3 filas. desde la primera a la cuarta línea */
+  z-index: -1;
     width: 100%;
     height: 100%;
     object-fit: cover; /* o contain para ver toda la imagen */
