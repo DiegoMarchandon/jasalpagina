@@ -10,7 +10,7 @@ function Navbar(){
             <ul className="navbar-links">
                 <li><Link to="/">Inicio</Link></li>
                 <li><Link to="/sobre-mi">Sobre mí</Link></li>
-                <li><Link to="/servicios">Servicios</Link></li>
+                <li><Link to="/mercaderia">Mercaderia</Link></li>
                 <li><Link to="/portfolio">Portfolio</Link></li>
                 <li><Link to="/blog">Blog</Link></li>
                 <li><Link to="/Galeria">Galeria</Link></li>

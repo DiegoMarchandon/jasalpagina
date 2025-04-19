@@ -1,5 +1,5 @@
 import './Galeria.css';
-import imagenes from '../../services/imagenes.js'; 
+import {imagenes} from '../../services/services.js'; 
 
 function Galeria(){
   return (
