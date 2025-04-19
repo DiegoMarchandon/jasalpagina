@@ -44,7 +44,7 @@ function SobreMi(){
                                 <table>
                                     <tr>
                                         <th className="subtitles-wiki">Nombre de nacimiento</th>
-                                        <td>Javiera Sandoval Fuenzalida</td>
+                                        <td>Javiera Paz Sandoval Albornoz</td>
                                     </tr>
                                     <tr>
                                         <th className="subtitles-wiki">Nombre artístico</th>
@@ -88,15 +88,15 @@ function SobreMi(){
                                     </tr>
                                     <tr>
                                         <th className="subtitles-wiki">Años activa</th>
-                                        <td>(...)</td>
+                                        <td>2020</td>
                                     </tr>
                                     <tr>
                                         <th className="subtitles-wiki">Géneros</th>
-                                        <td>Indie, (...)</td>
+                                        <td>Indie, Folk, Gypsy Jazz, Pop</td>
                                     </tr>
                                     <tr>
                                         <th className="subtitles-wiki">Instrumento</th>
-                                        <td>Voz, (...)</td>
+                                        <td>Voz, Guitarra acústica, ukelele y teclado (...)</td>
                                     </tr>
                                     <tr>
                                         <th className="subtitles-wiki">Distinciones</th>
