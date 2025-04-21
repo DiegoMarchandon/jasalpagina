@@ -5,6 +5,8 @@
 .images-container{
   overflow: hidden; /* para que el degradado no se salga */
   position: relative;
+  width: 100%;
+  height: 100%;
   grid-column: 1;
   grid-row: 1/4; /* para ocupar las 3 filas. desde la primera a la cuarta línea */
 }
@@ -21,6 +23,8 @@
 
 
 .merch-item{
+    position: relative;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 20% 20% 60%;
@@ -76,9 +80,9 @@
   opacity: 1;
 }
 
-.item-image{
-  z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* o contain para ver toda la imagen */
+  .item-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  position: absolute;
 }
