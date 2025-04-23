@@ -14,6 +14,7 @@ function FormContacto(){
           )
           .then((result) => {
             alert('Mensaje enviado correctamente.');
+            e.target.reset() //limpia los campos del formulario
           }, (error) => {
             alert('Hubo un problema al enviar el mensaje: ' + error.text);
           });
@@ -22,6 +23,7 @@ function FormContacto(){
     return (
         <div>
            <form onSubmit={enviarCorreo}>
+                <h1>Contactame!</h1>
                 <label htmlFor="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" required />
 
