@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Inicio from './pages/Inicio/Inicio';
 import SobreMi from './pages/SobreMi/SobreMi';
 import Mercaderia from './pages/Mercaderia/Mercaderia';
-import Portfolio from './pages/Portfolio/Portfolio';
+import Carrito from './pages/Carrito/Carrito';
 import Blog from './pages/Blog/Blog';
 import Galeria from './pages/Galeria/Galeria';
 import Footer from './components/Footer';
@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/sobre-mi" element={<SobreMi />} />
           <Route path="/mercaderia" element={<Mercaderia />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/Carrito" element={<Carrito />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/Galeria" element={<Galeria />} />
         </Routes>

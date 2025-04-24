@@ -10,6 +10,22 @@ function Mercaderia(){
         // a ese arreglo, inicializo sus elementos en 0 con fill() para hacer referencia a la imagen inicial
     const [arrPics, setArrPics] = useState(new Array(merch.length).fill(0));
 
+    // necesito una variable de estado para que, cada vez que cambie su valor, el efecto se dispare.
+    const [clickItem, setClickItem] = useState(false);
+
+    useEffect(() =>{
+        
+        const carritoItems = localStorage.getItem('itemsCarrito');
+        // si clickItem ahora es true:
+        if(clickItem){
+            if(carritoItems){
+                if(Object.keys(carritoItems).length > 0){
+
+                }else alert("0 items en el carrito");
+            }else alert("no existe esa clave");
+        }
+    },clickItem);
+
     /* merch.map((item,index) => {
         console.log("cantidad de fotos del item: nro ",index,":",item.images.length);
         console.log("cantidad de items:",merch.length);
@@ -32,29 +48,44 @@ function Mercaderia(){
         return actualArr;
     }
 
+    function agregarAlCarrito(item){
+        
+        
+        
+    }
+
     return (
 
         <div>
-                <h1 id='merch-main-title'>mi mercadería</h1>
+            <h1 id='merch-main-title'>mi mercadería</h1>
             <div className='merch-container'>
                 {
                 // en JSX, cualquier lógica de renderizado dinámica (o código JS) debe ir entre {}
                 merch.map((item,index) => (
                     <div key={item.id} className="merch-item">
+
                         <div className='images-container'>
                             <button className='prev item-button' onClick={() => prevIMGHandler(index)} style={{transform:'rotate(180deg)'}}><img src={flecha} alt="flecha logo" /></button>
                             <img className='item-image' src={item.images[arrPics[index]]} alt={item.alt} />
                             <button className='next item-button' onClick={() => nextIMGHandler(index)}><img src={flecha} alt="flecha logo" /></button>
                         </div>
-                        <h2 className='item-text item-title'>{item.title}</h2>
-                        <p className='item-text item-price'>Precio: ${item.price}</p>
-                        <p className='item-text item-description'>{item.description}</p>
+                        <div className='item-text-container'>
+                            <h3 className='item-title'>{item.title}</h3>
+                            <p className='item-price'>Precio: ${item.price}</p>
+                            <p className='item-description'>{item.description}</p>
+                            <p className='item-cantidad'>Cantidad: ({item.cantidades} unidades disponibles)</p>
+                            <div>
+                                <input type="number" name="inputCantidad" className="inputCantidad" min="0" max={item.cantidades} />
+                                <button>Comprar</button>
+                                <button onClick={() => agregarAlCarrito(item)}>Agregar al carrito</button>
+                            </div>
+                        </div>
                     </div>
                 ))
                 }
             </div>
         </div>
-    // <h1>Bienvenido a la mercaderia de la artista</h1>
+
     );
 }
 

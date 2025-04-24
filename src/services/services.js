@@ -18,6 +18,7 @@ export const merch = [
     title: 'Merch con logo',
     price: 15000,
     description: 'mercaderia con logo de la artista', 
+    cantidades: 10,
     images: [shirtIMG,
         abc,
         shirtIMG,
@@ -31,6 +32,7 @@ export const merch = [
     title: 'Merch con logo',
     price: 25000,
     description: 'mercaderia con logo de la artista',
+    cantidades: 10,
     images: [shirtIMG,
         shirtIMG,
         shirtIMG,
@@ -44,6 +46,7 @@ export const merch = [
         title: 'Merch con logo',
         price: 5000,
         description: 'mercaderia con logo de la artista',
+        cantidades: 10,
         images: [shirtIMG,
             shirtIMG,
             shirtIMG,
@@ -57,6 +60,7 @@ export const merch = [
         title: 'Merch con logo',
         price: 5500,
         description: 'mercaderia con logo de la artista',
+        cantidades: 10,
         images: [shirtIMG,
             shirtIMG,
             shirtIMG,
@@ -70,6 +74,7 @@ export const merch = [
         title: 'Merch con logo',
         price: 10300,
         description: 'mercaderia con logo de la artista',
+        cantidades: 10,
         images: [shirtIMG,
             shirtIMG,
             shirtIMG,
@@ -80,3 +85,7 @@ export const merch = [
     alt:'merch5'
     }
 ];
+
+const carritoLocalStorage = {};
+// la guardo en el localStorage
+localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));
