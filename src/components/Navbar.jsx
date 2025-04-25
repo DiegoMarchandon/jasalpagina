@@ -2,6 +2,7 @@
 en lugar de las etiquetas <a> normales cuando queremos navegar 
 dentro de nuestra aplicación sin recargar la página */
 import { Link } from "react-router-dom";
+import { ShoppingCart} from 'lucide-react';
 import './css/Navbar.css';
 
 function Navbar(){
@@ -11,9 +12,9 @@ function Navbar(){
                 <li><Link to="/">Inicio</Link></li>
                 <li><Link to="/sobre-mi">Sobre mí</Link></li>
                 <li><Link to="/mercaderia">Mercaderia</Link></li>
-                <li><Link to="/carrito">Carrito</Link></li>
                 <li><Link to="/blog">Blog</Link></li>
                 <li><Link to="/Galeria">Galeria</Link></li>
+                <li><Link to="/carrito" className="carrito-logo"> <ShoppingCart /> </Link></li>
             </ul>
         </nav>
     );

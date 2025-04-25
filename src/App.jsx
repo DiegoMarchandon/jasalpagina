@@ -21,9 +21,9 @@ function App() {
           <Route path="/" element={<Inicio />} />
           <Route path="/sobre-mi" element={<SobreMi />} />
           <Route path="/mercaderia" element={<Mercaderia />} />
-          <Route path="/Carrito" element={<Carrito />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/Galeria" element={<Galeria />} />
+          <Route path="/Carrito" element={<Carrito />} />
         </Routes>
         <Footer />
       </div>

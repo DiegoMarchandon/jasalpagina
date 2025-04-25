@@ -1,65 +1,77 @@
 import './Mercaderia.css';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {merch} from '../../services/services.js';
 import flecha from '../../../src/assets/right-arrow.png';
 
 function Mercaderia(){
 
+    // utilizo useRef para almacenar referencia al input
+    const inputRefs = useRef([]);
+    
     // useState para reflejar cuál es la imagen actual de cada item.
         // creo un nuevo arreglo con la longitud de la cantidad de items
         // a ese arreglo, inicializo sus elementos en 0 con fill() para hacer referencia a la imagen inicial
     const [arrPics, setArrPics] = useState(new Array(merch.length).fill(0));
 
     // necesito una variable de estado para que, cada vez que cambie su valor, el efecto se dispare.
-    const [carritoItems, setCarritoItems] = useState(localStorage.getItem('itemsCarrito'));
-/* 
-    useEffect(() =>{
-        
-        const carritoItems = localStorage.getItem('itemsCarrito');
-        // si clickItem ahora es true:
-        if(clickItem){
-            if(carritoItems){
-                if(Object.keys(carritoItems).length > 0){
-
-                }else alert("0 items en el carrito");
-            }else alert("no existe esa clave");
-        }
-
-        setClickItem(false);
-    },clickItem); */
-
+    const [carritoItems, setCarritoItems] = useState(() => {
+        return JSON.parse(localStorage.getItem('itemsCarrito')) || [];
+    });
     // funciones para modificar el indice de la imagen correspondiente:
     function prevIMGHandler(index){
         const actualArr = [...arrPics];
         actualArr[index] = (arrPics[index]-1 + merch[index].images.length) % merch[index].images.length;
         setArrPics(actualArr);
         
-        console.log("prev IMG",index);
+        // console.log("prev IMG",index);
         return actualArr;
     }
     function nextIMGHandler(index){
         const actualArr = [...arrPics];
         actualArr[index] = (arrPics[index]+1) % merch[index].images.length;
         setArrPics(actualArr);
-        console.log("next IMG",index);
+        // console.log("next IMG",index);
         return actualArr;
     }
 
     // obtener el carrito actual desde localStorage (y parsearlo si existe)
-    function agregarAlCarrito(item) {
+    function agregarAlCarrito(item,index) {
         // Obtener el carrito actual desde localStorage (y parsearlo si existe)
         const carritoActual = JSON.parse(localStorage.getItem('itemsCarrito')) || [];
     
-        // Agregar el nuevo item al carrito
-        const nuevoCarrito = [...carritoActual, item];
-    
-        // Guardar el carrito actualizado en localStorage
-        localStorage.setItem('itemsCarrito', JSON.stringify(nuevoCarrito));
-    
-        // Actualizar el estado
-        setCarritoItems(nuevoCarrito);
-    
-        console.log("Ítem agregado al carrito:", item);
+        // console.log(carritoActual);
+
+        const cantidadSelec = Number(inputRefs.current[index]?.value) || 0; //obtengo el valor ingresado
+
+        if(cantidadSelec > 0){
+
+            const itemExistente = carritoActual.find((producto) => producto.id === item.id);
+            
+            // Agregar el nuevo item al carrito formateado
+            const itemFormateado = {
+                id: item.id,
+                titulo: item.title,
+                precio: item.price,
+                cantidad: cantidadSelec
+            };
+
+            if (itemExistente) {
+                itemExistente.cantidad += Number(cantidadSelec); // Actualizar cantidad del ítem existente
+            } else {
+                carritoActual.push(itemFormateado); // Agregar nuevo ítem
+            }
+            const nuevoCarrito = [...carritoActual];
+        
+            // Guardar el carrito actualizado en localStorage
+            localStorage.setItem('itemsCarrito', JSON.stringify(nuevoCarrito));
+        
+            // Actualizar el estado
+            setCarritoItems(nuevoCarrito);
+        
+            console.log("Ítem agregado al carrito:", itemFormateado,". Nuevo local storage: ",nuevoCarrito);
+        }else{
+            alert("ingrese una cantidad válida");
+        }
     }
 
     return (
@@ -84,7 +96,7 @@ function Mercaderia(){
                             <p className='item-cantidad'>Cantidad: ({item.cantidades} unidades disponibles)</p>
                             <div>
                                 <input type="number" name="inputCantidad" className="inputCantidad" min="0" max={item.cantidades} />
-                                <button onClick={() => agregarAlCarrito(item)}>Agregar al carrito</button>
+                                <button onClick={() => agregarAlCarrito(item,index)}>Agregar al carrito</button>
                                 <button>Comprar</button>
                             </div>
                         </div>

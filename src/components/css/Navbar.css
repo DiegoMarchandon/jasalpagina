@@ -27,4 +27,11 @@
   .navbar-links li a:hover {
     color: #ff4081;
   }
+
   
+.carrito-logo {
+  display: flex;
+  align-items: center;
+  color: #333; /* Color del ícono */
+  transition: color 0.3s ease;
+}
