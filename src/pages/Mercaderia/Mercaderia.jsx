@@ -11,8 +11,8 @@ function Mercaderia(){
     const [arrPics, setArrPics] = useState(new Array(merch.length).fill(0));
 
     // necesito una variable de estado para que, cada vez que cambie su valor, el efecto se dispare.
-    const [clickItem, setClickItem] = useState(false);
-
+    const [carritoItems, setCarritoItems] = useState(localStorage.getItem('itemsCarrito'));
+/* 
     useEffect(() =>{
         
         const carritoItems = localStorage.getItem('itemsCarrito');
@@ -24,12 +24,9 @@ function Mercaderia(){
                 }else alert("0 items en el carrito");
             }else alert("no existe esa clave");
         }
-    },clickItem);
 
-    /* merch.map((item,index) => {
-        console.log("cantidad de fotos del item: nro ",index,":",item.images.length);
-        console.log("cantidad de items:",merch.length);
-    }); */
+        setClickItem(false);
+    },clickItem); */
 
     // funciones para modificar el indice de la imagen correspondiente:
     function prevIMGHandler(index){
@@ -48,10 +45,21 @@ function Mercaderia(){
         return actualArr;
     }
 
-    function agregarAlCarrito(item){
-        
-        
-        
+    // obtener el carrito actual desde localStorage (y parsearlo si existe)
+    function agregarAlCarrito(item) {
+        // Obtener el carrito actual desde localStorage (y parsearlo si existe)
+        const carritoActual = JSON.parse(localStorage.getItem('itemsCarrito')) || [];
+    
+        // Agregar el nuevo item al carrito
+        const nuevoCarrito = [...carritoActual, item];
+    
+        // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('itemsCarrito', JSON.stringify(nuevoCarrito));
+    
+        // Actualizar el estado
+        setCarritoItems(nuevoCarrito);
+    
+        console.log("Ítem agregado al carrito:", item);
     }
 
     return (
@@ -76,8 +84,8 @@ function Mercaderia(){
                             <p className='item-cantidad'>Cantidad: ({item.cantidades} unidades disponibles)</p>
                             <div>
                                 <input type="number" name="inputCantidad" className="inputCantidad" min="0" max={item.cantidades} />
-                                <button>Comprar</button>
                                 <button onClick={() => agregarAlCarrito(item)}>Agregar al carrito</button>
+                                <button>Comprar</button>
                             </div>
                         </div>
                     </div>
