@@ -88,4 +88,4 @@ export const merch = [
 
 const carritoLocalStorage = {};
 // la guardo en el localStorage
-localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));
+// localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));

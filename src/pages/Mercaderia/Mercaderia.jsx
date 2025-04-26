@@ -15,7 +15,7 @@ function Mercaderia(){
 
     // necesito una variable de estado para que, cada vez que cambie su valor, el efecto se dispare.
     const [carritoItems, setCarritoItems] = useState(() => {
-        return JSON.parse(localStorage.getItem('itemsCarrito')) || [];
+        return JSON.parse(localStorage.getItem('itemsCarrito'));
     });
 
     // actualización automática: cada vez que carritoItems cambie, este useEffect guarda los datos actualizados en el localStorage
