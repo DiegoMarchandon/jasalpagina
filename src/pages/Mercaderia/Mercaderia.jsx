@@ -17,6 +17,13 @@ function Mercaderia(){
     const [carritoItems, setCarritoItems] = useState(() => {
         return JSON.parse(localStorage.getItem('itemsCarrito')) || [];
     });
+
+    // actualización automática: cada vez que carritoItems cambie, este useEffect guarda los datos actualizados en el localStorage
+    useEffect(() => {
+        localStorage.setItem('itemsCarrito', JSON.stringify(carritoItems));
+    }, [carritoItems]);
+    
+
     // funciones para modificar el indice de la imagen correspondiente:
     function prevIMGHandler(index){
         const actualArr = [...arrPics];
@@ -36,16 +43,17 @@ function Mercaderia(){
 
     // obtener el carrito actual desde localStorage (y parsearlo si existe)
     function agregarAlCarrito(item,index) {
-        // Obtener el carrito actual desde localStorage (y parsearlo si existe)
-        const carritoActual = JSON.parse(localStorage.getItem('itemsCarrito')) || [];
-    
-        // console.log(carritoActual);
 
         const cantidadSelec = Number(inputRefs.current[index]?.value) || 0; //obtengo el valor ingresado
-
+        
         if(cantidadSelec > 0){
-
-            const itemExistente = carritoActual.find((producto) => producto.id === item.id);
+            // Obtener el carrito actual desde localStorage (y parsearlo si existe)
+            const carritoActual = JSON.parse(localStorage.getItem('itemsCarrito'));
+            
+            // carritoActual = {}
+            // localStorage.getItem('itemsCarrito') = {}
+            // typeof(carritoActual) = object
+            // typeof(inputRefs) = object
             
             // Agregar el nuevo item al carrito formateado
             const itemFormateado = {
@@ -55,20 +63,32 @@ function Mercaderia(){
                 cantidad: cantidadSelec
             };
 
-            if (itemExistente) {
-                itemExistente.cantidad += Number(cantidadSelec); // Actualizar cantidad del ítem existente
-            } else {
-                carritoActual.push(itemFormateado); // Agregar nuevo ítem
+            const cantKeys = Object.keys(carritoActual).length;
+            console.log("cantKeys: ", cantKeys);
+            // si continúa siendo un objeto vacío (sin elementos) pusheo el primero:
+            if(cantKeys === 0){
+                carritoActual[0] = itemFormateado;
+                // localStorage.setItem('itemsCarrito',)
+            }else{ //si ya tiene elementos, realizo una comparación por si el usuario agrega más elementos del mismo producto
+                const itemExistente = Object.values(carritoActual).find((producto) => producto.id === item.id);
+                if (itemExistente) {
+                    itemExistente.cantidad += Number(cantidadSelec); // Actualizar cantidad del ítem existente
+                } else {
+                    carritoActual[cantKeys] = itemFormateado; // Agregar nuevo ítem
+                }
             }
-            const nuevoCarrito = [...carritoActual];
+            
+            console.log("carrito actual: ",carritoActual)
+            // const nuevoCarrito = [...carritoActual];
         
-            // Guardar el carrito actualizado en localStorage
-            localStorage.setItem('itemsCarrito', JSON.stringify(nuevoCarrito));
-        
+            
             // Actualizar el estado
-            setCarritoItems(nuevoCarrito);
+            setCarritoItems(carritoActual);
+            
+            // Guardar el carrito actualizado en localStorage
+            localStorage.setItem('itemsCarrito', JSON.stringify(carritoActual));
         
-            console.log("Ítem agregado al carrito:", itemFormateado,". Nuevo local storage: ",nuevoCarrito);
+            console.log("Ítem agregado al carrito:", itemFormateado,". Nuevo local storage: ",carritoActual);
         }else{
             alert("ingrese una cantidad válida");
         }
@@ -95,7 +115,7 @@ function Mercaderia(){
                             <p className='item-description'>{item.description}</p>
                             <p className='item-cantidad'>Cantidad: ({item.cantidades} unidades disponibles)</p>
                             <div>
-                                <input type="number" name="inputCantidad" className="inputCantidad" min="0" max={item.cantidades} />
+                                <input type="number" name="inputCantidad" className="inputCantidad" min="0" max={item.cantidades} ref={(valor) => inputRefs.current[index] = valor}/>
                                 <button onClick={() => agregarAlCarrito(item,index)}>Agregar al carrito</button>
                                 <button>Comprar</button>
                             </div>
