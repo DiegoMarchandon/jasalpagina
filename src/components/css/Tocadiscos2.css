@@ -9,7 +9,7 @@
    margin-top: 10rem;
 } */
 .jukebox-container{
-    margin-top: 20rem;    
+    margin-top: 12rem;    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -583,6 +583,7 @@
 .notes {
    position: absolute;
    margin-left: -5rem;
+   /* visibility: hidden; */
 }
 
 #note,
@@ -614,8 +615,8 @@
 .discos-container{
     display: flex;
     align-items: center;
-    
-    flex-direction: column;
+    justify-content: center;
+    /* flex-direction: column; */
 }
 
 .disco {
@@ -631,6 +632,7 @@
     font-size: 12px;
     cursor: pointer;
     transition: transform 0.5s;
+    z-index: 0;
   }
   
   .girando {
@@ -640,5 +642,13 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+  .hole {
+    position: absolute;
+    width: 20px; /* tamaño del agujero */
+    height: 20px;
+    background: red; /* color del agujero */
+    border-radius: 50%;
+    z-index: -1; /* para que esté encima */
   }
   
