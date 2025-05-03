@@ -14,9 +14,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
-        {/* <Inicio /> */}
         <Navbar />
+        {/* <Inicio /> */}
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/sobre-mi" element={<SobreMi />} />
