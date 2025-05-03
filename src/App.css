@@ -1,2 +1,5 @@
 /* puedo vaciarlo y solo incluir lo que vaya a usar */
 
+body{
+    background-color: rgb(250, 243, 196);
+}

@@ -31,6 +31,28 @@ function Inicio() {
           <p>Escribo para quienes se enamoran rápido y se olvidan lento 🥀🪞</p>
           <a href="#Contacto" className="inicio-btn">Contáctame</a>
         </div> */}
+        <section id="eventos">
+          <h2>Próximos Eventos!</h2>
+          <img src={Tachuela} alt="tachuela logo" id="tachuela-img"/>
+          <ul className="eventos-lista">
+            {datos.map((data, index) => (
+              <li key={index}>
+                <div className='info-eventos'>
+                  <span className="fecha">{data.fecha}</span>
+                  <span className="lugar">{data.lugar}</span>
+                </div>
+                <div className='direccion-container'>
+                  <a href={data.enlace} className="enlaces-inicio">Comprar entradas</a>
+                  <span className="flechas">
+                    <span>&gt;</span>
+                    <span>&gt;</span>
+                    <span>&gt;</span>
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
         {/* spotify */}
         <div>
         <iframe style={{ borderRadius: "12px", margin:"10px" }} 
@@ -55,28 +77,6 @@ function Inicio() {
           loading="lazy">
         </iframe>
         </div>
-        <section id="eventos">
-          <h2>Próximos Eventos!</h2>
-          <img src={Tachuela} alt="tachuela logo" id="tachuela-img"/>
-          <ul className="eventos-lista">
-            {datos.map((data, index) => (
-              <li key={index}>
-                <div className='info-eventos'>
-                  <span className="fecha">{data.fecha}</span>
-                  <span className="lugar">{data.lugar}</span>
-                </div>
-                <div className='direccion-container'>
-                  <a href={data.enlace} className="enlaces-inicio">Comprar entradas</a>
-                  <span className="flechas">
-                    <span>&gt;</span>
-                    <span>&gt;</span>
-                    <span>&gt;</span>
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
 
       </div>
     </div>

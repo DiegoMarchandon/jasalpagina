@@ -2,16 +2,23 @@
   .navbar {
     background: linear-gradient(
         to bottom,
-        rgba(237, 255, 100, 0.8),  /* Color arriba (blanco semitransparente) */
+        rgba(255, 229, 79, 0.9),  /* Color arriba (blanco semitransparente) */
         rgba(255, 255, 255, 0)     /* Color abajo (totalmente transparente) */
     );
-    padding: 10px 20px;
+    padding: 1rem 2rem;
     position: absolute;
     width: 100%;
     top: 0;
     z-index: 10;
-    backdrop-filter: blur(10px); /* Opcional: le da un efecto borroso muy lindo */
-}
+    backdrop-filter: blur(10px); 
+    transition: all 0.3s ease;
+  }
+
+  .navbar.sticky {
+    position: fixed;
+    background: rgba(255, 229, 79, 0.7);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  }
 
   .navbar-links {
     list-style: none;

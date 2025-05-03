@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import InstagramLogo from "../assets/instagramLogo.png";
-import TikTokLogo from "../assets/tik-tokLogo.png";
-import SpotifyLogo from "../assets/spotifyLogo.png";
-import YoutubeLogo from "../assets/youtubeLogo.png";
+import { Youtube } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import { Music2 } from 'lucide-react';
+import { Waves } from 'lucide-react';
 
 import './css/Footer.css';
 
@@ -13,20 +13,16 @@ function Footer(){
                 <p>&copy; {new Date().getFullYear()} Jasal. Todos los derechos reservados.</p>
                 <div className="social-icons">
                     <div>
-                        <li><Link to="https://www.youtube.com/@jasalmusica">Youtube</Link></li>
-                        <img src={YoutubeLogo} alt="youtube logo" className="icon-container"/>
+                        <li><Link to="https://www.youtube.com/@jasalmusica"><Youtube color="red"/></Link></li>
                     </div>
                     <div>
-                        <li><Link to="https://www.instagram.com/jasalmusica/">Instagram</Link></li>
-                        <img src={InstagramLogo} alt="instagram logo" className="icon-container"/>
+                        <li><Link to="https://www.instagram.com/jasalmusica/"><Instagram color="violet"/></Link></li>
                     </div>
                     <div>
-                        <li><Link to="https://www.tiktok.com/@jasalmusica">tik tok</Link></li>
-                        <img src={TikTokLogo} alt="tik tok logo" className="icon-container"/>
+                        <li><Link to="https://www.tiktok.com/@jasalmusica"><Music2 color="purple"/></Link></li>
                     </div>
                     <div>
-                        <li><Link to="https://open.spotify.com/intl-es/artist/5p4HoLoWZTHuNysEqoFnX7?si=WLIntwg4RJusMNpDTMVBVA">Spotify</Link></li>
-                        <img src={SpotifyLogo} alt="spotify logo" className="icon-container"/>
+                        <li><Link to="https://open.spotify.com/intl-es/artist/5p4HoLoWZTHuNysEqoFnX7?si=WLIntwg4RJusMNpDTMVBVA"><Waves color="green"/></Link></li>
                     </div>
                 </div>
             </div>
