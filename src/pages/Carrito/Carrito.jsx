@@ -1,4 +1,5 @@
 import './Carrito.css';
+import { Pencil, Trash2 } from 'lucide-react'; 
 
 function Carrito() {
     const carritoElements = JSON.parse(localStorage.getItem('itemsCarrito')) || [];
@@ -19,10 +20,12 @@ function Carrito() {
                                 <p><strong>Cantidad:</strong> {elem.cantidad}</p>
                                 <p><strong>Precio unitario:</strong> ${elem.precio}</p>
                                 <p><strong>Total:</strong> ${elem.precio * elem.cantidad}</p>
+                                <button className='carrito-buttons'> <Pencil/> </button>
+                                <button className='carrito-buttons'> <Trash2/> </button>
                             </div>
                         ))
                     }
-                    <button id='aceptarCarrito'>comprar</button>
+                    <button id='aceptarCarrito'>Confirmar compra</button>
                     </>
                 ) : (
                     <p className="carrito-empty">No hay productos en el carrito.</p>
