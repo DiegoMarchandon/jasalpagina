@@ -2,6 +2,7 @@ import './styles.css';
 import Tachuela from '../../assets/thumb-tack.png';
 import React, {useState} from 'react';
 import Header from '../../components/Header.jsx';
+import Tocadiscos from '../../components/tocadiscos.jsx';
 function Inicio() {
 
   // lógica de mi función:
@@ -53,8 +54,9 @@ function Inicio() {
             ))}
           </ul>
         </section>
+        <Tocadiscos />
         {/* spotify */}
-        <div>
+        {/* <div>
         <iframe style={{ borderRadius: "12px", margin:"10px" }} 
           src="https://open.spotify.com/embed/track/2KrnN2pSnBdqpUwDla280S?utm_source=generator" 
           width="100%" height="352" allowFullScreen = ""
@@ -76,7 +78,7 @@ function Inicio() {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
           loading="lazy">
         </iframe>
-        </div>
+        </div> */}
 
       </div>
     </div>

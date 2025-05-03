@@ -1,0 +1,54 @@
+  /* tocadiscos estilos */
+  .tocadiscos-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #f6e5b3; /* Color crema vintage */
+    border: 5px solid #d4a373;
+    border-radius: 20px;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  .tocadiscos {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .disco {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border: 5px solid #5c4b51; /* Marrón oscuro */
+    border-radius: 50%;
+    background: radial-gradient(#333, #000);
+    position: relative;
+  }
+  
+  .aguja {
+    width: 8px;
+    height: 120px;
+    background-color: #5c4b51;
+    position: absolute;
+    top: -40px;
+    left: 230px;
+    transform: rotate(30deg);
+    transform-origin: top center;
+    border-radius: 4px;
+  }
+  
+  .controles button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #5c4b51;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Georgia', serif;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .controles button:hover {
+    background-color: #d4a373;
+  }
+  
