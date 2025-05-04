@@ -96,9 +96,12 @@ function Mercaderia(){
 
     return (
 
-        <div>
+        <div id= "merch-container">
             <h1 id='merch-main-title'>mi mercadería</h1>
-            <div className='merch-container'>
+            <div id="panel-merch-container">
+                
+            </div>
+            <div id='cards-container'>
                 {
                 // en JSX, cualquier lógica de renderizado dinámica (o código JS) debe ir entre {}
                 merch.map((item,index) => (

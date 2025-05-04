@@ -9,7 +9,7 @@
     position: absolute;
     width: 100%;
     top: 0;
-    z-index: 10;
+    z-index: 200;
     backdrop-filter: blur(10px); 
     transition: all 0.3s ease;
   }

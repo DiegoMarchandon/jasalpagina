@@ -15,8 +15,6 @@ function Inicio() {
           <a href="#Contacto" className="inicio-btn">Contáctame</a>
         </div> */}
         <ProxEventos />
-        {/* <Tocadiscos /> */}
-        {/* spotify */}
         <div className='reproform-container'>
           <div className="reproductor">
             <iframe style={{borderRadius:"12"}} 
