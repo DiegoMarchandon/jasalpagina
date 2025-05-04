@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.96c5fef1.css",
-    "main.js": "/static/js/main.31753c5f.js",
+    "main.css": "/static/css/main.98a0cd53.css",
+    "main.js": "/static/js/main.e589f550.js",
     "static/media/1742315860763.jpg": "/static/media/1742315860763.a930e88380e38cf7f893.jpg",
     "static/media/IMG_6546.jpeg": "/static/media/IMG_6546.cd3ce9029823c9c99226.jpeg",
     "static/media/JasalCaptura.png": "/static/media/JasalCaptura.aade137824e8cb063298.png",
+    "static/media/logoIG.png": "/static/media/logoIG.b81612017ca4b6f46a1e.png",
+    "static/media/logoYT.png": "/static/media/logoYT.89522669196a9665cbaf.png",
+    "static/media/logoSpotify.png": "/static/media/logoSpotify.d574fba6f1a08d26ea59.png",
     "static/media/jasalSobreMiSeccion.jpg": "/static/media/jasalSobreMiSeccion.8cffd27663c94b0558ab.jpg",
+    "static/media/logoTiktok.png": "/static/media/logoTiktok.680a35b1fee6192c447c.png",
+    "static/media/in_search_of_sunrise_by_zerve.jpg": "/static/media/in_search_of_sunrise_by_zerve.7c1c7b1df5d9b06f3fff.jpg",
     "static/media/JasalFuente.png": "/static/media/JasalFuente.3e57a5f9519432632f62.png",
     "static/media/thumb-tack.png": "/static/media/thumb-tack.5d4eb331cb0c0a0dc97f.png",
-    "static/media/instagramLogo.png": "/static/media/instagramLogo.e719d8b29f452a16302d.png",
-    "static/media/tik-tokLogo.png": "/static/media/tik-tokLogo.8a9452a0a4c037d9de63.png",
-    "static/media/youtubeLogo.png": "/static/media/youtubeLogo.a18905bdec536c578e09.png",
-    "static/media/spotifyLogo.png": "/static/media/spotifyLogo.20d95606bd5c24809c0e.png",
+    "static/media/insertLogoShirt.jpg": "/static/media/insertLogoShirt.6ab27de89745bceaec89.jpg",
     "index.html": "/index.html",
-    "main.96c5fef1.css.map": "/static/css/main.96c5fef1.css.map",
-    "main.31753c5f.js.map": "/static/js/main.31753c5f.js.map"
+    "main.98a0cd53.css.map": "/static/css/main.98a0cd53.css.map",
+    "main.e589f550.js.map": "/static/js/main.e589f550.js.map"
   },
   "entrypoints": [
-    "static/css/main.96c5fef1.css",
-    "static/js/main.31753c5f.js"
+    "static/css/main.98a0cd53.css",
+    "static/js/main.e589f550.js"
   ]
 }
