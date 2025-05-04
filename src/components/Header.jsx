@@ -9,8 +9,8 @@ import './css/Header.css';
 function Header(){
     return (
       <header className="header-main-container">
-        <img src={JasalFuente} alt="Logo de Jasal" className="logo-artista" />
-        <p className="subtitulo">Escribo para quienes se enamoran rápido y se olvidan lento 🥀🪞</p>
+        {/* <img src={JasalFuente} alt="Logo de Jasal" className="logo-artista" /> */}
+        {/* <p className="subtitulo">Escribo para quienes se enamoran rápido y se olvidan lento 🥀🪞</p> */}
         <div className="redes-container">
         
         <Link to="https://www.instagram.com/jasalmusica/"><img src={logoIG} alt="red social" id="instagram-logo-header" className="red-social-logo"/></Link>

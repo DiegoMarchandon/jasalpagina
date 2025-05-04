@@ -21,19 +21,19 @@ function FormContacto(){
         };
 
     return (
-        <div>
-           <form onSubmit={enviarCorreo}>
-                <h1>Contactame!</h1>
-                <label htmlFor="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" required />
+        <div className="form-container">
+           <form onSubmit={enviarCorreo} className="contact-form">
+                <h2>Contactame!</h2>
+                <hr id='contact-line'/>
+                {/* <label htmlFor="nombre">Nombre:</label> */}
+                <input type="text" name="nombre" id="nombre" placeholder='nombre' required />
 
-                <label htmlFor="email">Email:</label>
-                <input type="email" name="email" id="email" required />
-
-                <label htmlFor="asunto">Asunto:</label>
-                <input type="asunto" name="asunto" id="asunto" required />
-                <label htmlFor="mensaje">Mensaje:</label>
-                <textarea name="mensaje" id="mensaje" required></textarea>
+                {/* <label htmlFor="email">Email:</label> */}
+                <input type="email" name="email" id="email" placeholder='email' required />
+                {/* <label htmlFor="asunto">Asunto:</label> */}
+                <input type="asunto" name="asunto" id="asunto" placeholder='asunto' required />
+                {/* <label htmlFor="mensaje">Mensaje:</label> */}
+                <textarea name="mensaje" id="mensaje" placeholder='mensaje' required rows={5} cols={30}></textarea>
 
                 <button type="submit">Enviar</button>
             </form>
