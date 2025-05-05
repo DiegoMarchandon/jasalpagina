@@ -1,0 +1,58 @@
+.merch-item{
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    /* grid-template-columns: 40% 60%; */
+    grid-template-rows: 50% 50%;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 200px;
+    height: 500px;
+    margin: 10px;
+    /* background-image: linear-gradient(to right, rgb(247, 247, 0) , rgb(251, 167, 0)); */
+    background-color: rgb(255, 190, 92);
+    /* border-radius: 30px; */
+}
+
+.item-text-container{
+  grid-row: 2;
+}
+.item-title, .item-price, .item-description{
+  margin: 0;
+}
+
+.item-button{
+  background: none;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 40%;
+  z-index: 1;
+}
+
+.prev{
+  left: 5%;
+}
+
+.next{
+  right: 5%;
+}
+
+
+.item-button img{
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+
+.item-button img:hover{
+  opacity: 1;
+}
+
+  .item-image {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  position: absolute;
+}

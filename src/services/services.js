@@ -13,9 +13,9 @@ export const imagenes = [
 
 // export default imagenes;
 
-export const merch = [
+export const merchEstelario = [
     {id: 1, 
-    title: 'Merch con logo',
+    title: 'merchEstelario con logo',
     price: 15000,
     description: 'mercaderia con logo de la artista', 
     cantidades: 10,
@@ -26,10 +26,10 @@ export const merch = [
         shirtIMG,
         shirtIMG,
     ],
-    alt:'merch1'
+    alt:'merchEstelario1'
     },
     {id: 2,
-    title: 'Merch con logo',
+    title: 'merchEstelario con logo',
     price: 25000,
     description: 'mercaderia con logo de la artista',
     cantidades: 10,
@@ -40,10 +40,10 @@ export const merch = [
         shirtIMG,
         shirtIMG,
     ],
-    alt:'merch2'
+    alt:'merchEstelario2'
     },
     {id: 3,
-        title: 'Merch con logo',
+        title: 'merchEstelario con logo',
         price: 5000,
         description: 'mercaderia con logo de la artista',
         cantidades: 10,
@@ -54,10 +54,10 @@ export const merch = [
             shirtIMG,
             shirtIMG,
     ],
-    alt:'merch3'
+    alt:'merchEstelario3'
     },
     {id: 4,
-        title: 'Merch con logo',
+        title: 'merchEstelario con logo',
         price: 5500,
         description: 'mercaderia con logo de la artista',
         cantidades: 10,
@@ -68,10 +68,10 @@ export const merch = [
             shirtIMG,
             shirtIMG,
     ],
-    alt:'merch4'
+    alt:'merchEstelario4'
     },
     {id: 5,
-        title: 'Merch con logo',
+        title: 'merchEstelario con logo',
         price: 10300,
         description: 'mercaderia con logo de la artista',
         cantidades: 10,
@@ -82,7 +82,7 @@ export const merch = [
             shirtIMG,
             shirtIMG,
     ],
-    alt:'merch5'
+    alt:'merchEstelario5'
     }
 ];
 

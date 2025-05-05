@@ -1,6 +1,6 @@
 import './Mercaderia.css';
 import {useState, useEffect, useRef} from 'react';
-import {merch} from '../../services/services.js';
+import {merchEstelario} from '../../services/services.js';
 import flecha from '../../../src/assets/right-arrow.png';
 
 function Mercaderia(){
@@ -11,7 +11,7 @@ function Mercaderia(){
     // useState para reflejar cuál es la imagen actual de cada item.
         // creo un nuevo arreglo con la longitud de la cantidad de items
         // a ese arreglo, inicializo sus elementos en 0 con fill() para hacer referencia a la imagen inicial
-    const [arrPics, setArrPics] = useState(new Array(merch.length).fill(0));
+    const [arrPics, setArrPics] = useState(new Array(merchEstelario.length).fill(0));
 
     // necesito una variable de estado para que, cada vez que cambie su valor, el efecto se dispare.
     const [carritoItems, setCarritoItems] = useState(() => {
@@ -27,7 +27,7 @@ function Mercaderia(){
     // funciones para modificar el indice de la imagen correspondiente:
     function prevIMGHandler(index){
         const actualArr = [...arrPics];
-        actualArr[index] = (arrPics[index]-1 + merch[index].images.length) % merch[index].images.length;
+        actualArr[index] = (arrPics[index]-1 + merchEstelario[index].images.length) % merchEstelario[index].images.length;
         setArrPics(actualArr);
         
         // console.log("prev IMG",index);
@@ -35,7 +35,7 @@ function Mercaderia(){
     }
     function nextIMGHandler(index){
         const actualArr = [...arrPics];
-        actualArr[index] = (arrPics[index]+1) % merch[index].images.length;
+        actualArr[index] = (arrPics[index]+1) % merchEstelario[index].images.length;
         setArrPics(actualArr);
         // console.log("next IMG",index);
         return actualArr;
@@ -97,14 +97,18 @@ function Mercaderia(){
     return (
 
         <div id= "merch-container">
-            <h1 id='merch-main-title'>mi mercadería</h1>
+            <h1 id='merchEstelario-main-title'>mi mercadería</h1>
+            <div id='merch-options-container'>
+                <button onClick={() => setMerch}></button>
+                <button></button>
+            </div>
             <div id="panel-merch-container">
                 
             </div>
             <div id='cards-container'>
                 {
                 // en JSX, cualquier lógica de renderizado dinámica (o código JS) debe ir entre {}
-                merch.map((item,index) => (
+                merchEstelario.map((item,index) => (
                     <div key={item.id} className="merch-item">
 
                         <div className='images-container'>
