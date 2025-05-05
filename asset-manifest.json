@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.655d77e4.css",
-    "main.js": "/static/js/main.baa14f42.js",
+    "main.css": "/static/css/main.623c6355.css",
+    "main.js": "/static/js/main.8b647b16.js",
     "static/media/1742315860763.jpg": "/static/media/1742315860763.a930e88380e38cf7f893.jpg",
-    "static/media/IMG_6546.jpeg": "/static/media/IMG_6546.cd3ce9029823c9c99226.jpeg",
+    "static/media/IMG_6547.jpeg": "/static/media/IMG_6547.f317f10151bccf662de6.jpeg",
     "static/media/JasalCaptura.png": "/static/media/JasalCaptura.aade137824e8cb063298.png",
     "static/media/logoIG.png": "/static/media/logoIG.b81612017ca4b6f46a1e.png",
     "static/media/logoYT.png": "/static/media/logoYT.89522669196a9665cbaf.png",
@@ -15,11 +15,11 @@
     "static/media/thumb-tack.png": "/static/media/thumb-tack.5d4eb331cb0c0a0dc97f.png",
     "static/media/insertLogoShirt.jpg": "/static/media/insertLogoShirt.6ab27de89745bceaec89.jpg",
     "index.html": "/index.html",
-    "main.655d77e4.css.map": "/static/css/main.655d77e4.css.map",
-    "main.baa14f42.js.map": "/static/js/main.baa14f42.js.map"
+    "main.623c6355.css.map": "/static/css/main.623c6355.css.map",
+    "main.8b647b16.js.map": "/static/js/main.8b647b16.js.map"
   },
   "entrypoints": [
-    "static/css/main.655d77e4.css",
-    "static/js/main.baa14f42.js"
+    "static/css/main.623c6355.css",
+    "static/js/main.8b647b16.js"
   ]
 }
