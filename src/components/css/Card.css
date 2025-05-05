@@ -1,18 +1,12 @@
-.merch-item{
+/* .merch-item{
     position: relative;
     overflow: hidden;
     display: grid;
-    /* grid-template-columns: 40% 60%; */
     grid-template-rows: 50% 50%;
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
     width: 200px;
     height: 500px;
     margin: 10px;
-    /* background-image: linear-gradient(to right, rgb(247, 247, 0) , rgb(251, 167, 0)); */
     background-color: rgb(255, 190, 92);
-    /* border-radius: 30px; */
 }
 
 .item-text-container{
@@ -41,18 +35,139 @@
 }
 
 
-.item-button img{
-  opacity: 0.5;
-  transition: opacity 1s;
-}
 
-.item-button img:hover{
-  opacity: 1;
-}
-
-  .item-image {
+.item-image {
   width: 100%;
   max-height: 100%;
   object-fit: cover;
   position: absolute;
+  }
+  .item-button img{
+    opacity: 0.5;
+    transition: opacity 1s;
+  }
+  
+  .item-button img:hover{
+    opacity: 1;
+  }
+ */
+
+ .merch-item {
+  background-color: #faf4ef; /* un tono beige claro, da sensación vintage */
+  border: 2px solid #d3c0b0; /* borde suave, color sepia claro */
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.08); /* sombra sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.merch-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.images-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item-button:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.icono-flecha{
+  width: 30px;
+  height: 30px;
+  background-color: rgba(251, 255, 0, 0.664);
+  color: rgb(116, 116, 116);
+  border: 2px solid rgb(154, 255, 95);
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+
+.icono-flecha:hover{
+  opacity: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.item-text-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.item-title {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  color: #5e4634;
+  margin-bottom: 8px;
+}
+
+.item-price {
+  font-size: 18px;
+  color: #795548;
+  margin-bottom: 5px;
+}
+
+.item-description, .item-cantidad {
+  font-size: 14px;
+  color: #7c6752;
+  margin-bottom: 8px;
+}
+
+.inputCantidad {
+  width: 60px;
+  margin: 8px;
+  padding: 5px;
+  border: 1px solid #d3c0b0;
+  border-radius: 5px;
+}
+
+.item-text-container button {
+  background-color: #d3c0b0;
+  border: none;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 6px;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item-text-container button:hover {
+  background-color: #b59d8a;
 }

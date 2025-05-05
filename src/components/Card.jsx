@@ -2,6 +2,7 @@ import './css/Card.css';
 import {useState, useEffect, useRef} from 'react';
 // import {merchEstelario} from '../services/services.js';
 import flecha from '../../src/assets/right-arrow.png';
+import { MoveRight, MoveLeft } from 'lucide-react';
 function Card({item,index, StorageMerch}){
     // utilizo useRef para almacenar referencia al input
     const inputRefs = useRef([]);
@@ -96,9 +97,9 @@ function Card({item,index, StorageMerch}){
         <div key={item.id} className="merch-item">
 
             <div className='images-container'>
-                <button className='prev item-button' onClick={() => prevIMGHandler(index)} style={{transform:'rotate(180deg)'}}><img src={flecha} alt="flecha logo" /></button>
+                <button className='prev item-button' onClick={() => prevIMGHandler(index)} /* style={{transform:'rotate(180deg)'}} */>{/* <img src={flecha} alt="flecha logo" /> */} <MoveLeft className='icono-flecha'/></button>
                 <img className='item-image' src={item.images[arrPics[index]]} alt={item.alt} />
-                <button className='next item-button' onClick={() => nextIMGHandler(index)}><img src={flecha} alt="flecha logo" /></button>
+                <button className='next item-button' onClick={() => nextIMGHandler(index)}>{/* <img src={flecha} alt="flecha logo" /> */}<MoveRight className='icono-flecha'/></button>
             </div>
             <div className='item-text-container'>
                 <h3 className='item-title'>{item.title}</h3>

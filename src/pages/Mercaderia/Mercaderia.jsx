@@ -21,9 +21,9 @@ function Mercaderia(){
 
         <div id= "merch-container">
             <div id='merch-options-container'>
-            <h1 id='merch-main-title'>mi mercadería</h1>
-                <button className={seccionMerch === 'estelario' ? 'merchSeleccionada' : 'merchNoSeleccionada'} id='estelarioButton' onClick={() => setSeccionMerch('estelario')}>Estelario </button>
-                <button className={seccionMerch === 'jasal' ? 'merchSeleccionada' : 'merchNoSeleccionada'} id='jasalButton' onClick={() => setSeccionMerch('jasal')}>Jasal</button>
+                <h1 id='merch-main-title'>mi mercadería</h1>
+                <button className={seccionMerch === 'estelario' ? 'merchSeleccionada borde-derecho' : 'merchNoSeleccionada'} id='estelarioButton' onClick={() => setSeccionMerch('estelario')}>Estelario </button>
+                <button className={seccionMerch === 'jasal' ? 'merchSeleccionada borde-izquierdo' : 'merchNoSeleccionada'} id='jasalButton' onClick={() => setSeccionMerch('jasal')}>Jasal</button>
             </div>
             <div id="panel-merch-container">
                 

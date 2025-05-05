@@ -1,7 +1,7 @@
 /* en React las imágenes dentro de src no pueden ser accedidas directamente con rutas relativas. 
 Se soluciona(recomienda) importar la imágen como módulo */
 import React, {useState} from 'react';
-import JasalCaptura from '../../assets/IMG_6546.jpeg';
+import JasalCaptura from '../../assets/IMG_6547.jpeg';
 import JasalFoto1 from '../../assets/JasalCaptura.png';
 import JasalMainPic from '../../assets/jasalSobreMiSeccion.jpg';
 import JasalFirma from '../../assets/JasalFuente.png';

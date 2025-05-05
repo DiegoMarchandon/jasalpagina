@@ -6,7 +6,7 @@
     /* border-radius: 12px; */
     max-width: 750px;
     margin: 2rem auto;
-    box-shadow: 8px 8px 0px rgba(255, 253, 120, 0.966);
+    box-shadow: 8px 8px 0px #dabec382;
     font-family: 'Helvetica Neue', sans-serif;
     text-align: center;
   }
