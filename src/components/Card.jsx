@@ -1,7 +1,7 @@
 import './css/Card.css';
 import {useState, useEffect, useRef} from 'react';
 // import {merchEstelario} from '../services/services.js';
-import flecha from '../../src/assets/right-arrow.png';
+// import flecha from '../../src/assets/right-arrow.png';
 import { MoveRight, MoveLeft } from 'lucide-react';
 function Card({item,index, StorageMerch}){
     // utilizo useRef para almacenar referencia al input

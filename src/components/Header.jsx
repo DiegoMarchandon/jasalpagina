@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import JasalFuente from "../assets/JasalFuente.png"; 
+// import JasalFuente from "../assets/JasalFuente.png"; 
 import logoIG from "../assets/logoIG.png";
 import logoSpotify from "../assets/logoSpotify.png";
 import logoYT from "../assets/logoYT.png";

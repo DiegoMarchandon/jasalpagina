@@ -7,7 +7,7 @@ import Carrito from './pages/Carrito/Carrito';
 import Blog from './pages/Blog/Blog';
 import Galeria from './pages/Galeria/Galeria';
 import Footer from './components/Footer';
-import Header from './components/Header';
+// import Header from './components/Header';
 import './App.css';
 
 function App() {
