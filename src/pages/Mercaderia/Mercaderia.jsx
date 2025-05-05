@@ -6,7 +6,7 @@ import Card from '../../components/Card.jsx';
 
 function Mercaderia(){
 
-    const [seccionMerch,setSeccionMerch] = useState('estelario');
+    const [seccionMerch,setSeccionMerch] = useState('estelarioMerch');
 
     // funciones para alternar entre la mercaderia de jasal y la de estelario
     /* const toEstelarioMerch = () => {
@@ -15,18 +15,31 @@ function Mercaderia(){
     const toJasalMerch = () => {
 
     } */
-    let mercaderiaSeleccionada = seccionMerch === 'estelario' ? merchEstelario : merchJasal;
+    let mercaderiaSeleccionada = seccionMerch === 'estelarioMerch' ? merchEstelario : merchJasal;
 
     return (
 
         <div id= "merch-container">
             <div id='merch-options-container'>
                 <h1 id='merch-main-title'>mi mercadería</h1>
-                <button className={seccionMerch === 'estelario' ? 'merchSeleccionada borde-derecho' : 'merchNoSeleccionada'} id='estelarioButton' onClick={() => setSeccionMerch('estelario')}>Estelario </button>
-                <button className={seccionMerch === 'jasal' ? 'merchSeleccionada borde-izquierdo' : 'merchNoSeleccionada'} id='jasalButton' onClick={() => setSeccionMerch('jasal')}>Jasal</button>
+                <button className={seccionMerch === 'estelarioMerch' ? 'merchSeleccionada borde-derecho' : 'merchNoSeleccionada'} id='estelarioButton' onClick={() => setSeccionMerch('estelarioMerch')}>Estelario </button>
+                <button className={seccionMerch === 'jasalMerch' ? 'merchSeleccionada borde-izquierdo' : 'merchNoSeleccionada'} id='jasalButton' onClick={() => setSeccionMerch('jasalMerch')}>Jasal</button>
             </div>
             <div id="panel-merch-container">
-                
+                <h2 id='panel-title'>filtrar por:</h2>
+                <div className={seccionMerch === 'estelarioMerch' ? 'filtrosMostrados' : 'filtrosOcultos'} id='estelarioItems'>
+                    <p>marca páginas</p>
+                    <p>anillos bordados</p>
+                    <p>posa vasos</p>
+                    <p>pines</p>
+                    <p>aritos (quirúrgicos y tejidos a crochet)</p>
+                    <p>bufandas</p>
+                </div>
+                <div className={seccionMerch === 'jasalMerch' ? 'filtrosMostrados' : 'filtrosOcultos'} id='jasalItems'>
+                    <p>poleras</p>
+                    <p>tazas/vasos</p>
+                    <p>stickers</p>
+                </div>
             </div>
             <div id='cards-container'>
             {/* aplico renderizado condicional: */}
