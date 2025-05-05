@@ -86,6 +86,51 @@ export const merchEstelario = [
     }
 ];
 
+export const merchJasal = [
+    {id: 1, 
+        title: 'merchJasal con logo',
+        price: 15000,
+        description: 'mercaderia con logo de la artista', 
+        cantidades: 10,
+        images: [shirtIMG,
+            abc,
+            shirtIMG,
+            shirtIMG,
+            shirtIMG,
+            shirtIMG,
+        ],
+        alt:'merchJasal1'
+        },
+        {id: 2,
+        title: 'merchJasal con logo',
+        price: 25000,
+        description: 'mercaderia con logo de la artista',
+        cantidades: 10,
+        images: [shirtIMG,
+            shirtIMG,
+            shirtIMG,
+            shirtIMG,
+            shirtIMG,
+            shirtIMG,
+        ],
+        alt:'merchJasal2'
+        },
+        {id: 3,
+            title: 'merchJasal con logo',
+            price: 5000,
+            description: 'mercaderia con logo de la artista',
+            cantidades: 10,
+            images: [shirtIMG,
+                shirtIMG,
+                shirtIMG,
+                shirtIMG,
+                shirtIMG,
+                shirtIMG,
+        ],
+        alt:'merchJasal3'
+        }
+];
+
 const carritoLocalStorage = {};
 // la guardo en el localStorage
 // localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));
