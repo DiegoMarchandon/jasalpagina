@@ -1,17 +1,17 @@
-.carrito-container {
+.carritoContainer {
     max-width: 800px;
     margin: 2rem auto;
     padding: 1rem;
     font-family: 'Segoe UI', sans-serif;
 }
 
-.carrito-title {
+.carritoTitle {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 2rem;
 }
 
-.carrito-item {
+.carritoItem {
     cursor: pointer;
     background-color: #fafa64;
     border-radius: 12px;
@@ -22,32 +22,32 @@
     overflow: hidden;
 }
 
-.carrito-item::after {
+.carritoItem::after {
     content: "";
     display: block;
     clear: both;
 }
 
-.carrito-item:hover {
+.carritoItem:hover {
     transform: translateY(-3px);
 }
 
-.carrito-item h3 {
+.carritoItem h3 {
     margin-bottom: 0.8rem;
     color: #333;
 }
 
-.carrito-item p {
+.carritoItem p {
     margin: 0.3rem 0;
     color: #555;
 }
 
-.carrito-buttons{
+.carritoButtons{
     float: right;
     margin: 2px;
 }
 
-.carrito-empty {
+.carritoEmpty {
     text-align: center;
     font-size: 1.2rem;
     color: #999;

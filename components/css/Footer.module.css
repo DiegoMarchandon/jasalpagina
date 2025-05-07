@@ -12,14 +12,14 @@
    /* clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%); */
   }
   
-  .footer-content {
+  .footerContent {
     max-width: 960px;
 
     margin: 0 auto;
     padding: 0 20px;
   }
   
-  .footer-content p {
+  .footerContent p {
     margin-bottom: 15px;
     letter-spacing: 1px;
   }
@@ -29,7 +29,7 @@
     font-size: 14px;
   }
   
-  .social-icons {
+  .socialIcons {
     /* margin-top: 10px; */
     display: flex;
     justify-content: space-around;
@@ -39,12 +39,12 @@
     margin: 0;
   }
   
-  .icon-container{
+  .iconContainer{
     width: 30px;
     height: 30px;
   }
 
-  .social-icons a {
+  .socialIcons a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
@@ -52,7 +52,7 @@
     transition: color 0.3s ease;
   }
   
-  .social-icons a:hover {
+  .socialIcons a:hover {
     color: #ff8c00; /* naranja de ejemplo */
   }
   

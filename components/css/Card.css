@@ -1,58 +1,4 @@
-/* .merch-item{
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    grid-template-rows: 50% 50%;
-    width: 200px;
-    height: 500px;
-    margin: 10px;
-    background-color: rgb(255, 190, 92);
-}
-
-.item-text-container{
-  grid-row: 2;
-}
-.item-title, .item-price, .item-description{
-  margin: 0;
-}
-
-.item-button{
-  background: none;
-  border: none;
-  padding: 0px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 40%;
-  z-index: 1;
-}
-
-.prev{
-  left: 5%;
-}
-
-.next{
-  right: 5%;
-}
-
-
-
-.item-image {
-  width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  position: absolute;
-  }
-  .item-button img{
-    opacity: 0.5;
-    transition: opacity 1s;
-  }
-  
-  .item-button img:hover{
-    opacity: 1;
-  }
- */
-
- .merch-item {
+ .merchItem {
   background-color: #faf4ef; /* un tono beige claro, da sensación vintage */
   border: 2px solid #d3c0b0; /* borde suave, color sepia claro */
   border-radius: 12px;
@@ -66,12 +12,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.merch-item:hover {
+.merchItem:hover {
   transform: translateY(-5px);
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-.images-container {
+.imagesContainer {
   position: relative;
   width: 100%;
   height: 200px;
@@ -79,13 +25,13 @@
   border-radius: 8px;
 }
 
-.item-image {
+.itemImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.item-button {
+.itemButton {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -97,11 +43,11 @@
   transition: background-color 0.3s ease;
 }
 
-.item-button:hover {
+.itemButton:hover {
   background: rgba(255, 255, 255, 1);
 }
 
-.icono-flecha{
+.iconoFlecha{
   width: 30px;
   height: 30px;
   background-color: rgba(251, 255, 0, 0.664);
@@ -112,7 +58,7 @@
   transition: opacity 1s;
 }
 
-.icono-flecha:hover{
+.iconoFlecha:hover{
   opacity: 1;
 }
 
@@ -124,25 +70,25 @@
   right: 10px;
 }
 
-.item-text-container {
+.itemTextContainer {
   margin-top: 15px;
   text-align: center;
 }
 
-.item-title {
+.itemTitle {
   font-family: 'Georgia', serif;
   font-size: 22px;
   color: #5e4634;
   margin-bottom: 8px;
 }
 
-.item-price {
+.itemPrice {
   font-size: 18px;
   color: #795548;
   margin-bottom: 5px;
 }
 
-.item-description, .item-cantidad {
+.itemDescription, .itemCantidad {
   font-size: 14px;
   color: #7c6752;
   margin-bottom: 8px;
@@ -156,7 +102,7 @@
   border-radius: 5px;
 }
 
-.item-text-container button {
+.itemTextContainer button {
   background-color: #d3c0b0;
   border: none;
   padding: 8px 12px;
@@ -168,6 +114,6 @@
   transition: background-color 0.3s ease;
 }
 
-.item-text-container button:hover {
+.itemTextContainer button:hover {
   background-color: #b59d8a;
 }

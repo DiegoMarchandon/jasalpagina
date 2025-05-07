@@ -7,7 +7,7 @@ import styles from './css/Header.module.css';
 
 function Header() {
     return (
-      <header className={styles.headerMasterContainer}>
+      <header className={styles.headerMainContainer}>
         <div className={styles.redesContainer}>
           <a href="https://www.instagram.com/jasalmusica" target="_blank" rel="noopener noreferrer">
             <Image src='/assets/logoIG.png' alt="Instagram" id="instagram-logo-header" className={styles.redSocialLogo} width={40} height={40} />

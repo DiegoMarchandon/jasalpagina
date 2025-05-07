@@ -1,6 +1,6 @@
 /* src/components/Header.css */
 
-.header-master-container {
+.headerMainContainer {
   z-index: 0;
   position: relative;
   background-color: #DABEC3;
@@ -21,7 +21,7 @@
   justify-content: flex-end; /*antes end*/
 }
 
-.logo-artista{
+.logoArtista{
   width: 150px;
   height: auto;
   margin-bottom: 1rem;
@@ -29,7 +29,7 @@
   background-color: rgba(222, 203, 56, 0.2) /* solo si querés fondo visible */
 }
 
-.titulo-principal {
+.tituloPrincipal {
   font-size: 3rem;
   margin: 0;
   font-family: 'Georgia', serif;
@@ -45,7 +45,7 @@
   text-shadow: 1px 5px 10px #B84A3C;
 }
 
-.redes-container{
+.redesContainer{
   width: 80%;
   display: flex;
   justify-content: space-around;
@@ -61,11 +61,11 @@
 }
 
 
-.red-social-logo{
+.redSocialLogo{
   width: 50px;
   height: 50px;
 }
 
-.red-social-logo:hover{
+.redSocialLogo:hover{
   animation: shake 0.5s ease infinite;
 }

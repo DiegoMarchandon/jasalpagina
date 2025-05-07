@@ -1,4 +1,4 @@
-.site-inicio {
+.siteInicio {
     background-color:hwb(from color h w b);
     color: white;
     padding: 100px 20px;
@@ -6,24 +6,24 @@
     position: relative;
   }
 
-  .inicio-content {
+  .inicioContent {
     max-width: 800px;
     margin: 0 auto;
     backdrop-filter: brightness(0.7);
   }
   
-  .site-inicio h1 {
+  .siteInicio h1 {
     font-size: 48px;
     margin-bottom: 20px;
     font-weight: bold;
   }
   
-  .site-inicio p {
+  .siteInicio p {
     font-size: 20px;
     margin-bottom: 30px;
   }
   
-  .inicio-btn {
+  .inicioBtn {
     background-color: #ff6600;
     padding: 12px 24px;
     color: white;
@@ -33,7 +33,7 @@
     transition: background-color 0.3s;
   }
   
-  .inicio-btn:hover {
+  .inicio-Btn:hover {
     background-color: #e65500;
   }
   
@@ -47,7 +47,7 @@
 }
 
 
-.reproform-container{
+.reproformContainer{
   width: auto;
   display: flex;
   align-items: center;
