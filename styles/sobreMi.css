@@ -1,0 +1,179 @@
+.nav-secciones{
+  background-color: darkgrey;
+  display: flex;
+  justify-content: center;
+}
+.nav-secciones button{
+  background-color: darkgray;
+  margin: 7px 5px;
+  padding: 5px;
+  border-radius: 0%;
+  border: none;
+  transition: box-shadow 0.3s ease-in-out; /* Transición suave */
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.nav-secciones button:hover{
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+}
+
+
+
+.sobre-mi {
+    background-color: #ffffff;
+    padding: 4rem 1.5rem;
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #sobre-mi-title-container {
+    position: relative;
+    width: 100%;
+    /* margin-top: 50px; */
+    height: 400px; /* o el alto que quieras */
+    overflow: hidden;
+  }
+
+  #sobre-mi-title-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(50%); /* oscurece la imagen */
+    transform: translateY(-47%);
+  }
+
+  #sobre-mi-title{
+    font-family: cursive;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F6E5B3; /* uno de los colores que usás */
+  font-size: 3rem;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra para resaltar el texto */
+  }
+
+  .sobre-mi-card{
+    float: right;
+    width: 300px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border: rgb(184, 184, 184) solid 1px;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .wiki-titles {
+    background-color: rgb(253, 253, 157);
+    color: black;
+    margin: 5px;
+    align-self: center;
+    text-align: center;
+  }
+
+
+  #foto-wiki-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    width: 100%;
+    height: 250px;
+  }
+
+  #foto-wiki-container img{
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    filter: brightness(80%); /* oscurece la imagen */
+  }
+
+  #firma-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 110px;
+    /* background-color: rgb(177, 13, 13); */
+  }
+
+  #firma-img{
+    width: 50%;
+    /* height: 10%; */
+  }
+
+  .sobre-mi-section{
+    display: flex;
+  }
+
+  .sobre-mi-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction:column;
+    gap: 2.5rem;
+  }
+  
+  /* @media (min-width: 768px) {
+    .sobre-mi-container {
+      flex-direction: row;
+      align-items: center;
+    }
+  } */
+  
+  .sobre-mi-img {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .artista-img {
+    width: 200px;
+    max-width: 200px;
+    border: 4px solid #dabec3;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  .subtitles-wiki{
+    text-align: start;
+    padding: 0.1rem;
+  }
+  
+  .sobre-mi-texto {
+    flex: 1;
+  }
+  
+  .sobre-mi-texto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #b84a3c;
+  }
+  
+  .sobre-mi-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4c3b3b;
+    margin-bottom: 1rem;
+  }
+  
+  .sobre-mi-texto .negrita {
+    font-weight: bold;
+  }
+  
+  .sobre-mi-texto button {
+    padding: 0.6rem 1.2rem;
+    background-color: #b9c4b1;
+    color: #4c3b3b;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sobre-mi-texto button:hover {
+    background-color: #dabec3;
+  }
+  

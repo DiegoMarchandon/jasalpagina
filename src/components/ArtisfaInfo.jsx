@@ -1,4 +1,4 @@
-import ArtistaInfo from './css/ArtistaInfo.css';
+import './css/ArtistaInfo.css';
 
 function ArtistaInfo(){
     const canciones = ['Mundo irreal', 'VACACIONES', 'Mijita, ¿cuándo va a pololear?','No te cierres','Invitación','Me despido'];
@@ -25,3 +25,5 @@ function ArtistaInfo(){
     );
 
 }
+
+export default ArtistaInfo;

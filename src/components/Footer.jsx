@@ -1,28 +1,24 @@
-import { Link } from "react-router-dom";
-import { Youtube } from 'lucide-react';
-import { Instagram } from 'lucide-react';
-import { Music2 } from 'lucide-react';
-import { Waves } from 'lucide-react';
+import { Youtube, Instagram, Music2, Waves } from 'lucide-react';
 
-import './css/Footer.css';
+import './css/Footer.module.css';
 
-function Footer(){
+function Footer() {
     return (
-        <footer className="footer">
-            <div className="footer-content">
+        <footer className={styles.footer}>
+            <div className={styles.footer-content}>
                 <p>&copy; {new Date().getFullYear()} Jasal. Todos los derechos reservados.</p>
-                <div className="social-icons">
+                <div className={styles.social-icons}>
                     <div>
-                        <li><Link to="https://www.youtube.com/@jasalmusica"><Youtube color="red"/></Link></li>
+                        <li><a href="https://www.youtube.com/@jasalmusica" target="_blank" rel="noopener noreferrer"><Youtube color="red"/></a></li>
                     </div>
                     <div>
-                        <li><Link to="https://www.instagram.com/jasalmusica/"><Instagram color="violet"/></Link></li>
+                        <li><a href="https://www.instagram.com/jasalmusica/" target="_blank" rel="noopener noreferrer"><Instagram color="violet"/></a></li>
                     </div>
                     <div>
-                        <li><Link to="https://www.tiktok.com/@jasalmusica"><Music2 color="purple"/></Link></li>
+                        <li><a href="https://www.tiktok.com/@jasalmusica" target="_blank" rel="noopener noreferrer"><Music2 color="purple"/></a></li>
                     </div>
                     <div>
-                        <li><Link to="https://open.spotify.com/intl-es/artist/5p4HoLoWZTHuNysEqoFnX7?si=WLIntwg4RJusMNpDTMVBVA"><Waves color="green"/></Link></li>
+                        <li><a href="https://open.spotify.com/intl-es/artist/5p4HoLoWZTHuNysEqoFnX7?si=WLIntwg4RJusMNpDTMVBVA" target="_blank" rel="noopener noreferrer"><Waves color="green"/></a></li>
                     </div>
                 </div>
             </div>
