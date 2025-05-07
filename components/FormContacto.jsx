@@ -21,19 +21,19 @@ function FormContacto(){
         };
 
     return (
-        <div className={styles.form-container}>
-           <form onSubmit={enviarCorreo} className={styles.contact-form}>
+        <div className={styles.formContainer}>
+           <form onSubmit={enviarCorreo} className={styles.contactForm}>
                 <h2>Contactame!</h2>
                 <hr id='contact-line'/>
                 {/* <label htmlFor="nombre">Nombre:</label> */}
-                <input className={styles.contact-input} type="text" name="nombre" id="nombre" placeholder='nombre' required />
+                <input className={styles.contactInput} type="text" name="nombre" id="nombre" placeholder='nombre' required />
 
                 {/* <label htmlFor="email">Email:</label> */}
-                <input className={styles.contact-input} type="email" name="email" id="email" placeholder='email' required />
+                <input className={styles.contactInput} type="email" name="email" id="email" placeholder='email' required />
                 {/* <label htmlFor="asunto">Asunto:</label> */}
-                <input className={styles.contact-input} type="asunto" name="asunto" id="asunto" placeholder='asunto' required />
+                <input className={styles.contactInput} type="asunto" name="asunto" id="asunto" placeholder='asunto' required />
                 {/* <label htmlFor="mensaje">Mensaje:</label> */}
-                <textarea className={styles.contact-textarea} name="mensaje" id="mensaje" placeholder='mensaje' required rows={5} cols={30}></textarea>
+                <textarea className={styles.contactTextarea} name="mensaje" id="mensaje" placeholder='mensaje' required rows={5} cols={30}></textarea>
 
                 <button type="submit">Enviar</button>
             </form>
