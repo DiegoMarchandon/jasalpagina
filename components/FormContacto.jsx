@@ -24,7 +24,7 @@ function FormContacto(){
         <div className={styles.formContainer}>
            <form onSubmit={enviarCorreo} className={styles.contactForm}>
                 <h2>Contactame!</h2>
-                <hr id='contact-line'/>
+                <hr className={styles.contactLine}/>
                 {/* <label htmlFor="nombre">Nombre:</label> */}
                 <input className={styles.contactInput} type="text" name="nombre" id="nombre" placeholder='nombre' required />
 
@@ -35,7 +35,7 @@ function FormContacto(){
                 {/* <label htmlFor="mensaje">Mensaje:</label> */}
                 <textarea className={styles.contactTextarea} name="mensaje" id="mensaje" placeholder='mensaje' required rows={5} cols={30}></textarea>
 
-                <button type="submit">Enviar</button>
+                <button type="submit" className={styles.contactFormButton}>Enviar</button>
             </form>
         </div>
     );

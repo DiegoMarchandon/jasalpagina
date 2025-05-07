@@ -5,9 +5,9 @@ import styles from './css/Footer.module.css';
 function Footer() {
     return (
         <footer className={styles.footer}>
-            <div className={styles.footer-content}>
+            <div className={styles.footerContent}>
                 <p>&copy; {new Date().getFullYear()} Jasal. Todos los derechos reservados.</p>
-                <div className={styles.social-icons}>
+                <div className={styles.socialIcons}>
                     <div>
                         <li><a href="https://www.youtube.com/@jasalmusica" target="_blank" rel="noopener noreferrer"><Youtube color="red"/></a></li>
                     </div>

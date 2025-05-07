@@ -19,11 +19,11 @@ function Navbar() {
         <nav className={`${styles.navbar} ${scrolled ? styles.sticky : ''}`}>
             <ul className={styles.navbarLinks}>
                 <li><Link href="/">Inicio</Link></li>
-                <li><Link href="/sobre-mi">Sobre mí</Link></li>
-                <li><Link href="/mercaderia">Mercadería</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
-                <li><Link href="/galeria">Galería</Link></li>
-                <li><Link href="/carrito" className="carrito-logo"><ShoppingCart /></Link></li>
+                <li><Link href="/SobreMi">Sobre mí</Link></li>
+                <li><Link href="/Mercaderia">Mercadería</Link></li>
+                <li><Link href="/Blog">Blog</Link></li>
+                <li><Link href="/Galeria">Galería</Link></li>
+                <li><Link href="/Carrito" className="carritoLogo"><ShoppingCart /></Link></li>
             </ul>
         </nav>
     );

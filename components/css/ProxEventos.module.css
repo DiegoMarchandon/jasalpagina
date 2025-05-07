@@ -1,5 +1,5 @@
   
-  #eventos {
+  .eventos {
     position: relative;
     background-color: #DABEC3;
     padding: 2rem;
@@ -11,13 +11,13 @@
     text-align: center;
   }
   
-  #titulo-container{
+  .tituloContainer{
     display: flex;
     /* justify-content: space-between; */
   }
 
 
-  #tachuela-img{
+  .tachuelaImg{
     position: absolute;
   top: -30px;
   right: -30px;
@@ -27,7 +27,7 @@
 
   }
 
-  #eventos h2 {
+  .eventos h2 {
     font-size: 2.2rem;
     color: #B84A3C;
     margin-bottom: 1.5rem;
@@ -36,17 +36,17 @@
     padding-bottom: 0.4rem;
     font-family: monospace;
   }
-  .eventos-lista {
+  .eventosLista {
     list-style: none;
     padding: 0;
     margin: 0;
   }
   
-  .eventos-lista li {
+  .eventosLista li {
     margin-bottom: 1.2rem;
   }
 
-  .enlaces-inicio{
+  .enlacesInicio{
     color: #F6E5B3;
     text-decoration: none;
     font-size:1.1rem; 
@@ -59,17 +59,17 @@
     transition: opacity 0.3s ease;
   }
 
-  .direccion-container:hover .flechas span:nth-child(1) {
+  .direccionContainer:hover .flechas span:nth-child(1) {
     animation: iluminar 1s infinite;
     animation-delay: 0s;
   }
   
-  .direccion-container:hover .flechas span:nth-child(2) {
+  .direccionContainer:hover .flechas span:nth-child(2) {
     animation: iluminar 1s infinite;
     animation-delay: 0.2s;
   }
   
-  .direccion-container:hover .flechas span:nth-child(3) {
+  .direccionContainer:hover .flechas span:nth-child(3) {
     animation: iluminar 1s infinite;
     animation-delay: 0.4s;
   }
@@ -83,7 +83,7 @@
     }
   }
 
-  .info-eventos{
+  .infoEventos{
     background-color: #F6E5B3;
     padding: 1.2rem 1.5rem;
     border-radius: 10px;
@@ -95,7 +95,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .direccion-container{
+  .direccionContainer{
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 1rem;
@@ -108,27 +108,27 @@
     align-items: center;
   }
   
-  .direccion-container a{
+  .direccionContainer a{
     padding-left: 30px;
     transition: color 0.3s ease, text-shadow 0.3s ease;
   }
 
-  .direccion-container a:hover{
+  .direccionContainer a:hover{
     color: #B84A3C;
     text-shadow: 0 0 5px #B84A3C, 0 0 10px #B84A3C;
   }
 
-  .eventos-lista li:hover {
+  .eventosLista li:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 15px rgba(185, 196, 177, 0.4);
   }
   
-  .eventos-lista .fecha {
+  .eventosLista .fecha {
     color: #3d3d3d;
     font-weight: 600;
   }
   
-  .eventos-lista .lugar {
+  .eventosLista .lugar {
     color: #5c5c5c;
     font-style: italic;
   }

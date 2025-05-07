@@ -23,9 +23,9 @@ function ProxEventos(){
   ]);
 
   return (
-    <section id="eventos">
+    <section className={styles.eventos}>
           <h2>Próximos Eventos!</h2>
-          <Image src='/assets/thumb-tack.png' alt="tachuela logo" width={60} height={50} id="tachuela-img"/>
+          <Image src='/assets/thumb-tack.png' alt="tachuela logo" width={60} height={50} id="tachuela-img" priority={true}/>
           <ul className={styles.eventosLista}>
             {datos.map((data, index) => (
               <li key={index}>

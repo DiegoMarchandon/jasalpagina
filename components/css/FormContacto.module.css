@@ -63,7 +63,7 @@
     box-shadow: 5px 5px 0px #5a5195;
   }
   
-  #contact-line{
+  .contactLine{
     border:none;
     height: 4px;
     background-color: #5a5195;
