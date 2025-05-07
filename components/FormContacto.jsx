@@ -1,4 +1,4 @@
-import './css/FormContacto.module.css';
+import styles from './css/FormContacto.module.css';
 import emailjs from 'emailjs-com';
 
 

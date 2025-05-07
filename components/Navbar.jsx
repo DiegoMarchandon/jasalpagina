@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { ShoppingCart } from 'lucide-react';
-import './css/Navbar.module.css';
+import styles from './css/Navbar.module.css';
 
 function Navbar() {
     const [scrolled, setScrolled] = useState(false);

@@ -1,4 +1,4 @@
-import './css/Card.css';
+import styles from './css/Card.module.css';
 import {useState, useEffect, useRef} from 'react';
 // import {merchEstelario} from '../services/services.js';
 // import flecha from '../../src/assets/right-arrow.png';
@@ -94,20 +94,20 @@ function Card({item,index, StorageMerch}){
     }
 
     return(
-        <div key={item.id} className="merch-item">
+        <div key={item.id} className={styles.merch-item}>
 
-            <div className='images-container'>
-                <button className='prev item-button' onClick={() => prevIMGHandler(index)} /* style={{transform:'rotate(180deg)'}} */>{/* <img src={flecha} alt="flecha logo" /> */} <MoveLeft className='icono-flecha'/></button>
-                <img className='item-image' src={item.images[arrPics[index]]} alt={item.alt} />
-                <button className='next item-button' onClick={() => nextIMGHandler(index)}>{/* <img src={flecha} alt="flecha logo" /> */}<MoveRight className='icono-flecha'/></button>
+            <div className={styles.images-container}>
+                <button className={`${styles.prev} ${styles.item-button}`} onClick={() => prevIMGHandler(index)} /* style={{transform:'rotate(180deg)'}} */>{/* <img src={flecha} alt="flecha logo" /> */} <MoveLeft className={styles.icono-flecha}/></button>
+                <img className={styles.item-image} src={item.images[arrPics[index]]} alt={item.alt} />
+                <button className={`${styles.next} ${styles.item-button}`} onClick={() => nextIMGHandler(index)}>{/* <img src={flecha} alt="flecha logo" /> */}<MoveRight className={styles.icono-flecha}/></button>
             </div>
-            <div className='item-text-container'>
-                <h3 className='item-title'>{item.title}</h3>
-                <p className='item-price'>Precio: ${item.price}</p>
-                <p className='item-description'>{item.description}</p>
-                <p className='item-cantidad'>Cantidad: ({item.cantidades} unidades disponibles)</p>
+            <div className={styles.item-text-container}>
+                <h3 className={styles.item-title}>{item.title}</h3>
+                <p className={styles.item-price}>Precio: ${item.price}</p>
+                <p className={styles.item-description}>{item.description}</p>
+                <p className={styles.item-cantidad}>Cantidad: ({item.cantidades} unidades disponibles)</p>
                 <div>
-                    <input type="number" name="inputCantidad" className="inputCantidad" min="0" max={item.cantidades} ref={(valor) => inputRefs.current[index] = valor}/>
+                    <input type="number" name="inputCantidad" className={styles.inputCantidad} min="0" max={item.cantidades} ref={(valor) => inputRefs.current[index] = valor}/>
                     <button onClick={() => agregarAlCarrito(item,index)}>Agregar al carrito</button>
                     <button>Comprar</button>
                 </div>

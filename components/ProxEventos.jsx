@@ -1,4 +1,4 @@
-import "./css/ProxEventos.css";
+import "./css/ProxEventos.module.css";
 import React, {useState} from 'react';
 import Tachuela from '../src/assets/thumb-tack.png';
 

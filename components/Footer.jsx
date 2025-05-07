@@ -1,6 +1,6 @@
 import { Youtube, Instagram, Music2, Waves } from 'lucide-react';
 
-import './css/Footer.module.css';
+import styles from './css/Footer.module.css';
 
 function Footer() {
     return (
