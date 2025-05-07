@@ -1,4 +1,4 @@
-import './css/FormContacto.css';
+import './css/FormContacto.module.css';
 import emailjs from 'emailjs-com';
 
 
@@ -21,19 +21,19 @@ function FormContacto(){
         };
 
     return (
-        <div className="form-container">
-           <form onSubmit={enviarCorreo} className="contact-form">
+        <div className={styles.form-container}>
+           <form onSubmit={enviarCorreo} className={styles.contact-form}>
                 <h2>Contactame!</h2>
                 <hr id='contact-line'/>
                 {/* <label htmlFor="nombre">Nombre:</label> */}
-                <input type="text" name="nombre" id="nombre" placeholder='nombre' required />
+                <input className={styles.contact-input} type="text" name="nombre" id="nombre" placeholder='nombre' required />
 
                 {/* <label htmlFor="email">Email:</label> */}
-                <input type="email" name="email" id="email" placeholder='email' required />
+                <input className={styles.contact-input} type="email" name="email" id="email" placeholder='email' required />
                 {/* <label htmlFor="asunto">Asunto:</label> */}
-                <input type="asunto" name="asunto" id="asunto" placeholder='asunto' required />
+                <input className={styles.contact-input} type="asunto" name="asunto" id="asunto" placeholder='asunto' required />
                 {/* <label htmlFor="mensaje">Mensaje:</label> */}
-                <textarea name="mensaje" id="mensaje" placeholder='mensaje' required rows={5} cols={30}></textarea>
+                <textarea className={styles.contact-textarea} name="mensaje" id="mensaje" placeholder='mensaje' required rows={5} cols={30}></textarea>
 
                 <button type="submit">Enviar</button>
             </form>

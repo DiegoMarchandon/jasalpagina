@@ -1,8 +1,8 @@
 import './css/Header.css';
-import logoIG from "../assets/logoIG.png";
-import logoSpotify from "../assets/logoSpotify.png";
-import logoYT from "../assets/logoYT.png";
-import logoTiktok from "../assets/logoTiktok.png";
+import logoIG from "../src/assets/logoIG.png";
+import logoSpotify from "../src/assets/logoSpotify.png";
+import logoYT from "../src/assets/logoYT.png";
+import logoTiktok from "../src/assets/logoTiktok.png";
 
 function Header() {
     return (

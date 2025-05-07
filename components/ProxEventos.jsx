@@ -1,6 +1,6 @@
 import "./css/ProxEventos.css";
 import React, {useState} from 'react';
-import Tachuela from '../assets/thumb-tack.png';
+import Tachuela from '../src/assets/thumb-tack.png';
 
 function ProxEventos(){
     // lógica de mi función:
