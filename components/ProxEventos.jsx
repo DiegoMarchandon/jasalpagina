@@ -1,7 +1,7 @@
 import styles from "./css/ProxEventos.module.css";
 import React, {useState} from 'react';
-import Tachuela from '../public/assets/thumb-tack.png';
-
+// import Tachuela from '../public/assets/thumb-tack.png';
+import Image from 'next/image';
 function ProxEventos(){
     // lógica de mi función:
   const [datos, setDatos] = useState([
@@ -25,7 +25,7 @@ function ProxEventos(){
   return (
     <section id="eventos">
           <h2>Próximos Eventos!</h2>
-          <img src={Tachuela} alt="tachuela logo" id="tachuela-img"/>
+          <Image src='/assets/thumb-tack.png' alt="tachuela logo" width={60} height={50} id="tachuela-img"/>
           <ul className={styles.eventosLista}>
             {datos.map((data, index) => (
               <li key={index}>
