@@ -1,6 +1,6 @@
-import "./css/ProxEventos.module.css";
+import styles from "./css/ProxEventos.module.css";
 import React, {useState} from 'react';
-import Tachuela from '../src/assets/thumb-tack.png';
+import Tachuela from '../public/assets/thumb-tack.png';
 
 function ProxEventos(){
     // lógica de mi función:
@@ -26,16 +26,16 @@ function ProxEventos(){
     <section id="eventos">
           <h2>Próximos Eventos!</h2>
           <img src={Tachuela} alt="tachuela logo" id="tachuela-img"/>
-          <ul className="eventos-lista">
+          <ul className={styles.eventosLista}>
             {datos.map((data, index) => (
               <li key={index}>
-                <div className='info-eventos'>
-                  <span className="fecha">{data.fecha}</span>
-                  <span className="lugar">{data.lugar}</span>
+                <div className={styles.infoEventos}>
+                  <span className={styles.fecha}>{data.fecha}</span>
+                  <span className={styles.lugar}>{data.lugar}</span>
                 </div>
-                <div className='direccion-container'>
-                  <a href={data.enlace} className="enlaces-inicio">Comprar entradas</a>
-                  <span className="flechas">
+                <div className={styles.direccionContainer}>
+                  <a href={data.enlace} className={styles.enlacesInicio}>Comprar entradas</a>
+                  <span className={styles.flechas}>
                     <span>&gt;</span>
                     <span>&gt;</span>
                     <span>&gt;</span>

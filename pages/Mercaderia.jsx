@@ -1,7 +1,7 @@
 import '../styles/Mercaderia.css';
 import {useState} from 'react';
 import {merchEstelario, merchJasal} from '../../services/services.js';
-// import flecha from '../../../src/assets/right-arrow.png';
+// import flecha from '../../../public/assets/right-arrow.png';
 import Card from '../../components/Card.jsx';
 
 function Mercaderia(){

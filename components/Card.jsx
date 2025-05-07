@@ -1,7 +1,8 @@
 import styles from './css/Card.module.css';
 import {useState, useEffect, useRef} from 'react';
+import Image from 'next/image';
 // import {merchEstelario} from '../services/services.js';
-// import flecha from '../../src/assets/right-arrow.png';
+// import flecha from '../../public/assets/right-arrow.png';
 import { MoveRight, MoveLeft } from 'lucide-react';
 function Card({item,index, StorageMerch}){
     // utilizo useRef para almacenar referencia al input
@@ -94,18 +95,18 @@ function Card({item,index, StorageMerch}){
     }
 
     return(
-        <div key={item.id} className={styles.merch-item}>
+        <div key={item.id} className={styles.merchItem}>
 
-            <div className={styles.images-container}>
-                <button className={`${styles.prev} ${styles.item-button}`} onClick={() => prevIMGHandler(index)} /* style={{transform:'rotate(180deg)'}} */>{/* <img src={flecha} alt="flecha logo" /> */} <MoveLeft className={styles.icono-flecha}/></button>
-                <img className={styles.item-image} src={item.images[arrPics[index]]} alt={item.alt} />
-                <button className={`${styles.next} ${styles.item-button}`} onClick={() => nextIMGHandler(index)}>{/* <img src={flecha} alt="flecha logo" /> */}<MoveRight className={styles.icono-flecha}/></button>
+            <div className={styles.imagesContainer}>
+                <button className={`${styles.prev} ${styles.itemButton}`} onClick={() => prevIMGHandler(index)} /* style={{transform:'rotate(180deg)'}} */>{/* <img src={flecha} alt="flecha logo" /> */} <MoveLeft className={styles.icono-flecha}/></button>
+                <Image fill className={styles.itemImage} src={item.images[arrPics[index]]} alt={item.alt} />
+                <button className={`${styles.next} ${styles.itemButton}`} onClick={() => nextIMGHandler(index)}>{/* <img src={flecha} alt="flecha logo" /> */}<MoveRight className={styles.icono-flecha}/></button>
             </div>
-            <div className={styles.item-text-container}>
-                <h3 className={styles.item-title}>{item.title}</h3>
-                <p className={styles.item-price}>Precio: ${item.price}</p>
-                <p className={styles.item-description}>{item.description}</p>
-                <p className={styles.item-cantidad}>Cantidad: ({item.cantidades} unidades disponibles)</p>
+            <div className={styles.itemTextContainer}>
+                <h3 className={styles.itemTitle}>{item.title}</h3>
+                <p className={styles.itemPrice}>Precio: ${item.price}</p>
+                <p className={styles.itemDescription}>{item.description}</p>
+                <p className={styles.itemCantidad}>Cantidad: ({item.cantidades} unidades disponibles)</p>
                 <div>
                     <input type="number" name="inputCantidad" className={styles.inputCantidad} min="0" max={item.cantidades} ref={(valor) => inputRefs.current[index] = valor}/>
                     <button onClick={() => agregarAlCarrito(item,index)}>Agregar al carrito</button>
