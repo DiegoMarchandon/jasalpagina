@@ -56,7 +56,7 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra para resaltar el texto */
   }
 
-  .sobreMiCard{
+  .sobreMiWiki{
     float: right;
     width: 300px;
     height: auto;
@@ -76,20 +76,28 @@
 
 
   .fotoWikiContainer{
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
+    background-color: rgb(237, 237, 237);
     width: 100%;
     height: 250px;
   }
 
-  .fotoWikiContainer img{
-    width: 60%;
+  /* estilso del contenedor de image */
+  /* .fotoWikiContainer span{
+    background-color: green;
+    width: 80%;
     height: auto;
-    object-fit: cover;
-    filter: brightness(80%); /* oscurece la imagen */
-  }
+    position: relative;
+  } */
+
+  /* estilos de Image */
+  /* .fotoWikiContainer span img{
+    background-color: blue;
+    
+  } */
 
   .firmaContainer{
     display: flex;
@@ -100,11 +108,12 @@
     /* background-color: rgb(177, 13, 13); */
   }
 
-  .firmaImg{
-    width: 50%;
-    /* height: 10%; */
+  /* estilos Image con firma */
+/*   .firmaImg{
+    width: 50px;
+    height: 'auto';
   }
-
+ */
   .sobreMiSection{
     display: flex;
   }
@@ -124,7 +133,7 @@
     }
   } */
   
-  .sobreMiImg {
+  .sobreMiImgContainer {
     flex: 1;
     text-align: center;
   }
