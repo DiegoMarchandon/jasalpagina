@@ -1,11 +1,11 @@
-import '../styles/Galeria.module.css';
+import styles from '../styles/Galeria.module.css';
 import {imagenes} from '../src/services/services.js'; 
 import Image from 'next/image';
 function Galeria(){
   return (
-    <div className="galeria">
+    <div className={styles.galeria}>
       {imagenes.map(foto => (
-        <div key={foto.id} className="foto">
+        <div key={foto.id} className={styles.foto}>
           <Image src={foto.src} alt={foto.alt} sizes="100vw" width={0} height={0} style={{width:'100%',height:'auto', display: 'block'}}/>
         </div>
       ))}
