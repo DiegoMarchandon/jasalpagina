@@ -14,7 +14,7 @@
     transition: all 0.3s ease;
   }
 
-  .navbar .sticky {
+  .sticky {
     position: fixed;
     background: rgba(255, 229, 79, 0.7);
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);

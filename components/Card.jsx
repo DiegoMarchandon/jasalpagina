@@ -100,7 +100,7 @@ function Card({item,index, StorageMerch}){
 
             <div className={styles.imagesContainer}>
                 <button className={`${styles.prev} ${styles.itemButton}`} onClick={() => prevIMGHandler(index)} > <MoveLeft className={styles.iconoFlecha}/></button>
-                <Image fill className={styles.itemImage} src={item.images[arrPics[index]]} alt={item.alt} priority={true}/>
+                <Image width={0} height={0} style={{width:'100%',height:'100%',objectFit:'cover'}} /* className={styles.itemImage} */ src={item.images[arrPics[index]]} alt={item.alt} priority={true}/>
                 <button className={`${styles.next} ${styles.itemButton}`} onClick={() => nextIMGHandler(index)}> <MoveRight className={styles.iconoFlecha}/></button>
             </div>
             <div className={styles.itemTextContainer}>

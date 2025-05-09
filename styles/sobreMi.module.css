@@ -1,4 +1,8 @@
+/* .sobreMiBackground{
+  background-color: blue;
+} */
 .navSecciones{
+  margin-top: 80px;
   background-color: darkgrey;
   display: flex;
   justify-content: center;
@@ -22,6 +26,7 @@
 
 
 .sobreMi {
+    /* margin-top:150px; */
     background-color: #ffffff;
     padding: 4rem 1.5rem;
     color:black;

@@ -7,12 +7,14 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 100);
-        };
+        if (typeof window !== 'undefined') {
+            const handleScroll = () => {
+                setScrolled(window.scrollY > 100); // Cambia el estado si el scroll es mayor a 100px
+            };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll); // Limpieza
+        }
     }, []);
 
     return (
