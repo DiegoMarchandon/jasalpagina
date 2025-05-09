@@ -1,6 +1,4 @@
-/* .sobreMiBackground{
-  background-color: blue;
-} */
+
 .navSecciones{
   margin-top: 80px;
   background-color: darkgrey;
@@ -13,14 +11,14 @@
   padding: 5px;
   border-radius: 0%;
   border: none;
-  transition: box-shadow 0.3s ease-in-out; /* Transición suave */
+  transition: box-shadow 0.3s ease-in-out; 
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
 
 .navSecciones button:hover{
   transform: scale(1.2);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 
@@ -37,7 +35,7 @@
     position: relative;
     width: 100%;
     /* margin-top: 50px; */
-    height: 400px; /* o el alto que quieras */
+    height: 400px; 
     overflow: hidden;
   }
 
@@ -45,7 +43,7 @@
     width: 100%;
     height: auto;
     object-fit: cover;
-    filter: brightness(50%); /* oscurece la imagen */
+    filter: brightness(50%); 
     transform: translateY(-47%);
   }
 
@@ -55,10 +53,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #F6E5B3; /* uno de los colores que usás */
+    color: #F6E5B3;
     font-size: 3rem;
     z-index: 1;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* sombra para resaltar el texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
   }
 
   .sobreMiWiki{
@@ -110,7 +108,6 @@
     justify-content: center;
     width: 90%;
     height: 110px;
-    /* background-color: rgb(177, 13, 13); */
   }
 
   /* estilos Image con firma */
@@ -130,13 +127,6 @@
     flex-direction:column;
     gap: 2.5rem;
   }
-  
-  /* @media (min-width: 768px) {
-    .sobre-mi-container {
-      flex-direction: row;
-      align-items: center;
-    }
-  } */
   
   .sobreMiImgContainer {
     flex: 1;
