@@ -1,6 +1,6 @@
 import Header from '../components/Header';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+// import Navbar from '../components/Navbar';
+// import Footer from '../components/Footer';
 import FormContacto from '../components/FormContacto';
 import ProxEventos from '../components/ProxEventos';
 import styles from '../styles/Inicio.module.css'; // ✅ Usando CSS Modules
@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Navbar />
+
       <div className={styles.siteInicio}> 
         <ProxEventos />
         <div className={styles.reproformContainer}>
@@ -28,7 +28,7 @@ export default function Home() {
           <FormContacto />
         </div>
       </div>
-      <Footer />
+
     </div>
   );
 }

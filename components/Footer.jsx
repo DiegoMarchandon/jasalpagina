@@ -2,7 +2,7 @@ import { Youtube, Instagram, Music2, Waves } from 'lucide-react';
 
 import styles from './css/Footer.module.css';
 
-function Footer() {
+export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
@@ -26,4 +26,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+// export default Footer;

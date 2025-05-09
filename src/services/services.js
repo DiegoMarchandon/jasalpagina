@@ -1,5 +1,5 @@
-import shirtIMG from '../assets/insertLogoShirt.jpg';
-import abc from '../assets/in_search_of_sunrise_by_zerve.jpg';
+import shirtIMG from '../../public/assets/insertLogoShirt.jpg';
+import abc from '../../public/assets/in_search_of_sunrise_by_zerve.jpg';
 
 export const imagenes = [
     {id: 1, src: 'https://i.imgur.com/S0qFIIE.jpeg', alt: 'Foto 1'},
@@ -133,4 +133,4 @@ export const merchJasal = [
 
 const carritoLocalStorage = {};
 // la guardo en el localStorage
-// localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));
+localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));

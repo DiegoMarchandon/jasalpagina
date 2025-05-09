@@ -1,8 +1,8 @@
-import '../styles/Mercaderia.css';
+import styles from '../styles/Mercaderia.module.css';
 import {useState} from 'react';
-import {merchEstelario, merchJasal} from '../../services/services.js';
+import {merchEstelario, merchJasal} from '../src/services/services.js';
 // import flecha from '../../../public/assets/right-arrow.png';
-import Card from '../../components/Card.jsx';
+import Card from '../components/Card.jsx';
 
 function Mercaderia(){
 
@@ -18,16 +18,25 @@ function Mercaderia(){
     let mercaderiaSeleccionada = seccionMerch === 'estelarioMerch' ? merchEstelario : merchJasal;
 
     return (
-
-        <div id= "merch-container">
-            <div id='merch-options-container'>
-                <h1 id='merch-main-title'>mi mercadería</h1>
-                <button className={seccionMerch === 'estelarioMerch' ? 'merchSeleccionada borde-derecho' : 'merchNoSeleccionada'} id='estelarioButton' onClick={() => setSeccionMerch('estelarioMerch')}>Estelario </button>
-                <button className={seccionMerch === 'jasalMerch' ? 'merchSeleccionada borde-izquierdo' : 'merchNoSeleccionada'} id='jasalButton' onClick={() => setSeccionMerch('jasalMerch')}>Jasal</button>
+        <div className={styles.merchContainer}>
+            <div className={styles.merchOptionsContainer}>
+                <h1 className={styles.merchMainTitle}>mi mercadería</h1>
+                <button 
+                    className={seccionMerch === 'estelarioMerch' ? `${styles.merchSeleccionada} ${styles.bordeDerecho} ${styles.estelarioButton}` : `${styles.merchNoSeleccionada} ${styles.estelarioButton}`}  
+                    onClick={() => setSeccionMerch('estelarioMerch')}
+                >
+                    Estelario
+                </button>
+                <button 
+                    className={seccionMerch === 'jasalMerch' ? `${styles.merchSeleccionada} ${styles.bordeIzquierdo} ${styles.jasalButton}` : `${styles.merchNoSeleccionada} ${styles.jasalButton}`} 
+                    onClick={() => setSeccionMerch('jasalMerch')}
+                >
+                    Jasal
+                </button>
             </div>
-            <div id="panel-merch-container">
-                <h2 id='panel-title'>filtrar por:</h2>
-                <div className={seccionMerch === 'estelarioMerch' ? 'filtrosMostrados' : 'filtrosOcultos'} id='estelarioItems'>
+            <div className={styles.panelMerchContainer}>
+                <h2 className={styles.panelTitle}>filtrar por:</h2>
+                <div className={seccionMerch === 'estelarioMerch' ? `${styles.filtrosMostrados} ${styles.estelarioItems}` : `${styles.filtrosOcultos} ${styles.estelarioItems}`}>
                     <p>marca páginas</p>
                     <p>anillos bordados</p>
                     <p>posa vasos</p>
@@ -35,28 +44,26 @@ function Mercaderia(){
                     <p>aritos (quirúrgicos y tejidos a crochet)</p>
                     <p>bufandas</p>
                 </div>
-                <div className={seccionMerch === 'jasalMerch' ? 'filtrosMostrados' : 'filtrosOcultos'} id='jasalItems'>
+                <div className={seccionMerch === 'jasalMerch' ? `${styles.filtrosMostrados} ${styles.jasalItems}` : `${styles.filtrosOcultos} ${styles.jasalItems}`}>
                     <p>poleras</p>
                     <p>tazas/vasos</p>
                     <p>stickers</p>
                 </div>
             </div>
-            <div id='cards-container'>
-            {/* aplico renderizado condicional: */}
-                {(
-                    // en JSX, cualquier lógica de renderizado dinámica (o código JS) debe ir entre {}
-                    mercaderiaSeleccionada.map((item,index,StorageMerch) => (
-                        <Card 
-                            item={item}
-                            index={index}
-                            StorageMerch = {mercaderiaSeleccionada}
-                        />
-                    ))
-                )}
+            <div className={styles.cardsContainer}>
+                {/* aplico renderizado condicional: */}
+                {mercaderiaSeleccionada.map((item, index, StorageMerch) => (
+                    <Card 
+                        key={index}
+                        item={item}
+                        index={index}
+                        StorageMerch={mercaderiaSeleccionada}
+                    />
+                ))}
             </div>
         </div>
-
     );
+    
 }
 
 export default Mercaderia;

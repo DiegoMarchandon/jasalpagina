@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { ShoppingCart } from 'lucide-react';
 import styles from './css/Navbar.module.css';
 
-function Navbar() {
+export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -29,4 +29,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+// export default Navbar;

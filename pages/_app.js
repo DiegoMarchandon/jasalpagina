@@ -1,10 +1,13 @@
-import '../styles/global.css';
+// import '../styles/global.css';
+// import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
+  console.log("pageProps: ");
   return (
     <div>
+      {/* <Header /> */}
       <Navbar />
       <main>
         <Component {...pageProps} />
@@ -14,4 +17,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;
