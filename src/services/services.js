@@ -133,4 +133,9 @@ export const merchJasal = [
 
 const carritoLocalStorage = {};
 // la guardo en el localStorage
-localStorage.setItem("itemsCarrito",JSON.stringify(carritoLocalStorage));
+export function inicializarCarrito() {
+    if (typeof window !== 'undefined') {
+      const carritoLocalStorage = {};
+      localStorage.setItem("itemsCarrito", JSON.stringify(carritoLocalStorage));
+    }
+  }

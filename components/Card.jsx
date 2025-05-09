@@ -1,8 +1,7 @@
 import styles from './css/Card.module.css';
 import {useState, useEffect, useRef} from 'react';
 import Image from 'next/image';
-// import {merchEstelario} from '../services/services.js';
-// import flecha from '../../public/assets/right-arrow.png';
+import { inicializarCarrito } from '../src/services/services.js';
 import { MoveRight, MoveLeft } from 'lucide-react';
 function Card({item,index, StorageMerch}){
     // utilizo useRef para almacenar referencia al input
@@ -15,9 +14,16 @@ function Card({item,index, StorageMerch}){
 
     // necesito una variable de estado para que, cada vez que cambie su valor, el efecto se dispare.
     const [carritoItems, setCarritoItems] = useState(() => {
-        return JSON.parse(localStorage.getItem('itemsCarrito'));
+        if(typeof window !== 'undefined'){
+            const storedItems = localStorage.getItem('itemsCarrito');
+            return storedItems ? JSON.parse(storedItems) : [];
+        }
+        return [];
     });
 
+    useEffect(() =>{
+        inicializarCarrito();
+    },[])
     // actualización automática: cada vez que carritoItems cambie, este useEffect guarda los datos actualizados en el localStorage
     useEffect(() => {
         localStorage.setItem('itemsCarrito', JSON.stringify(carritoItems));
@@ -49,11 +55,6 @@ function Card({item,index, StorageMerch}){
         if(cantidadSelec > 0){
             // Obtener el carrito actual desde localStorage (y parsearlo si existe)
             const carritoActual = JSON.parse(localStorage.getItem('itemsCarrito'));
-            
-            // carritoActual = {}
-            // localStorage.getItem('itemsCarrito') = {}
-            // typeof(carritoActual) = object
-            // typeof(inputRefs) = object
             
             // Agregar el nuevo item al carrito formateado
             const itemFormateado = {
@@ -98,9 +99,9 @@ function Card({item,index, StorageMerch}){
         <div key={item.id} className={styles.merchItem}>
 
             <div className={styles.imagesContainer}>
-                <button className={`${styles.prev} ${styles.itemButton}`} onClick={() => prevIMGHandler(index)} /* style={{transform:'rotate(180deg)'}} */>{/* <img src={flecha} alt="flecha logo" /> */} <MoveLeft className={styles.icono-flecha}/></button>
+                <button className={`${styles.prev} ${styles.itemButton}`} onClick={() => prevIMGHandler(index)} > <MoveLeft className={styles.iconoFlecha}/></button>
                 <Image fill className={styles.itemImage} src={item.images[arrPics[index]]} alt={item.alt} priority={true}/>
-                <button className={`${styles.next} ${styles.itemButton}`} onClick={() => nextIMGHandler(index)}>{/* <img src={flecha} alt="flecha logo" /> */}<MoveRight className={styles.icono-flecha}/></button>
+                <button className={`${styles.next} ${styles.itemButton}`} onClick={() => nextIMGHandler(index)}> <MoveRight className={styles.iconoFlecha}/></button>
             </div>
             <div className={styles.itemTextContainer}>
                 <h3 className={styles.itemTitle}>{item.title}</h3>
