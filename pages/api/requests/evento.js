@@ -1,0 +1,1 @@
+// consultas relacionadas a eventos
