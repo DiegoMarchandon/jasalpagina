@@ -16,7 +16,7 @@ export async function getAllUsuarios(){
         // hacer consulta SELECT * FROM usuario
         return getAllUsers;
     } catch(error){
-        throw new Error('getAllUsuarios error al obtener los usuarios:' + error.message);
+        throw new Error('getAllUsuarios error al obtener los usuarios: ' + error.message);
     } finally {
         if(connection) connection.release(); //siempre liberamos (devolvemos) la conexión
     }
@@ -36,7 +36,7 @@ export async function getUsuarioById(idusuario) {
         const [resultado] = await connection.execute('SELECT * FROM usuario WHERE idusuario = ?'+[idusuario]);
         return resultado;
     }catch(error){
-        throw new Error('getUsuarioById error al obtener al usuario:' + error.message);
+        throw new Error('getUsuarioById error al obtener al usuario: ' + error.message);
     }finally{
         if(connection) connection.release();
     }
@@ -97,7 +97,7 @@ export async function updateUsuario(idusuario, usuarioData) {
         const [resultado] = await connection.execute(query, valueParts);
         return resultado.affectedRows; //acá se usa esto para saber si se actualizó algo
     }catch(error){
-        throw new Error('updateUsuario error al actualizar usuario'+error.message);
+        throw new Error('updateUsuario error al actualizar usuario: '+error.message);
     }finally{
         if(connection) connection.release();
     }
@@ -117,9 +117,9 @@ export async function deleteUsuario(idusuario) {
         connection = await pool.getConnection();
         query = 'UPDATE usuario SET ushabilitado = 0 WHERE idusuario = ?';
         const [resultado] = await connection.execute(query,[idusuario]);
-        return resultado;
+        return resultado.affectedRows;
     }catch(error){
-        throw new Error("deleteUsuario error al eliminar usuario"+error.message);
+        throw new Error("deleteUsuario error al eliminar usuario: "+error.message);
     }finally{
         if(connection) connection.release();
     }

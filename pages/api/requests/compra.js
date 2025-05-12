@@ -1,1 +1,123 @@
 // Consultas relacionadas a compras
+
+import pool from "../../../lib/db"; 
+
+/**
+ * Obtiene todas las compras
+ * 
+ * SELECT * FROM compra;
+ * @return {array}
+ */
+export async function getAllCompras(){
+    let connection;
+    try{
+        connection = await pool.getConnection(); //pido prestada del pool una conexión abierta
+        // también podría hacer directamente pool.query() si no necesito hacer consultas en una misma conexión segura ni tampoco tener control
+        const [resultado] = await connection.query('SELECT * FROM compra;');
+        return resultado;
+    } catch(error){
+        throw new Error('getAllCompras error al obtener las compras:' + error.message);
+    } finally {
+        if(connection) connection.release(); //siempre liberamos (devolvemos) la conexión
+    }
+}
+
+/**
+ * Obtiene una compra por su ID 
+ * 
+ * SELECT * FROM compra WHERE idcompra = ?
+ * @param {int} idcompra
+ * @return {object}
+ */
+export async function getCompraById(idcompra) {
+    let connection;
+    try{
+        connection = await pool.getConnection(); 
+        const [resultado] = await connection.execute('SELECT * FROM compra WHERE idcompra = ?'+[idcompra]);
+        return resultado;
+    }catch(error){
+        throw new Error('getCompraById error al obtener la compra :' + error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
+/**
+ * Crea una nueva compra
+ * 
+ * INSERT INTO compra (comprafecha) VALUES (?,?,?)
+ * @param {object} idusuario 
+ * @return {int}
+ */
+export async function createCompra(idusuario) {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        var consulta = 'INSERT INTO compra (idusuario) VALUES (?)';
+        const [resultado] = await connection.execute(consulta,[idusuario]);
+        return resultado.insertId;  
+    }catch(error){
+        throw new Error('createCompra error al crear compra: '+error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
+/**
+ * Actualiza un usuario
+ * 
+ * UPDATE compra SET ... WHERE idcompra = ?
+ * @param {int} idcompra 
+ * @param {object} compraData //objeto compra completo.
+ * @return {int} 
+ */
+export async function updateCompra(idcompra, compraData) {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        var query = 'UPDATE compra SET ';
+        var valueParts = [];
+        var notUndefined = 0; 
+      for(const [campo,valor] of Object.entries(compraData)){
+          if(valor !== undefined){
+            notUndefined++;
+            if(notUndefined > 1){
+              query += ", ";
+            }
+              query += `${campo} = ?`;
+            valueParts.push(valor);
+          }
+        }
+      valueParts.push(idcompra);
+        query += ' WHERE idcompra = ? ;';
+        const [resultado] = await connection.execute(query, valueParts);
+        return resultado.affectedRows; 
+    }catch(error){
+        throw new Error('updateUsuario error al actualizar usuario'+error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
+/**
+ * Elimina una compra.
+ * 
+ * DELETE FROM compra WHERE idcompra = ?
+ * @param {int} idcompra
+ * @return {int}
+ */
+export async function deleteCompra(idcompra) {
+    // O solo actualizar ushabilitado a 0 (baja lógica)
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        query = 'DELETE FROM compra WHERE idcompra = ?';
+        const [resultado] = await connection.execute(query,[idusuario]);
+        return resultado;
+    }catch(error){
+        throw new Error("deleteCompra error al eliminar compra"+error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
