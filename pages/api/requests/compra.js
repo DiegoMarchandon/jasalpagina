@@ -11,14 +11,13 @@ import pool from "../../../lib/db";
 export async function getAllCompras(){
     let connection;
     try{
-        connection = await pool.getConnection(); //pido prestada del pool una conexión abierta
-        // también podría hacer directamente pool.query() si no necesito hacer consultas en una misma conexión segura ni tampoco tener control
+        connection = await pool.getConnection(); 
         const [resultado] = await connection.query('SELECT * FROM compra;');
         return resultado;
     } catch(error){
-        throw new Error('getAllCompras error al obtener las compras:' + error.message);
+        throw new Error('getAllCompras error al obtener las compras: ' + error.message);
     } finally {
-        if(connection) connection.release(); //siempre liberamos (devolvemos) la conexión
+        if(connection) connection.release(); 
     }
 }
 
@@ -45,16 +44,16 @@ export async function getCompraById(idcompra) {
 /**
  * Crea una nueva compra
  * 
- * INSERT INTO compra (comprafecha) VALUES (?,?,?)
- * @param {object} idusuario 
+ * INSERT INTO compra (comprafecha) VALUES (?);
+ * @param {object} comprafecha 
  * @return {int}
  */
-export async function createCompra(idusuario) {
+export async function createCompra(comprafecha) {
     let connection;
     try{
         connection = await pool.getConnection();
-        var consulta = 'INSERT INTO compra (idusuario) VALUES (?);';
-        const [resultado] = await connection.execute(consulta,[idusuario]);
+        var consulta = 'INSERT INTO compra (comprafecha) VALUES (?);';
+        const [resultado] = await connection.execute(consulta,[comprafecha]);
         return resultado.insertId;  
     }catch(error){
         throw new Error('createCompra error al crear compra: '+error.message);
@@ -64,7 +63,7 @@ export async function createCompra(idusuario) {
 }
 
 /**
- * Actualiza un usuario
+ * Actualiza una compra
  * 
  * UPDATE compra SET ... WHERE idcompra = ?
  * @param {int} idcompra 
@@ -93,7 +92,7 @@ export async function updateCompra(idcompra, compraData) {
         const [resultado] = await connection.execute(query, valueParts);
         return resultado.affectedRows; 
     }catch(error){
-        throw new Error('updateUsuario error al actualizar usuario'+error.message);
+        throw new Error('updateCompra error al actualizar compra: '+error.message);
     }finally{
         if(connection) connection.release();
     }
@@ -107,15 +106,15 @@ export async function updateCompra(idcompra, compraData) {
  * @return {int}
  */
 export async function deleteCompra(idcompra) {
-    // O solo actualizar ushabilitado a 0 (baja lógica)
+
     let connection;
     try{
         connection = await pool.getConnection();
         query = 'DELETE FROM compra WHERE idcompra = ?';
-        const [resultado] = await connection.execute(query,[idusuario]);
+        const [resultado] = await connection.execute(query,[idcompra]);
         return resultado;
     }catch(error){
-        throw new Error("deleteCompra error al eliminar compra"+error.message);
+        throw new Error("deleteCompra error al eliminar compra: "+error.message);
     }finally{
         if(connection) connection.release();
     }

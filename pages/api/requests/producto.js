@@ -70,14 +70,14 @@ export async function createProducto(productoData) {
 }
 
 /**
- * Actualiza un usuario
+ * Actualiza un producto
  * 
  * UPDATE producto SET ... WHERE idproducto = ?
  * @param {int} idproducto 
  * @param {object} productoData //objeto producto completo. Con todas sus propiedades.
  * @return {int} 
  */
-export async function updateUsuario(idproducto, productoData) {
+export async function updateProducto(idproducto, productoData) {
     let connection;
     try{
         connection = await pool.getConnection();

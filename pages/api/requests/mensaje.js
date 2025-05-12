@@ -56,15 +56,15 @@ export async function createMensaje(mensajeData) {
         var consulta = 'INSERT INTO mensaje (asunto,email,idusuario,mensajecontacto,nombre) VALUES (?,?,?,?,?);';
         var valores = [
             mensajeData.asunto,
-            usuarioData.email,
-            usuarioData.idusuario,
-            usuarioData.mensaje,
-            usuarioData.nombre
+            mensajeData.email,
+            mensajeData.idusuario,
+            mensajeData.mensaje,
+            mensajeData.nombre
         ];
         const [resultado] = await connection.execute(consulta,valores);
-        return resultado.insertId;  //en los INSERT se puede usar el id para saber si se insertó 
+        return resultado.insertId;  
     }catch(error){
-        throw new Error('createUsuario error al crear usuario: '+error.message);
+        throw new Error('createMensaje error al crear mensaje: '+error.message);
     }finally{
         if(connection) connection.release();
     }
@@ -74,7 +74,7 @@ export async function createMensaje(mensajeData) {
  * Actualiza un mensaje
  * 
  * UPDATE mensaje SET ... WHERE idmensaje = ?
- * @param {int} idusuario 
+ * @param {int} idmensaje 
  * @param {object} mensajeData 
  * @return {int} 
  */
@@ -84,7 +84,7 @@ export async function updateMensaje(idmensaje, mensajeData) {
         connection = await pool.getConnection();
         var query = 'UPDATE mensaje SET ';
         var valueParts = [];
-        var notUndefined = 0; //contador para almacenar los distintos a undefined (si hay más de uno, agrego comas)
+        var notUndefined = 0; 
       for(const [campo,valor] of Object.entries(mensajeData)){
           if(valor !== undefined){
             notUndefined++;
@@ -114,7 +114,7 @@ export async function updateMensaje(idmensaje, mensajeData) {
  * @return {int}
  */
 export async function deleteMensaje(idmensaje) {
-    // O solo actualizar ushabilitado a 0 (baja lógica)
+
     let connection;
     try{
         connection = await pool.getConnection();

@@ -72,7 +72,7 @@ export async function createEvento(eventoData) {
  * 
  * UPDATE evento SET ... WHERE idevento = ?
  * @param {int} idevento
- * @param {object} eventoData //objeto usuario completo. Con todas sus propiedades.
+ * @param {object} eventoData 
  * @return {int} 
  */
 export async function updateEvento(idevento, eventoData) {
@@ -118,7 +118,7 @@ export async function deleteEvento(idevento) {
         const [resultado] = await connection.execute(query,[idevento]);
         return resultado.affectedRows;
     }catch(error){
-        throw new Error("deleteUsuario error al eliminar evento: "+error.message);
+        throw new Error("deleteEvento error al eliminar evento: "+error.message);
     }finally{
         if(connection) connection.release();
     }
