@@ -53,7 +53,7 @@ export async function createCompra(idusuario) {
     let connection;
     try{
         connection = await pool.getConnection();
-        var consulta = 'INSERT INTO compra (idusuario) VALUES (?)';
+        var consulta = 'INSERT INTO compra (idusuario) VALUES (?);';
         const [resultado] = await connection.execute(consulta,[idusuario]);
         return resultado.insertId;  
     }catch(error){

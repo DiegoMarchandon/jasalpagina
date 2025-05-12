@@ -41,6 +41,7 @@ export async function getUsuarioById(idusuario) {
         if(connection) connection.release();
     }
 }
+
 /**
  * Crea un nuevo usuario
  * 
@@ -52,7 +53,7 @@ export async function createUsuario(usuarioData) {
     let connection;
     try{
         connection = await pool.getConnection();
-        var consulta = 'INSERT INTO usuario (usmail,usnombre,uspass) VALUES (?,?,?)';
+        var consulta = 'INSERT INTO usuario (usmail,usnombre,uspass) VALUES (?,?,?);';
         var valores = [
             usuarioData.usmail,
             usuarioData.usnombre,

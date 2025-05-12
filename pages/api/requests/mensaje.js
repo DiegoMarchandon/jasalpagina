@@ -1,1 +1,129 @@
 // Consultas relacionadas a mensajes
+import pool from "../../../lib/db"; 
+
+/**
+ * Obtiene todos los mensajes
+ * 
+ * SELECT * FROM mensaje;
+ * @return {array}
+ */
+export async function getAllMensajes(){
+    let connection;
+    try{
+        connection = await pool.getConnection(); 
+        
+        const [respuesta] = await connection.query('SELECT * FROM mensaje;');
+
+        return respuesta;
+    } catch(error){
+        throw new Error('getAllMensajes error al obtener los mensajes: ' + error.message);
+    } finally {
+        if(connection) connection.release(); 
+    }
+}
+
+/**
+ * Obtiene un mensaje por su ID 
+ * 
+ * SELECT * FROM mensaje WHERE idmensaje = ?
+ * @param {int} idmensaje
+ * @return {object}
+ */
+export async function getMensajeById(idmensaje) {
+    let connection;
+    try{
+        connection = await pool.getConnection(); 
+        const [resultado] = await connection.execute('SELECT * FROM mensaje WHERE idmensaje = ?'+[idmensaje]);
+        return resultado;
+    }catch(error){
+        throw new Error('getMensajeById error al obtener al mensaje: ' + error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
+/**
+ * Crea un nuevo mensaje
+ * 
+ * INSERT INTO mensaje (asunto,email,idusuario,mensajecontacto,nombre) VALUES (?,?,?)
+ * @param {object} mensajeData 
+ * @return {int}
+ */
+export async function createMensaje(mensajeData) {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        var consulta = 'INSERT INTO mensaje (asunto,email,idusuario,mensajecontacto,nombre) VALUES (?,?,?,?,?);';
+        var valores = [
+            mensajeData.asunto,
+            usuarioData.email,
+            usuarioData.idusuario,
+            usuarioData.mensaje,
+            usuarioData.nombre
+        ];
+        const [resultado] = await connection.execute(consulta,valores);
+        return resultado.insertId;  //en los INSERT se puede usar el id para saber si se insertó 
+    }catch(error){
+        throw new Error('createUsuario error al crear usuario: '+error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
+/**
+ * Actualiza un mensaje
+ * 
+ * UPDATE mensaje SET ... WHERE idmensaje = ?
+ * @param {int} idusuario 
+ * @param {object} mensajeData 
+ * @return {int} 
+ */
+export async function updateMensaje(idmensaje, mensajeData) {
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        var query = 'UPDATE mensaje SET ';
+        var valueParts = [];
+        var notUndefined = 0; //contador para almacenar los distintos a undefined (si hay más de uno, agrego comas)
+      for(const [campo,valor] of Object.entries(mensajeData)){
+          if(valor !== undefined){
+            notUndefined++;
+            if(notUndefined > 1){
+              query += ", ";
+            }
+              query += `${campo} = ?`;
+            valueParts.push(valor);
+          }
+        }
+      valueParts.push(idmensaje);
+        query += ' WHERE idmensaje = ? ;';
+        const [resultado] = await connection.execute(query, valueParts);
+        return resultado.affectedRows; 
+    }catch(error){
+        throw new Error('updateMensaje error al actualizar mensaje: '+error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
+
+/**
+ * Elimina  un mensaje.
+ * 
+ * DELETE FROM mensaje WHERE idmensaje = ?
+ * @param {int} idmensaje
+ * @return {int}
+ */
+export async function deleteMensaje(idmensaje) {
+    // O solo actualizar ushabilitado a 0 (baja lógica)
+    let connection;
+    try{
+        connection = await pool.getConnection();
+        query = 'DELETE FROM mensaje WHERE idmensaje = ?';
+        const [resultado] = await connection.execute(query,[idmensaje]);
+        return resultado.affectedRows;
+    }catch(error){
+        throw new Error("deleteMensaje error al eliminar mensaje: "+error.message);
+    }finally{
+        if(connection) connection.release();
+    }
+}
