@@ -1,0 +1,91 @@
+.mainIngresoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.formOptions{
+    display: flex;
+    align-items: center;
+}
+.formOptions h2{
+    margin: 5px;
+    cursor: pointer;
+}
+
+.active{
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid #8A79AF;
+}
+.inactive{
+    color:gray;
+}
+
+.formOptions span{
+    height: 100px;
+    color: rgb(187, 187, 187);
+    font-size: 45px;
+    font-weight: 700;
+    user-select: none;
+}
+
+.ingresoContainer {
+    margin: 100px;
+    background-color: #f3efdf;
+    border: 1px solid black;
+    padding: 30px 20px;
+    width: 350px;
+    box-shadow: 10px 10px 0 #e5977e; /* sombra rosa detrás */
+    font-family: 'Arial', sans-serif;
+}
+
+.ingresoContainer h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #8566aa;
+    display: inline-block;
+    padding-bottom: 5px;
+    /* margin-left: 50%; */
+    /* transform: translateX(-50%); */
+}
+
+.ingresoContainer form div {
+    margin-bottom: 15px;
+}
+
+.ingresoContainer label {
+    display: none; /* como en la imagen no se ve label visible */
+}
+
+.ingresoContainer input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: black;
+    outline: none;
+}
+
+.ingresoContainer input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.ingresoContainer button {
+    background-color: #f8a58c;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+    box-shadow: 3px 3px 0 #8566aa; /* sombra violeta debajo */
+}

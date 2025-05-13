@@ -26,6 +26,7 @@ export default function Navbar() {
                 <li><Link href="/Blog">Blog</Link></li>
                 <li><Link href="/Galeria">Galería</Link></li>
                 <li><Link href="/Carrito" className="carritoLogo"><ShoppingCart /></Link></li>
+                <li><Link href="/Ingreso">Ingreso</Link></li>
             </ul>
         </nav>
     );

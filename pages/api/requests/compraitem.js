@@ -123,3 +123,12 @@ export async function deleteCompraItem(idcompraitem) {
         if(connection) connection.release();
     }
 }
+
+/**
+ * función encargada de manejar los requests(GET, POST, etc.)
+ * req: request. Datos que llegan del cliente.
+ * res: response. Respuesta que voy a devolver.
+ */
+export default function compraItemHandler(req,res){
+    res.status(200).json({ message: "¡Hola desde compraitem!" });
+}

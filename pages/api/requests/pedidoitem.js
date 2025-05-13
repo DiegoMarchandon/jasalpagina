@@ -124,3 +124,12 @@ export async function deletePedidoItem(idpedidoitem) {
         if(connection) connection.release();
     }
 }
+
+/**
+ * función encargada de manejar los requests(GET, POST, etc.)
+ * req: request. Datos que llegan del cliente.
+ * res: response. Respuesta que voy a devolver.
+ */
+export default function pedidoItemHandler(req,res){
+    res.status(200).json({ message: "¡Hola desde pedidoitem!" });
+}
