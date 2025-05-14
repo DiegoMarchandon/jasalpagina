@@ -131,6 +131,25 @@ export async function deleteUsuario(idusuario) {
  * req: request. Datos que llegan del cliente.
  * res: response. Respuesta que voy a devolver.
  */
-export default function usuarioHandler(req,res){
-    res.status(200).json({ message: "¡Hola desde usuario!" });
+export default async function usuarioHandler(req,res){
+    // res.status(200).json({ message: "¡Hola desde usuario!" });
+    if(req.method === 'POST'){
+        // createUsuario(req.body);
+        const { usmail, usnombre, uspass } = req.body;
+
+        if (!usmail || !usnombre || !uspass) {
+            return res.status(400).json({ error: 'Faltan datos obligatorios' });
+        }
+        try{
+            const nuevoId = await createUsuario(req.body);
+            if(nuevoId){
+                res.status(201).json({message: "usuario creado con éxito",id:nuevoId});
+            }else{
+                res.status(500).json({message: "no se pudo crear al usuario"});
+            }
+        }catch(error){
+            console.log("+++");
+            res.status(500).json({message: "Error del servidor",error:error.message});
+        }
+    } else res.status(405).json({message: "metodo no permitido"});
 }
