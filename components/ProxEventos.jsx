@@ -1,5 +1,5 @@
 import styles from "./css/ProxEventos.module.css";
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 // import Tachuela from '../public/assets/thumb-tack.png';
 import Image from 'next/image';
 function ProxEventos(){
@@ -22,19 +22,52 @@ function ProxEventos(){
     }
   ]);
 
+  const eventosBD = async() => {
+    try{
+      const response = await fetch('/api/requests/evento',{
+        method: 'GET',
+      });
+
+      if(!response.ok){
+        throw new Error('error al obtener los eventos: '+response.status);
+      }
+
+      const data = await response.json();
+      console.log('Enventos obtenidos: ', data.eventos);
+      return data.eventos;
+
+    }catch(error){
+      throw new Error('Error en eventosBD: ', error);
+    }
+
+  }
+
+  useEffect(() => {
+    const cargarEventos = async () => {
+      const eventos = await eventosBD();
+      // setEventos(Eventos)
+      console.log(eventos);
+      setDatos(eventos);
+    };
+
+    cargarEventos();
+
+  },[]);
+
+
   return (
     <section className={styles.eventos}>
           <h2>Próximos Eventos!</h2>
-          <Image src='/assets/thumb-tack.png' alt="tachuela logo" width={60} height={50} id="tachuela-img" priority={true}/>
+          <Image src='/assets/thumb-tack.png' alt="tachuela logo" width={60} height={50} className={styles.tachuelaImg} priority={true}/>
           <ul className={styles.eventosLista}>
             {datos.map((data, index) => (
               <li key={index}>
                 <div className={styles.infoEventos}>
-                  <span className={styles.fecha}>{data.fecha}</span>
-                  <span className={styles.lugar}>{data.lugar}</span>
+                  <span className={styles.lugar}>{data.eventolugar}</span>
+                  <span className={styles.fecha}>{data.eventofecha}</span>
                 </div>
                 <div className={styles.direccionContainer}>
-                  <a href={data.enlace} className={styles.enlacesInicio}>Comprar entradas</a>
+                  <a href={data.eventourl} className={styles.enlacesInicio}>Comprar entradas</a>
                   <span className={styles.flechas}>
                     <span>&gt;</span>
                     <span>&gt;</span>

@@ -125,11 +125,11 @@
   
   .eventosLista .fecha {
     color: #3d3d3d;
-    font-weight: 600;
+    font-style: italic;
   }
   
   .eventosLista .lugar {
     color: #5c5c5c;
-    font-style: italic;
+    font-weight: 700;
   }
   

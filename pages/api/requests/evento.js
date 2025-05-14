@@ -129,6 +129,21 @@ export async function deleteEvento(idevento) {
  * req: request. Datos que llegan del cliente.
  * res: response. Respuesta que voy a devolver.
  */
-export default function eventoHandler(req,res){
-    res.status(200).json({ message: "¡Hola desde evento!" });
+export default async function eventoHandler(req,res){
+    // res.status(200).json({ message: "¡Hola desde evento!" });
+    if(req.method === 'GET'){
+        try{
+            const eventos = await getAllEventos();
+
+            // console.log("eventos desde serv: ",eventos);
+            // formateo la fecha de cada evento
+            const eventosFormateados = eventos.map(evento => ({
+                ...evento,
+                eventofecha: new Date(evento.eventofecha).toISOString().split('T')[0] // "YYYY-MM-DD"
+            }));
+            res.status(200).json({eventos : eventosFormateados}); //se devuelve al cliente
+        }catch(error){
+            res.status(500).json({message: "Error del servidor ", error: error.message});
+        }
+    }
 }
