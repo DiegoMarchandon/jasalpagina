@@ -126,6 +126,28 @@ export async function deleteUsuario(idusuario) {
     }
 }
 
+import { parse } from 'cookie';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = 'claveSecreta'; // 🔐 Usar variable de entorno en producción
+
+export default function handler(req, res) {
+  const cookies = req.headers.cookie ? parse(req.headers.cookie) : {};
+  const token = cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ error: 'No autenticado' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    return res.status(200).json({ usuario: decoded });
+  } catch (err) {
+    return res.status(401).json({ error: 'Token inválido o expirado' });
+  }
+}
+
+
 /**
  * función encargada de manejar los requests(GET, POST, etc.)
  * req: request. Datos que llegan del cliente.

@@ -1,4 +1,8 @@
 import pool from "../../../lib/db";
+import {serialize} from 'cookie';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = 'claveSecreta'; // 🔐 Usá una variable de entorno en producción
 
 export default async function loginHandler(req, res) {
     if (req.method !== 'POST') {
@@ -24,6 +28,30 @@ export default async function loginHandler(req, res) {
         if (usuario.uspass !== uspass) {  // ⚠️ En producción, usar hash y bcrypt
             return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
+
+        // genero JWT 
+        const token = jwt.sign(
+            {
+                id:usuario.idusuario, usnombre: usuario.usnombre},
+                JWT_SECRET,
+                {expiresIn: '1h'}
+        );
+        // envío el token en una cookie HttpOnly
+        res.setHeader(
+            'Set-Cookie',
+            serialize('token',token,{
+                httpOnly: true,
+                secure: process.env.NODE_ENV === 'production',
+                nameSite: 'strict',
+                maxAge: 3600,
+                path: '/',
+            })
+        );
+
+        // evitamos enviar la contraseña en la respuesta
+        const { uspass: _, ...usuarioSinPassword}=usuario;
+
+        
 
         return res.status(200).json({ message: 'Login exitoso', usuario });
     } catch (err) {
