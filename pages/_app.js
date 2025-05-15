@@ -2,18 +2,19 @@
 // import Header from '../components/Header';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { AuthProvider } from '../context/AuthContext';
 
 function App({ Component, pageProps }) {
-  console.log("pageProps: ");
+  // console.log("pageProps: ");
   return (
-    <div>
+    <AuthProvider>
       {/* <Header /> */}
       <Navbar />
       <main>
         <Component {...pageProps} />
       </main>
       <Footer />
-    </div>
+    </AuthProvider>
   );
 }
 

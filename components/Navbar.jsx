@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { ShoppingCart } from 'lucide-react';
+import {useAuth} from '../context/AuthContext';
 import styles from './css/Navbar.module.css';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
-    const [authenticated, setAuthenticated] = useState(false);
+    /* const [authenticated, setAuthenticated] = useState(false); */
     const router = useRouter();
-
+    const { user, setUser } = useAuth();
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const handleScroll = () => {
@@ -25,13 +26,19 @@ export default function Navbar() {
         const checkAuth = async () => {
             try {
                 const res = await fetch('/api/auth/user', {
-                    methos: 'GET',
+                    method: 'GET',
                     credentials: 'include' 
                 });
                 const data = await res.json();
-                setAuthenticated(data.authenticated);
+                // setAuthenticated(data.authenticated);
+                if(data.authenticated){
+                    setUser(data.user); //guardamos el usuario en el contexto
+                }else{
+                    setUser(null);
+                }
             } catch (err) {
-                setAuthenticated(false);
+                // setAuthenticated(false);
+                setUser(null);
             }
         };
         checkAuth();
@@ -40,10 +47,12 @@ export default function Navbar() {
     const handleLogout = async () => {
         try {
             const res = await fetch('/api/auth/logout', {
-                method: 'POST'
+                method: 'POST',
+                credentials: 'include'
             });
             if (res.ok) {
-                setAuthenticated(false);
+                // setAuthenticated(false);
+                setUser(null); // limpiamos el contexto
                 router.push('/Ingreso');
             }
         } catch (err) {
@@ -61,8 +70,17 @@ export default function Navbar() {
                 <li><Link href="/Galeria">Galería</Link></li>
                 <li><Link href="/Carrito" className="carritoLogo"><ShoppingCart /></Link></li>
                 {
-                    authenticated ? (
+                    /* authenticated ? (
                         <li><button onClick={handleLogout} className={styles.logoutButton}>Cerrar sesión</button></li>
+                    ) : (
+                        <li><Link href="/Ingreso">Ingreso</Link></li>
+                    ) */
+                   user ? (
+                        <li>
+                            <button onClick={handleLogout} className={styles.logoutButton}>
+                                Cerrar sesión
+                            </button>
+                        </li>
                     ) : (
                         <li><Link href="/Ingreso">Ingreso</Link></li>
                     )

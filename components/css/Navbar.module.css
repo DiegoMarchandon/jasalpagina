@@ -14,6 +14,12 @@
     transition: all 0.3s ease;
   }
 
+  .logoutButton{
+    background-color: orange;
+    opacity: 60%;
+    padding: 7px;
+    border-radius: 15%;
+  }
   .sticky {
     position: fixed;
     background: rgba(255, 229, 79, 0.7);

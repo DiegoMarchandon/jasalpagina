@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/Ingreso.module.css';
+import { useAuth } from '../context/AuthContext';
 
 const Ingreso = () => {
 
@@ -11,7 +12,8 @@ const Ingreso = () => {
     });
     const [color,setColor] = useState('registro');
     const [error, setError] = useState('');
-
+    const {login} = useAuth();
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -38,6 +40,10 @@ const Ingreso = () => {
                 // console.log('Respuesta del servidor: ',data);
                 if(!response.ok) throw new Error(data.error || 'Error en registro');
                 console.log('usuario registrado: ',data);
+                setError('');
+
+                await login(); // actualiza el contexto global con el user
+                Router.push('/'); //redirigimos
             }catch(err){
                 console.error('Error al registrar: ',err);
             }
@@ -65,24 +71,6 @@ const Ingreso = () => {
             }
         }
     };
-
-    const handleLogout = async () => {
-        try {
-            const res = await fetch('/api/auth/logout', {
-                method: 'POST',
-            });
-            if (res.ok) {
-                console.log('Sesión cerrada');
-                // Redirigir a login o home
-                router.push('/ingreso'); // o donde esté tu login
-            } else {
-                console.error('No se pudo cerrar la sesión');
-            }
-        } catch (err) {
-            console.error('Error al cerrar sesión:', err);
-        }
-    };
-    
 
     const changeSection = (param) => {
         setColor(param);
