@@ -111,7 +111,7 @@ export async function deleteImagen(idimagen) {
     let connection;
     try{
         connection = await pool.getConnection();
-        query = 'DELETE FROM imagen WHERE idimagen = ?';
+        var query = 'DELETE FROM imagen WHERE idimagen = ?';
         const [resultado] = await connection.execute(query,[idimagen]);
         return resultado.affectedRows;
     }catch(error){

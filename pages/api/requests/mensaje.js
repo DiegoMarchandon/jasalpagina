@@ -118,7 +118,7 @@ export async function deleteMensaje(idmensaje) {
     let connection;
     try{
         connection = await pool.getConnection();
-        query = 'DELETE FROM mensaje WHERE idmensaje = ?';
+        var query = 'DELETE FROM mensaje WHERE idmensaje = ?';
         const [resultado] = await connection.execute(query,[idmensaje]);
         return resultado.affectedRows;
     }catch(error){

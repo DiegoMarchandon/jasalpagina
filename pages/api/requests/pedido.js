@@ -114,7 +114,7 @@ export async function deletePedido(idpedido) {
     let connection;
     try{
         connection = await pool.getConnection();
-        query = 'DELETE FROM pedido WHERE idpedido = ?';
+        var query = 'DELETE FROM pedido WHERE idpedido = ?';
         const [resultado] = await connection.execute(query,[idpedido]);
         return resultado.affectedRows;
     }catch(error){

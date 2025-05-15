@@ -1,6 +1,7 @@
 // Consultas relacionadas a usuarios
 import pool from "../../../lib/db"; //importo la conexión a la base de datos
-
+import { parse } from 'cookie';
+import jwt from 'jsonwebtoken';
 /**
  * Obtiene todos los usuarios
  * 
@@ -116,7 +117,7 @@ export async function deleteUsuario(idusuario) {
     let connection;
     try{
         connection = await pool.getConnection();
-        query = 'UPDATE usuario SET ushabilitado = 0 WHERE idusuario = ?';
+        var query = 'UPDATE usuario SET ushabilitado = 0 WHERE idusuario = ?';
         const [resultado] = await connection.execute(query,[idusuario]);
         return resultado.affectedRows;
     }catch(error){
@@ -126,8 +127,7 @@ export async function deleteUsuario(idusuario) {
     }
 }
 
-import { parse } from 'cookie';
-import jwt from 'jsonwebtoken';
+
 
 // const JWT_SECRET = 'claveSecreta'; // 🔐 Usar variable de entorno en producción
 
@@ -153,7 +153,7 @@ export default function handler(req, res) {
  * req: request. Datos que llegan del cliente.
  * res: response. Respuesta que voy a devolver.
  */
-export default async function usuarioHandler(req,res){
+/* export default async function usuarioHandler(req,res){
     // res.status(200).json({ message: "¡Hola desde usuario!" });
     if(req.method === 'POST'){
         // createUsuario(req.body);
@@ -174,4 +174,4 @@ export default async function usuarioHandler(req,res){
             res.status(500).json({message: "Error del servidor",error:error.message});
         }
     } else res.status(405).json({message: "metodo no permitido"});
-}
+} */

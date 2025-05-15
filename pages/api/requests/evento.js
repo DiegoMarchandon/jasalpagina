@@ -114,7 +114,7 @@ export async function deleteEvento(idevento) {
     let connection;
     try{
         connection = await pool.getConnection();
-        query = 'DELETE FROM evento WHERE idevento = ?';
+        var query = 'DELETE FROM evento WHERE idevento = ?';
         const [resultado] = await connection.execute(query,[idevento]);
         return resultado.affectedRows;
     }catch(error){
