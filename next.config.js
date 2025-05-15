@@ -1,6 +1,6 @@
 const isProd = process.env.NODE_ENV === 'production';
 
-module.exports = {
+const nextConfig = {
   output: 'export', // Para exportar estático
   assetPrefix: isProd ? '/jasalpagina/' : '', // Prefijo para recursos estáticos en producción
   images: {
@@ -8,5 +8,4 @@ module.exports = {
   },
 };
 
-export default nextConfig;
-// module.exports = nextConfig;
+module.exports = nextConfig;
