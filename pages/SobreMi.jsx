@@ -6,7 +6,7 @@ import Image from 'next/image';
 // import JasalFoto1 from '../../assets/JasalCaptura.png';
 // import JasalMainPic from '../../assets/jasalSobreMiSeccion.jpg';
 // import JasalFirma from '../../assets/JasalFuente.png';
-import styles from "../styles/SobreMi.module.css";
+import styles from "../styles/sobreMi.module.css";
 
 function SobreMi(){
     const [seccion,setSeccion] = useState('sobreMi');

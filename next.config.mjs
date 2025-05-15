@@ -1,19 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    output: 'export',
-    basePath:  '',
-    assetPrefix: './',
-    images: {
-      unoptimized: true, //para exportar imagenes en modo estatico
-      remotePatterns: [{
-        protocol: 'https',
-        hostname: 'i.imgur.com',
-        port: '',
-        pathname: '/**',
-      }],
-    },
-    reactStrictMode: true,
-  }
-  
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = {
+  output: 'export', // Para exportar estático
+  assetPrefix: isProd ? '/jasalpagina/' : '', // Prefijo para recursos estáticos en producción
+  images: {
+    unoptimized: true, // Para evitar optimizaciones que no funcionan en export estático
+  },
+};
+
 export default nextConfig;
 // module.exports = nextConfig;
