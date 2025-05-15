@@ -10,6 +10,7 @@ const Ingreso = () => {
         passwordConfirm: ''
     });
     const [color,setColor] = useState('registro');
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,13 +52,37 @@ const Ingreso = () => {
                 });
     
                 const data = await response.json();
-                if (!response.ok) throw new Error(data.error || 'Error en login');
+                if (!response.ok){
+                    setError(data.error || 'Error en login');
+                    return;
+                } 
                 console.log('Usuario autenticado:', data);
+                setError(''); //limpio errores si login fue exitoso
+                // redirigir
             } catch (err) {
+                setError()
                 console.error('Error al iniciar sesión:', err);
             }
         }
     };
+
+    const handleLogout = async () => {
+        try {
+            const res = await fetch('/api/auth/logout', {
+                method: 'POST',
+            });
+            if (res.ok) {
+                console.log('Sesión cerrada');
+                // Redirigir a login o home
+                router.push('/ingreso'); // o donde esté tu login
+            } else {
+                console.error('No se pudo cerrar la sesión');
+            }
+        } catch (err) {
+            console.error('Error al cerrar sesión:', err);
+        }
+    };
+    
 
     const changeSection = (param) => {
         setColor(param);
@@ -132,6 +157,7 @@ const Ingreso = () => {
                 ) : (
                     color === 'sesion' &&
                     <form onSubmit={handleSubmit} className={styles.sesionForm}>
+                         {error && <p className={styles.error}>{error}</p>}
                     <div>
                         <label htmlFor="username">Username:</label>
                         <input

@@ -129,7 +129,7 @@ export async function deleteUsuario(idusuario) {
 import { parse } from 'cookie';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'claveSecreta'; // 🔐 Usar variable de entorno en producción
+// const JWT_SECRET = 'claveSecreta'; // 🔐 Usar variable de entorno en producción
 
 export default function handler(req, res) {
   const cookies = req.headers.cookie ? parse(req.headers.cookie) : {};
@@ -140,7 +140,7 @@ export default function handler(req, res) {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     return res.status(200).json({ usuario: decoded });
   } catch (err) {
     return res.status(401).json({ error: 'Token inválido o expirado' });

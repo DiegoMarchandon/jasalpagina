@@ -1,6 +1,6 @@
 import { serialize } from 'cookie';
 
-export default function handler(req, res) {
+export default function logoutHandler(req, res) {
   const expiredCookie = serialize('token', '', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

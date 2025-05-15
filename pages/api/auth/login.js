@@ -2,7 +2,7 @@ import pool from "../../../lib/db";
 import {serialize} from 'cookie';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = 'claveSecreta'; // 🔐 Usá una variable de entorno en producción
+// const JWT_SECRET = 'claveSecreta'; // 🔐 Usá una variable de entorno en producción
 
 export default async function loginHandler(req, res) {
     if (req.method !== 'POST') {
@@ -33,7 +33,7 @@ export default async function loginHandler(req, res) {
         const token = jwt.sign(
             {
                 id:usuario.idusuario, usnombre: usuario.usnombre},
-                JWT_SECRET,
+                process.env.JWT_SECRET,
                 {expiresIn: '1h'}
         );
         // envío el token en una cookie HttpOnly
@@ -42,7 +42,7 @@ export default async function loginHandler(req, res) {
             serialize('token',token,{
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                nameSite: 'strict',
+                sameSite: 'strict',
                 maxAge: 3600,
                 path: '/',
             })

@@ -6,6 +6,12 @@
     min-height: 100vh;
 }
 
+.error {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
 .formOptions{
     display: flex;
     align-items: center;
