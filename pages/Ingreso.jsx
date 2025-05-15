@@ -63,6 +63,9 @@ const Ingreso = () => {
                     return;
                 } 
                 console.log('Usuario autenticado:', data);
+                
+                await login(); //actualizo el contexto antes de redirigir
+
                 setError(''); //limpio errores si login fue exitoso
                 // redirigir
             } catch (err) {

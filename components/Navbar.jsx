@@ -21,29 +21,6 @@ export default function Navbar() {
         }
     }, []);
 
-    // Verificar si hay sesión activa
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const res = await fetch('/api/auth/user', {
-                    method: 'GET',
-                    credentials: 'include' 
-                });
-                const data = await res.json();
-                // setAuthenticated(data.authenticated);
-                if(data.authenticated){
-                    setUser(data.user); //guardamos el usuario en el contexto
-                }else{
-                    setUser(null);
-                }
-            } catch (err) {
-                // setAuthenticated(false);
-                setUser(null);
-            }
-        };
-        checkAuth();
-    }, []);
-
     const handleLogout = async () => {
         try {
             const res = await fetch('/api/auth/logout', {
@@ -70,11 +47,7 @@ export default function Navbar() {
                 <li><Link href="/Galeria">Galería</Link></li>
                 <li><Link href="/Carrito" className="carritoLogo"><ShoppingCart /></Link></li>
                 {
-                    /* authenticated ? (
-                        <li><button onClick={handleLogout} className={styles.logoutButton}>Cerrar sesión</button></li>
-                    ) : (
-                        <li><Link href="/Ingreso">Ingreso</Link></li>
-                    ) */
+
                    user ? (
                         <li>
                             <button onClick={handleLogout} className={styles.logoutButton}>

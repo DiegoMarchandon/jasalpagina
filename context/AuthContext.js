@@ -6,21 +6,24 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        // Al cargar, verificar si hay un usuario autenticado
-        const checkAuth = async () => {
-            try {
-                const res = await fetch('/api/auth/user');
-                const data = await res.json();
-                if (data.authenticated) {
-                    setUser(data.user);
-                } else {
-                    setUser(null);
-                }
-            } catch {
+    // Al cargar, verificar si hay un usuario autenticado
+    const checkAuth = async () => {
+        try {
+            const res = await fetch('/api/auth/user', {
+                credentials: 'include'
+            });
+            const data = await res.json();
+            if (data.authenticated) {
+                setUser(data.user);
+            } else {
                 setUser(null);
             }
-        };
+        } catch {
+            setUser(null);
+        }
+    };
+
+    useEffect(() => {
         checkAuth();
     }, []);
 
