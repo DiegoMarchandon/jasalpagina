@@ -45,6 +45,7 @@ export default function Navbar() {
                 <li><Link href="/Mercaderia">Mercadería</Link></li>
                 <li><Link href="/Blog">Blog</Link></li>
                 <li><Link href="/Galeria">Galería</Link></li>
+                <li><Link href="/Panel">Panel</Link></li>
                 <li><Link href="/Carrito" className="carritoLogo"><ShoppingCart /></Link></li>
                 {
 

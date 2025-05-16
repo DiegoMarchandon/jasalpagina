@@ -5,7 +5,6 @@ Este archivo:
 Recibirá datos enviados por el formulario.
 Conectará a la base de datos usando mysql2.
 Insertará (o leerá) datos en la tabla Contacto.
-
 */
 
 // función para traer un contacto por su id
