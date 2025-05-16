@@ -1,86 +1,32 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills-42372ed130431b0a.js"
+    "static/chunks/polyfills.js"
   ],
-  "devFiles": [],
+  "devFiles": [
+    "static/chunks/react-refresh.js"
+  ],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/ahRM2MA557VJQTDrh9zCi/_buildManifest.js",
-    "static/ahRM2MA557VJQTDrh9zCi/_ssgManifest.js"
+    "static/development/_buildManifest.js",
+    "static/development/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "rootMainFilesTree": {},
   "pages": {
     "/": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/587-7e2af7e4f474f0d9.js",
-      "static/css/44ce9b94af7daf61.css",
-      "static/chunks/pages/index-9b45662a634076c5.js"
-    ],
-    "/Blog": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/pages/Blog-324d480c98833fa5.js"
-    ],
-    "/Carrito": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/css/d8fdf6a171e34287.css",
-      "static/chunks/pages/Carrito-1265edc3497915ec.js"
-    ],
-    "/Galeria": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/587-7e2af7e4f474f0d9.js",
-      "static/css/7de1d549c940bc6a.css",
-      "static/chunks/pages/Galeria-ebfdaeaff413393f.js"
-    ],
-    "/Ingreso": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/css/83051623e1610a32.css",
-      "static/chunks/pages/Ingreso-a6f0fe3236239bbc.js"
-    ],
-    "/Mercaderia": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/587-7e2af7e4f474f0d9.js",
-      "static/css/1876cca9c8b637f0.css",
-      "static/chunks/pages/Mercaderia-eb25b349566f7817.js"
-    ],
-    "/Panel": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/pages/Panel-47f411d99a4b2de8.js"
-    ],
-    "/SobreMi": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/587-7e2af7e4f474f0d9.js",
-      "static/css/0fb7f0a7dd85e357.css",
-      "static/chunks/pages/SobreMi-b6c2d269bb486ff5.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/index.js"
     ],
     "/_app": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/css/4f2cfcecf8e26f9c.css",
-      "static/chunks/pages/_app-c644c7f658f59de7.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/_app.js"
     ],
     "/_error": [
-      "static/chunks/webpack-b51ea0c7a9c97c75.js",
-      "static/chunks/framework-2f335d22a7318891.js",
-      "static/chunks/main-d35786f233d1a2ce.js",
-      "static/chunks/pages/_error-8f24c909492b0b8c.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/_error.js"
     ]
   },
   "ampFirstPages": []
