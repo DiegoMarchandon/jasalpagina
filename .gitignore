@@ -13,7 +13,7 @@
 
 # production
 /build
-# /.next 
+/.next 
 #agrego la carpeta de next para ignorar los archivos de build de Next.js
 
 # misc
