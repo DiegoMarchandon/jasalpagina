@@ -1,8 +1,8 @@
-// const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  output: 'export', // Para exportar estático
-  assetPrefix: '', // vacío para producción y desarrollo
+  output: isProd ? 'export' : undefined,
+  assetPrefix: isProd ? '/jasalpagina/' : '',
   images: {
     unoptimized: true, // Para evitar optimizaciones que no funcionan en export estático
   },
