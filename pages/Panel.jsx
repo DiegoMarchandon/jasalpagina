@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import {showItems,handleEditarClick} from "./api/requests/panelReq";
+import {showItems} from "./api/requests/utils";
 // import { updateProducto } from "./api/requests/producto";
 
 const Panel = () => {
