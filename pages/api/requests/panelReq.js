@@ -2,7 +2,7 @@
 
 export const showItems = async(tabla) => {
     try{
-      const response = await fetch(`/api/requests/${tabla}`,{
+      const response = await fetch(`/api/requests/dinamic/${tabla}`,{
         method: 'GET',
       });
 
@@ -11,11 +11,12 @@ export const showItems = async(tabla) => {
       }
 
       const data = await response.json();
-      console.log('elementos obtenidos: ', data);
+      console.log('elementos obtenidos: ', [data]);
+      // console.log("1er elem: ", [data][0].usuario)
       return data;
 
     }catch(error){
-      throw new Error('Error en showItems: ', error);
+      throw new Error('Error en showItems: '+ error.message);
     }
 
   }
