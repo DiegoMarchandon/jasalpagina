@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import {showItems} from "./api/requests/utils";
+import {showItems,actualizarProducto} from "./api/requests/utils";
 // import { updateProducto } from "./api/requests/producto";
 
 const Panel = () => {

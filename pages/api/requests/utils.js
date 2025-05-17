@@ -27,14 +27,24 @@ export const showItems = async(tabla) => {
 
 export const actualizarProducto = async(idproducto,producto) => {
     try{
-      const response = await fetch(`/api/requests/producto`,{
+      const response = await fetch(`/api/requests/endpoints/updateProd`,{
         method: 'PUT',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          idproducto,
+          data: producto
+        })
       });
 
       if(!response.ok){
         throw new Error('error al actualizar el producto con id '+idproducto+':'+response.status);
       }
     
+      const result = await response.json();
+      return [result];
+
     }catch(error){
       throw new Error('Error en actualizarProducto: '+ error.message);
     }
