@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
-import {showItems} from "./api/requests/panelReq";
+import {showItems,handleEditarClick} from "./api/requests/panelReq";
+// import { updateProducto } from "./api/requests/producto";
 
 const Panel = () => {
     const [activeTab, setActiveTab] = useState("usuario");
@@ -28,6 +29,8 @@ const Panel = () => {
                 return <MerchManagement datos={datos}/>;
             case "mensaje":
                 return <MessagesManagement datos={datos}/>;
+            case "compra":
+                return <PurchasingManagement datos={datos}/>;
             default:
                 return null;
         }
@@ -42,6 +45,7 @@ const Panel = () => {
                 <button onClick={() => setActiveTab("evento")}>Eventos</button>
                 <button onClick={() => setActiveTab("producto")}>Mercaderia</button>
                 <button onClick={() => setActiveTab("mensaje")}>mensajes</button>
+                <button onClick={() => setActiveTab("compra")}>compras</button>
             </div>
             <div>{renderContent()}</div>
         </div>
@@ -109,6 +113,7 @@ const EventsManagement = ({ datos }) => {
                             <th>ID</th>
                             <th>fecha</th>
                             <th>lugar</th>
+                            <th>URL</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -117,6 +122,7 @@ const EventsManagement = ({ datos }) => {
                             <tr key={evento.idevento}>
                                 <td>{evento.idevento}</td>
                                 <td>{evento.eventofecha}</td>
+                                <td>{evento.eventolugar}</td>
                                 <td>{evento.eventourl}</td>
                                 <td><button onClick={() => console.log("Modificar: ", evento.idevento)} >modificar evento</button></td>
                             </tr>
@@ -128,19 +134,61 @@ const EventsManagement = ({ datos }) => {
     );
 };
 
-const MerchManagement = () => (
-    <div>
-        <h2>Gestión de mercadería</h2>
-        <p>Aquí puedes gestionar la mercadería.</p>
-        {/* Agrega tu lógica para gestionar mercaderia */}
-    </div>
-);
+const MerchManagement = ({datos}) => {
+    return (
+        <div>
+            <h2>Gestión de mercadería</h2>
+            {datos.length === 0 ? (
+                <p>No hay mercadería disponible.</p>
+            ) : (
+                <table border="1" cellPadding="10" style={{ borderCollapse: "collapse", width: "100%" }}>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>nombre</th>
+                            <th>detalle</th>
+                            <th>categoría</th>
+                            <th>origen</th>
+                            <th>stock</th>
+                            <th>precio</th>
+                            <th>disponibilidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {datos.map((producto) => (
+                            <tr key={producto.idproducto}>
+                                <td>{producto.idproducto}</td>
+                                <td>{producto.nombreprod}</td>
+                                <td>{producto.detalleprod}</td>
+                                <td>{producto.categoriaprod}</td>
+                                <td>{producto.origenprod}</td>
+                                <td>{producto.stockprod}</td>
+                                <td>{producto.precioprod}</td>
+                                <td>{producto.prodhabilitado === true ? "disponible":"no disponible"}</td>
+                                <td><button onClick={() => console.log("Modificar: ", producto.idproducto)} >modificar producto</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+    )
+}; 
 
 const MessagesManagement = () => (
     <div>
         <h2>Gestión de mensajes</h2>
         <p>Aquí puedes gestionar los mensajes.</p>
         {/* Agrega tu lógica para gestionar mensajes */}
+    </div>
+);
+
+const PurchasingManagement = () => (
+    <div>
+        <h2>Gestión de Compras</h2>
+        <p>Aquí puedes gestionar las compras.</p>
+        {/* Agrega tu lógica para gestionar pedidos */}
     </div>
 );
 

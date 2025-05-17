@@ -13,7 +13,13 @@ export async function getAllProductos(){
     try{
         connection = await pool.getConnection(); 
         const [resultado] = await connection.query('SELECT * FROM producto;');
-        return resultado;
+
+        const productosFormateados = resultado.map(p => ({
+            ...p,
+            prodhabilitado: !!p.prodhabilitado // fuerza booleano
+          }));
+
+        return productosFormateados;
     } catch(error){
         throw new Error('getAllProductos error al obtener los productos: ' + error.message);
     } finally {
@@ -131,6 +137,17 @@ export async function deleteProducto(idproducto) {
  * req: request. Datos que llegan del cliente.
  * res: response. Respuesta que voy a devolver.
  */
-export default function productoHandler(req,res){
-    res.status(200).json({ message: "¡Hola desde producto!" });
+// pages/api/requests/producto.js
+export default async function handler(req, res) {
+  if (req.method === 'PUT') {
+    const { idproducto, ...productoData } = req.body;
+    try {
+      const result = await updateProducto(idproducto, productoData);
+      res.status(200).json({ message: 'Producto actualizado', updated: result });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  } else {
+    res.status(405).json({ error: 'Método no permitido' });
+  }
 }

@@ -1,5 +1,5 @@
-// import connection from "../../../lib/db";
-
+// import pool from "../../../lib/db";
+// import { updateProducto } from "./producto";
 export const showItems = async(tabla) => {
     try{
       const response = await fetch(`/api/requests/dinamic/${tabla}`,{
@@ -20,3 +20,5 @@ export const showItems = async(tabla) => {
     }
 
   }
+
+  
