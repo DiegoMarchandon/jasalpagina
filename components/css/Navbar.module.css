@@ -6,12 +6,16 @@
         rgba(255, 255, 255, 0)     /* Color abajo (totalmente transparente) */
     );
     padding: 1rem 2rem;
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 0;
     z-index: 200;
     backdrop-filter: blur(10px); 
     transition: all 0.3s ease;
+  }
+
+  .navbar, .sticky{
+    height: 20px;
   }
 
   .logoutButton{
@@ -21,7 +25,7 @@
     border-radius: 15%;
   }
   .sticky {
-    position: fixed;
+    /* position: fixed; */
     background: rgba(255, 229, 79, 0.7);
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   }

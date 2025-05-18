@@ -50,6 +50,17 @@ export const actualizarProducto = async(idproducto,producto) => {
     }
 }
 
+export const getAllCategories = async() => {
+  try{
+    const response = await fetch('/api/requests/endpoints/allCategories');
+    const data = await response.json();
+    console.log("data: "+ data);
+    return data;
+  }catch(error){
+    throw new Error('Error en getAllCategories: '+ error.message);
+  }
+}
+
 /* 
 Lamentablemente, no es posible llamar directamente 
 a una función del backend como updateProducto desde 

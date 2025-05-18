@@ -1,11 +1,15 @@
 import React, { useState,useEffect } from "react";
 import {showItems,actualizarProducto} from "./api/requests/utils";
+import EditarProductoModal from "../components/EditarProductoModal";
 // import { updateProducto } from "./api/requests/producto";
 
 const Panel = () => {
     const [activeTab, setActiveTab] = useState("usuario");
     const [datos, setDatos] = useState([]);
 
+    // estados para controlar la visibilidad del modal y el producto seleccionado
+    
+      
     useEffect(() => {
         const cargarElementos = async () => {
           const elementos = await showItems(activeTab);
@@ -48,6 +52,8 @@ const Panel = () => {
                 <button onClick={() => setActiveTab("compra")}>compras</button>
             </div>
             <div>{renderContent()}</div>
+            
+                
         </div>
     );
 };
@@ -75,7 +81,7 @@ const UsersManagement = ({ datos }) => {
                                 <td>{usuario.usnombre}</td>
                                 <td>{usuario.usmail}</td>
                                 <td>
-                                    {usuario.idusuario === 1 ?(
+                                    {usuario.usuariorol === 'admin' ?(
                                         <button onClick={() => console.log("Eliminar", usuario.id)} disabled>admin</button>
                                     ):(
                                         <button onClick={() => console.log("Eliminar", usuario.id)} >deshabilitar usuario</button>
@@ -118,8 +124,8 @@ const EventsManagement = ({ datos }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {datos.map((evento) => (
-                            <tr key={evento.idevento}>
+                        {datos.filter(evento => evento && evento.idevento).map((evento,index) => (
+                            <tr key={`evento-${evento.idevento ?? index}`}>
                                 <td>{evento.idevento}</td>
                                 <td>{evento.eventofecha}</td>
                                 <td>{evento.eventolugar}</td>
@@ -135,6 +141,17 @@ const EventsManagement = ({ datos }) => {
 };
 
 const MerchManagement = ({datos}) => {
+
+    const [mostrarModal, setMostrarModal] = useState(false);
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+
+
+    // función para manejar el clic del botón
+    const manejarClickEditar = (producto) => {
+        setProductoSeleccionado(producto);
+        setMostrarModal(true);
+    };
+
     return (
         <div>
             <h2>Gestión de mercadería</h2>
@@ -156,7 +173,7 @@ const MerchManagement = ({datos}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {datos.map((producto) => (
+                        {datos.filter(producto => producto && producto.idproducto).map((producto) => (
                             <tr key={producto.idproducto}>
                                 <td>{producto.idproducto}</td>
                                 <td>{producto.nombreprod}</td>
@@ -166,15 +183,24 @@ const MerchManagement = ({datos}) => {
                                 <td>{producto.stockprod}</td>
                                 <td>{producto.precioprod}</td>
                                 <td>{producto.prodhabilitado === true ? "disponible":"no disponible"}</td>
-                                <td><button onClick={() => console.log("Modificar: ", producto.idproducto)} >modificar producto</button></td>
+                                <td><button onClick={() => manejarClickEditar(producto)} >Editar producto</button></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             )}
+            {/* // muestro el modal solo si es true */}
+            {mostrarModal && (
+                <EditarProductoModal
+                producto={productoSeleccionado}
+                onClose={() => setMostrarModal(false)}
+                />
+            )}
         </div>
     )
 }; 
+
+  
 
 const MessagesManagement = () => (
     <div>
