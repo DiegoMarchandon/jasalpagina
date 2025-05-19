@@ -20,14 +20,16 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
   }, []);
     
   const [formData, setFormData] = useState({
-    detalleprod: undefined,
-    nombreprod: undefined,
-    origenprod: undefined,
-    precioprod: undefined,
-    stockprod: undefined,
-    categoriaprod: undefined,
-    prodhabilitado: undefined
+    idproducto: producto.idproducto,
+    detalleprod: "",
+    nombreprod: "",
+    origenprod: "",
+    precioprod: "",
+    stockprod: "",
+    categoriaprod: "",
+    prodhabilitado: true
   });
+
 
 
   const handleChange = (e) => {
@@ -58,53 +60,61 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="nombre"
+            name="nombreprod"
             placeholder="Nuevo nombre"
             value={formData.nombreprod}
             onChange={handleChange}
           />
           <input
             type="number"
-            name="precio"
+            name="precioprod"
             placeholder="Nuevo precio"
             value={formData.precioprod}
             onChange={handleChange}
           />
           <input
             type="number"
-            name="stock"
+            name="stockprod"
             placeholder="Nuevo stock"
             value={formData.stockprod}
+            onChange={handleChange}
+          />
+          <input
+            type="textarea"
+            name="detalleprod"
+            placeholder="Nuevo detalle"
+            rows={5} cols={30}
+            value={formData.detalleprod}
             onChange={handleChange}
           />
           <label>
             <input
                 type="radio"
                 name="prodhabilitado"
-                value="1"
-                checked={formData.prodhabilitado === "1" || formData.prodhabilitado === 1}
-                onChange={handleChange}
+                value="true"
+                checked={formData.prodhabilitado === true}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  prodhabilitado: true
+                })}
             />
             Habilitado
-            </label>
+          </label>
 
-            <label>
+          <label>
             <input
                 type="radio"
                 name="prodhabilitado"
-                value="0"
-                checked={formData.prodhabilitado === "0" || formData.prodhabilitado === 0}
-                onChange={handleChange}
+                value="false"
+                checked={formData.prodhabilitado === false}
+                onChange={(e) => setFormData({
+                  ...formData,
+                  prodhabilitado: false
+                })}
             />
             Deshabilitado
-            </label>
-          <input
-            type="radio"
-            name="prodhabilitado"
-            placeholder="Nuevo habilitacion"
-            value={formData.prodhabilitado}
-            onChange={handleChange}
-          />
+          </label>
+
           <select name="categoriaprod" value={formData.categoriaprod} onChange={handleChange}>
                 <option value="">categoria actual</option>
                 {categorias.map((categoria, index) => (
@@ -113,7 +123,8 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
                     </option>
                 ))}
           </select>
-          <select name="origen">
+          <select name="origenprod">
+          <option value="">origen actual</option>
             {
                 producto.origenprod === "jasal" ? (
                     <>

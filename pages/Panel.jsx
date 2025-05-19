@@ -7,9 +7,8 @@ const Panel = () => {
     const [activeTab, setActiveTab] = useState("usuario");
     const [datos, setDatos] = useState([]);
 
-    // estados para controlar la visibilidad del modal y el producto seleccionado
-    
-      
+
+
     useEffect(() => {
         const cargarElementos = async () => {
           const elementos = await showItems(activeTab);
@@ -152,6 +151,13 @@ const MerchManagement = ({datos}) => {
         setMostrarModal(true);
     };
 
+    // actualiza el estado global del producto actualizado
+    const handleEditarProducto = async(formData) => {
+        // lógica para editar producto
+        console.log("producto a editar: ",formData);
+        actualizarProducto(formData.idproducto,productoSeleccionado);
+    }
+
     return (
         <div>
             <h2>Gestión de mercadería</h2>
@@ -194,6 +200,7 @@ const MerchManagement = ({datos}) => {
                 <EditarProductoModal
                 producto={productoSeleccionado}
                 onClose={() => setMostrarModal(false)}
+                onSubmit={handleEditarProducto}
                 />
             )}
         </div>

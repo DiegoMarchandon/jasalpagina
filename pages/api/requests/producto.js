@@ -91,7 +91,7 @@ export async function updateProducto(idproducto, productoData) {
         var valueParts = [];
         var notUndefined = 0; 
       for(const [campo,valor] of Object.entries(productoData)){
-          if(valor !== undefined){
+          if(valor !== undefined || valor !== ""){
             notUndefined++;
             if(notUndefined > 1){
               query += ", ";
