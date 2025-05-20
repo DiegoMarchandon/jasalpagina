@@ -5,6 +5,7 @@ import { getAllCategories } from '../pages/api/requests/utils';
 const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
     
   const [categorias, setCategorias] = useState([]);
+  // const [enabledProd, setEnabledProd] = useState(producto.prodhabilitado);
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -27,7 +28,7 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
     precioprod: "",
     stockprod: "",
     categoriaprod: "",
-    prodhabilitado: true
+    prodhabilitado: ""
   });
 
 
@@ -53,7 +54,7 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
         <p><strong>Nombre actual:</strong> {producto.nombreprod}</p>
         <p><strong>Precio actual:</strong> ${producto.precioprod}</p>
         <p><strong>Stock actual:</strong> {producto.stockprod}</p>
-        <p><strong>detalle actual:</strong> ${producto.detalleprod}</p>
+        <p><strong>detalle actual:</strong> {producto.detalleprod}</p>
         <p><strong>origen actual:</strong> {producto.origenprod}</p>
         <p>Dejá en blanco los campos que no quieras modificar.</p>
 
@@ -87,15 +88,18 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
             value={formData.detalleprod}
             onChange={handleChange}
           />
-          <label>
+          {
+            producto.prodhabilitado === 1 ? (
+              <>
+                <label>
             <input
                 type="radio"
                 name="prodhabilitado"
-                value="true"
-                checked={formData.prodhabilitado === true}
+                value= "1"
+                checked
                 onChange={(e) => setFormData({
                   ...formData,
-                  prodhabilitado: true
+                  prodhabilitado: e.target.value
                 })}
             />
             Habilitado
@@ -105,15 +109,45 @@ const EditarProductoModal = ({ producto, onClose, onSubmit }) => {
             <input
                 type="radio"
                 name="prodhabilitado"
-                value="false"
-                checked={formData.prodhabilitado === false}
+                value="0"
                 onChange={(e) => setFormData({
                   ...formData,
-                  prodhabilitado: false
+                  prodhabilitado: e.target.value
                 })}
             />
             Deshabilitado
           </label>
+              </>
+            ):(
+              <>
+              <label>
+            <input
+                type="radio"
+                name="prodhabilitado"
+                value= "1"
+                onChange={(e) => setFormData({
+                  ...formData,
+                  prodhabilitado: e.target.value
+                })}
+            />
+            Habilitado
+          </label>
+
+          <label>
+            <input
+                type="radio"
+                name="prodhabilitado"
+                value="0"
+                checked
+                onChange={(e) => setFormData({
+                  ...formData,
+                  prodhabilitado: e.target.value
+                })}
+            />
+            Deshabilitado
+          </label>
+              </>
+            )}
 
           <select name="categoriaprod" value={formData.categoriaprod} onChange={handleChange}>
                 <option value="">categoria actual</option>

@@ -16,7 +16,8 @@ export async function getAllProductos(){
 
         const productosFormateados = resultado.map(p => ({
             ...p,
-            prodhabilitado: !!p.prodhabilitado // fuerza booleano
+            prodhabilitado: Buffer.isBuffer(p.prodhabilitado) ? p.prodhabilitado[0] : 
+            (p.prodhabilitado?.data ? p.prodhabilitado.data[0] : p.prodhabilitado)
           }));
 
         return productosFormateados;
@@ -91,7 +92,7 @@ export async function updateProducto(idproducto, productoData) {
         var valueParts = [];
         var notUndefined = 0; 
       for(const [campo,valor] of Object.entries(productoData)){
-          if(valor !== undefined || valor !== ""){
+          if(valor !== undefined && valor !== ""){
             notUndefined++;
             if(notUndefined > 1){
               query += ", ";

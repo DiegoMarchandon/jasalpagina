@@ -155,7 +155,13 @@ const MerchManagement = ({datos}) => {
     const handleEditarProducto = async(formData) => {
         // lógica para editar producto
         console.log("producto a editar: ",formData);
-        actualizarProducto(formData.idproducto,productoSeleccionado);
+        // antes de actualizar los productos, convierto el dato a uno válido.
+        if(formData.prodhabilitado !== undefined && formData.prodhabilitado !== ""){
+            formData.prodhabilitado = (formData.prodhabilitado === "1") ? 1 : 0;
+        } 
+        var resultado = actualizarProducto(formData.idproducto,formData);
+        resultado.then(valor => console.log("resultado:",valor));
+        // console.log("resultado: "+ resultado);
     }
 
     return (
@@ -188,7 +194,8 @@ const MerchManagement = ({datos}) => {
                                 <td>{producto.origenprod}</td>
                                 <td>{producto.stockprod}</td>
                                 <td>{producto.precioprod}</td>
-                                <td>{producto.prodhabilitado === true ? "disponible":"no disponible"}</td>
+                                <td>{producto.prodhabilitado === 1 ? "disponible" : "no disponible"}</td>
+
                                 <td><button onClick={() => manejarClickEditar(producto)} >Editar producto</button></td>
                             </tr>
                         ))}
