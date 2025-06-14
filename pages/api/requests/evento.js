@@ -12,7 +12,7 @@ export async function getAllEventos(){
     try{
         connection = await pool.getConnection(); //pido prestada del pool una conexión abierta
         // también podría hacer directamente pool.query() si no necesito hacer consultas en una misma conexión segura ni tampoco tener control
-        const [resultado] = await connection.query('SELECT * FROM evento;');
+        const [resultado] = await connection.promise().query('SELECT * FROM evento;');
         const eventosFormateados = resultado.map(evento => ({
             ...evento,
             eventofecha: new Date(evento.eventofecha).toISOString().split('T')[0] // "YYYY-MM-DD"
