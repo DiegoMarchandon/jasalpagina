@@ -37,7 +37,8 @@ function ProxEventos(){
       return data.eventos;
 
     }catch(error){
-      throw new Error('Error en eventosBD: ', error);
+      console.error('detalle del error: ',error);
+      throw new Error(`Error en eventosBD: ${error.message}`);
     }
 
   }

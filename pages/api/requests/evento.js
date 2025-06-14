@@ -17,6 +17,7 @@ export async function getAllEventos(){
             ...evento,
             eventofecha: new Date(evento.eventofecha).toISOString().split('T')[0] // "YYYY-MM-DD"
         }));
+        // console.log("eventos");
         // return resultado;
         return eventosFormateados; //se devuelve al cliente
     } catch(error){
