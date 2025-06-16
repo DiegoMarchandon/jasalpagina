@@ -1,6 +1,6 @@
 // Consultas relacionadas a compras
 
-import pool from "../../../lib/db"; 
+import supabase from "../../../lib/db"; 
 
 /**
  * Obtiene todas las compras

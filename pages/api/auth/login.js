@@ -1,4 +1,4 @@
-import pool from "../../../lib/db";
+import supabase from "../../../lib/db";
 import {serialize} from 'cookie';
 import jwt from 'jsonwebtoken';
 

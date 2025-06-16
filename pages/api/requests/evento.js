@@ -1,5 +1,5 @@
 // consultas relacionadas a eventos
-import pool from "../../../lib/db"; 
+import supabase from "../../../lib/db"; 
 
 /**
  * Obtiene todas las compras
@@ -8,22 +8,20 @@ import pool from "../../../lib/db";
  * @return {array}
  */
 export async function getAllEventos(){
-    let connection;
     try{
-        connection = await pool.getConnection(); //pido prestada del pool una conexión abierta
-        // también podría hacer directamente pool.query() si no necesito hacer consultas en una misma conexión segura ni tampoco tener control
-        const [resultado] = await connection.promise().query('SELECT * FROM evento;');
-        const eventosFormateados = resultado.map(evento => ({
+        const {data,error} = await supabase.from('evento').select('*');
+        
+        if(error){
+            throw error;
+        }
+
+        const eventosFormateados = data.map(evento => ({
             ...evento,
-            eventofecha: new Date(evento.eventofecha).toISOString().split('T')[0] // "YYYY-MM-DD"
-        }));
-        // console.log("eventos");
-        // return resultado;
-        return eventosFormateados; //se devuelve al cliente
+            eventoFecha: newDate(evento.eventofecha).toISOString().split('T')[0], // "YYYY-MM-DD"
+        }))
+        return eventosFormateados;
     } catch(error){
         throw new Error('getAllEventos error al obtener los eventos:' + error.message);
-    } finally {
-        if(connection) connection.release(); //siempre liberamos (devolvemos) la conexión
     }
 }
 

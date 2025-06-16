@@ -1,6 +1,6 @@
 // pages/api/productos/update.js
 // import { updateProducto } from '../producto';
-import pool from "../../../../lib/db"; 
+import supabase from "../../../../lib/db"; 
 
 export default async function handler(req,res) {
     

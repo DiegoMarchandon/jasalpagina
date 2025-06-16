@@ -1,5 +1,5 @@
 
-import pool from "../../../lib/db"; 
+import supabase from "../../../lib/db"; 
 
 /**
  * Obtiene todas las comptaitem

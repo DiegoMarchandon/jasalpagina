@@ -1,5 +1,5 @@
 // Consultas relacionadas a usuarios
-import pool from "../../../lib/db"; //importo la conexión a la base de datos
+import supabase from "../../../lib/db"; //importo la conexión a la base de datos
 import { parse } from 'cookie';
 import jwt from 'jsonwebtoken';
 /**
