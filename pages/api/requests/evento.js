@@ -5,7 +5,7 @@ import supabase from "../../../lib/db";
  * Obtiene todas las compras
  * 
  * SELECT * FROM evento;
- * @return {array}
+ * @return {object|error}
  */
 export async function getAllEventos(){
     try{
@@ -30,18 +30,19 @@ export async function getAllEventos(){
  * 
  * SELECT * FROM evento WHERE idevento = ?
  * @param {int} idevento
- * @return {object}
+ * @return {object|error}
  */
 export async function getEventoById(idevento) {
-    let connection;
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.execute('SELECT * FROM evento WHERE idevento = ?'+[idevento]);
-        return resultado;
+        const {data,error} = await supabase.from('evento').select('*').eq('id',idevento);
+
+        if(error){
+            throw error;
+        }
+
+        return data;   
     }catch(error){
         throw new Error('getEventoById error al obtener el evento:' + error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -50,24 +51,22 @@ export async function getEventoById(idevento) {
  * 
  * INSERT INTO evento (eventofecha, eventolugar, eventourl) VALUES (?,?,?);
  * @param {object} idevento
- * @return {int}
+ * @return {true|error}
  */
 export async function createEvento(eventoData) {
-    let connection;
     try{
-        connection = await pool.getConnection();
-        var valores = [
-            eventoData.eventofecha,
-            eventoData.eventolugar,
-            eventoData.eventourl
-        ];
-        var consulta = 'INSERT INTO evento (eventofecha, eventolugar, eventourl) VALUES (?,?,?);';
-        const [resultado] = await connection.execute(consulta,[valores]);
-        return resultado.insertId;  
+        var valores = [{
+            eventoData:eventofecha,
+            eventoData:eventolugar,
+            eventoData:eventourl
+        }];
+        const {error} = await supabase.from('evento').insert(valores);
+        
+        if(error)throw error;
+        return true;
+        
     }catch(error){
         throw new Error('createCompra error al crear compra: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -77,33 +76,22 @@ export async function createEvento(eventoData) {
  * UPDATE evento SET ... WHERE idevento = ?
  * @param {int} idevento
  * @param {object} eventoData 
- * @return {int} 
+ * @return {true|error} 
  */
 export async function updateEvento(idevento, eventoData) {
-    let connection;
     try{
-        connection = await pool.getConnection();
-        var query = 'UPDATE evento SET ';
-        var valueParts = [];
-        var notUndefined = 0; 
-      for(const [campo,valor] of Object.entries(eventoData)){
-          if(valor !== undefined){
-            notUndefined++;
-            if(notUndefined > 1){
-              query += ", ";
-            }
-              query += `${campo} = ?`;
-            valueParts.push(valor);
-          }
+        var keyValues = {};
+        for(const[key,value] of Object.entries(eventoData)){
+            if(value !== "" && value !== null && value !== undefined) keyValues[key] = value; 
         }
-      valueParts.push(idevento);
-        query += ' WHERE idevento = ? ;';
-        const [resultado] = await connection.execute(query, valueParts);
-        return resultado.affectedRows; 
+
+        if(Object.keys(keyValues).length === 0) throw new Error("No hay datos válidos para actualizar");
+
+        const {error} = await supabase.from('evento').update(keyValues).eq('id',idevento);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error('updateEvento error al actualizar evento: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -112,19 +100,17 @@ export async function updateEvento(idevento, eventoData) {
  * 
  * DELETE FROM evento WHERE idevento = ?
  * @param {int} idevento
- * @return {int}
+ * @return {true|error}
  */
 export async function deleteEvento(idevento) {
-    let connection;
     try{
-        connection = await pool.getConnection();
-        var query = 'DELETE FROM evento WHERE idevento = ?';
-        const [resultado] = await connection.execute(query,[idevento]);
-        return resultado.affectedRows;
+
+        const {error} = await supabase.from('evento').delete().eq('id',idevento);
+        
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error("deleteEvento error al eliminar evento: "+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -139,15 +125,14 @@ export default async function eventoHandler(req,res){
         try{
             const eventos = await getAllEventos();
 
-            // console.log("eventos desde serv: ",eventos);
-            // formateo la fecha de cada evento
-            const eventosFormateados = eventos.map(evento => ({
-                ...evento,
-                eventofecha: new Date(evento.eventofecha).toISOString().split('T')[0] // "YYYY-MM-DD"
-            }));
-            res.status(200).json({eventos : eventosFormateados}); //se devuelve al cliente
+            
+            res.status(200).json({eventos}); //se devuelve al cliente
         }catch(error){
             res.status(500).json({message: "Error del servidor ", error: error.message});
         }
+    }else{
+        //manejo para métodos no permitidos
+        res.setHeader('Allow',['GET']); //informamos al cliente sobre los métodos permitidos 
+        res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 }
