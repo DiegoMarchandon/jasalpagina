@@ -6,7 +6,8 @@ export default function handler(req, res) {
     const token = cookies.token;
 
     if (!token) {
-        return res.status(401).json({ authenticated: false });
+        // return res.status(401).json({ authenticated: false });
+        return res.status(200).json({ authenticated: false, user: null });
     }
 
     try {

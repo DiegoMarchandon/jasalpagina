@@ -51,8 +51,6 @@ export default async function loginHandler(req, res) {
         // evitamos enviar la contraseña en la respuesta
         const { uspass: _, ...usuarioSinPassword}=usuario;
 
-        
-
         return res.status(200).json({ message: 'Login exitoso', usuario });
     } catch (err) {
         return res.status(500).json({ error: 'Error en login: ' + err.message });

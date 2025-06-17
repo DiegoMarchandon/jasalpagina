@@ -81,106 +81,104 @@ const Ingreso = () => {
     }
     return (
         <div className={styles.mainIngresoContainer}>
-
-        <div className={styles.ingresoContainer}>
-            <div className={styles.formOptions}>
-                <h2 onClick={() => changeSection('registro')} className={color==='registro' ? styles.active : styles.inactive}>Registrarse</h2> 
-                <span>|</span>   
-                <h2 onClick={() => changeSection('sesion')} className={color==='sesion' ? styles.active : styles.inactive}>Iniciar sesión</h2>
-            </div>
-            {
-
+            <div className={styles.ingresoContainer}>
+                <div className={styles.formOptions}>
+                    <h2 onClick={() => changeSection('registro')} className={color==='registro' ? styles.active : styles.inactive}>Registrarse</h2> 
+                    <span>|</span>   
+                    <h2 onClick={() => changeSection('sesion')} className={color==='sesion' ? styles.active : styles.inactive}>Iniciar sesión</h2>
+                </div>
+                {
                     color==='registro' ? (
-                <form onSubmit={handleSubmit} className={styles.registerForm}>
-                    <div>
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            className={styles.usernameInput}
-                            name="usnombre"
-                            value={formData.usnombre}
-                            placeholder='nombre de usuario'
-                            onChange={handleChange}
-                            autoComplete='username'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email:</label>
-                        <input
-                            type="email"
-                            className={styles.emailInput}
-                            name="usmail"
-                            value={formData.usmail}
-                            placeholder='correo electrónico'
-                            onChange={handleChange}
-                            autoComplete='email'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            className={styles.passwordInput}
-                            name="uspass"
-                            value={formData.uspass}
-                            placeholder='contraseña'
-                            onChange={handleChange}
-                            autoComplete='new-password'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="passwordConfirm">Password Confirm:</label>
-                        <input
-                            type="password"
-                            className={styles.passwordInput}
-                            name="passwordConfirm"
-                            value={formData.passwordConfirm}
-                            placeholder='confirme su contraseña'
-                            onChange={handleChange}
-                            autoComplete='new-password'
-                            required
-                        />
-                    </div>
-                    <button type="submit" className={styles.passwordInput}>Register</button>
-                </form>
-                ) : (
-                    color === 'sesion' &&
-                    <form onSubmit={handleSubmit} className={styles.sesionForm}>
-                         {error && <p className={styles.error}>{error}</p>}
-                    <div>
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            className={styles.usernameInput}
-                            name="usnombre"
-                            value={formData.usnombre}
-                            placeholder='nombre de usuario'
-                            onChange={handleChange}
-                            autoComplete='username'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            className={styles.passwordInput}
-                            name="uspass"
-                            value={formData.uspass}
-                            placeholder='contraseña'
-                            onChange={handleChange}
-                            autoComplete='current-password'
-                            required
-                        />
-                    </div>
-                    <button type="submit" className={styles.passwordInput}>Register</button>
-                </form>
-                )
-            }
-        </div>
+                        <form onSubmit={handleSubmit} className={styles.registerForm}>
+                            <div>
+                                <label htmlFor="username">Username:</label>
+                                <input
+                                    type="text"
+                                    className={styles.usernameInput}
+                                    name="usnombre"
+                                    value={formData.usnombre}
+                                    placeholder='nombre de usuario'
+                                    onChange={handleChange}
+                                    autoComplete='username'
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="email">Email:</label>
+                                <input
+                                    type="email"
+                                    className={styles.emailInput}
+                                    name="usmail"
+                                    value={formData.usmail}
+                                    placeholder='correo electrónico'
+                                    onChange={handleChange}
+                                    autoComplete='email'
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="password">Password:</label>
+                                <input
+                                    type="password"
+                                    className={styles.passwordInput}
+                                    name="uspass"
+                                    value={formData.uspass}
+                                    placeholder='contraseña'
+                                    onChange={handleChange}
+                                    autoComplete='new-password'
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="passwordConfirm">Password Confirm:</label>
+                                <input
+                                    type="password"
+                                    className={styles.passwordInput}
+                                    name="passwordConfirm"
+                                    value={formData.passwordConfirm}
+                                    placeholder='confirme su contraseña'
+                                    onChange={handleChange}
+                                    autoComplete='new-password'
+                                    required
+                                />
+                            </div>
+                            <button type="submit" className={styles.passwordInput}>Register</button>
+                        </form>
+                    ) : (
+                        color === 'sesion' &&
+                        <form onSubmit={handleSubmit} className={styles.sesionForm}>
+                            {error && <p className={styles.error}>{error}</p>}
+                        <div>
+                            <label htmlFor="username">Username:</label>
+                            <input
+                                type="text"
+                                className={styles.usernameInput}
+                                name="usnombre"
+                                value={formData.usnombre}
+                                placeholder='nombre de usuario'
+                                onChange={handleChange}
+                                autoComplete='username'
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                type="password"
+                                className={styles.passwordInput}
+                                name="uspass"
+                                value={formData.uspass}
+                                placeholder='contraseña'
+                                onChange={handleChange}
+                                autoComplete='current-password'
+                                required
+                            />
+                        </div>
+                        <button type="submit" className={styles.passwordInput}>Register</button>
+                    </form>
+                    )
+                }
+            </div>
         </div>
     );
 };

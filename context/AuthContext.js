@@ -1,6 +1,6 @@
 // importo los react hooks necesarios para manejar el contexto y el estado global:
 import { createContext, useContext, useState, useEffect } from 'react';
-// creo el contexto usaro para compartir información sobre autenticación en toda la aplicación
+// creo el contexto usado para compartir información sobre autenticación en toda la aplicación
 const AuthContext = createContext();
 
 // proveedor de contexto/proveedor de autenticación. 
