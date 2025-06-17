@@ -4,18 +4,16 @@ import supabase from "../../../lib/db";
  * Obtiene todas los imagenes del producto
  * 
  * SELECT * FROM imagen;
- * @return {array}
+ * @return {object|error}
  */
 export async function getAllImagenes(){
-    let connection;
+
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.query('SELECT * FROM imagen;');
-        return resultado;
+        const {data,error} = await supabase.from('imagen').select('*');
+        if(error) throw error;
+        return data;
     } catch(error){
         throw new Error('getAllImagenes error al obtener las imagenes: ' + error.message);
-    } finally {
-        if(connection) connection.release(); 
     }
 }
 
@@ -24,43 +22,38 @@ export async function getAllImagenes(){
  * 
  * SELECT * FROM imagen WHERE idimagen = ?
  * @param {int} idimagen
- * @return {object}
+ * @return {object|error}
  */
 export async function getImagenById(idimagen) {
-    let connection;
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.execute('SELECT * FROM imagen WHERE idimagen = ?'+[idimagen]);
-        return resultado;
+        const {data,error} = await supabase.from('imagen').select('*').eq('id',idimagen);
+        if(error) throw error;
+        return data;
     }catch(error){
         throw new Error('getImagenById error al obtener la imagen :' + error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
 /**
  * Crea una nueva imagen
  * 
- * INSERT INTO imagen (idproducto,imagen_url) VALUES (?,?);
+ * INSERT INTO imagen (idimagen,imagen_url) VALUES (?,?);
  * @param {object} imagenData
- * @return {int}
+ * @return {true|error}
  */
 export async function createImagen(imagenData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var consulta = 'INSERT INTO imagen (idproducto,imagen_url) VALUES (?,?);';
-        var valores = [
-            imagenData.idproducto,
-            imagenData.imagen_url
-        ];
-        const [resultado] = await connection.execute(consulta,[valores]);
-        return resultado.insertId;  
+        
+        var valores = {
+            idimagen: imagenData.idimagen,
+            imagen_url: imagenData.imagen_url
+        };
+        const {error} = await supabase.from('imagen').insert(valores);
+        if(error) throw error;
+        return true;  
     }catch(error){
         throw new Error('createImagen error al crear imagen: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -70,33 +63,23 @@ export async function createImagen(imagenData) {
  * UPDATE imagen SET ... WHERE idimagen = ?
  * @param {int} idimagen
  * @param {object} imagenData 
- * @return {int} 
+ * @return {true|error} 
  */
 export async function updateImagen(idimagen, imagenData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var query = 'UPDATE imagen SET ';
-        var valueParts = [];
-        var notUndefined = 0; 
-      for(const [campo,valor] of Object.entries(imagenData)){
-          if(valor !== undefined){
-            notUndefined++;
-            if(notUndefined > 1){
-              query += ", ";
-            }
-              query += `${campo} = ?`;
-            valueParts.push(valor);
-          }
+        var keyValues = {};
+        for(const[key,value] of Object.entries(imagenData)){
+            if(value !== "" && value !== null && value !== undefined) keyValues[key] = value; 
         }
-      valueParts.push(idimagen);
-        query += ' WHERE idimagen = ? ;';
-        const [resultado] = await connection.execute(query, valueParts);
-        return resultado.affectedRows; 
+
+        if(Object.keys(keyValues).length === 0) throw new Error("No hay datos válidos para actualizar");
+
+        const {error} = await supabase.from('imagen').update(keyValues).eq('id',idimagen);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error('updateImagen error al actualizar imagen: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -105,19 +88,16 @@ export async function updateImagen(idimagen, imagenData) {
  * 
  * DELETE FROM imagen WHERE idimagen = ?
  * @param {int} idimagen
- * @return {int}
+ * @return {true|error}
  */
 export async function deleteImagen(idimagen) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var query = 'DELETE FROM imagen WHERE idimagen = ?';
-        const [resultado] = await connection.execute(query,[idimagen]);
-        return resultado.affectedRows;
+        const {error} = await supabase.from('imagen').delete().eq('id',idimagen);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error("deleteImagen error al eliminar imagen: "+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 

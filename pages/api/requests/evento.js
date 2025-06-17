@@ -8,16 +8,13 @@ import supabase from "../../../lib/db";
  * @return {object|error}
  */
 export async function getAllEventos(){
+
     try{
         const {data,error} = await supabase.from('evento').select('*');
-        
-        if(error){
-            throw error;
-        }
-
+        if(error) throw error;
         const eventosFormateados = data.map(evento => ({
             ...evento,
-            eventoFecha: newDate(evento.eventofecha).toISOString().split('T')[0], // "YYYY-MM-DD"
+            eventoFecha: new Date(evento.eventofecha).toISOString().split('T')[0], // "YYYY-MM-DD"
         }))
         return eventosFormateados;
     } catch(error){
@@ -36,9 +33,7 @@ export async function getEventoById(idevento) {
     try{
         const {data,error} = await supabase.from('evento').select('*').eq('id',idevento);
 
-        if(error){
-            throw error;
-        }
+        if(error) throw error;
 
         return data;   
     }catch(error){
@@ -50,16 +45,16 @@ export async function getEventoById(idevento) {
  * Crea un nuevo evento
  * 
  * INSERT INTO evento (eventofecha, eventolugar, eventourl) VALUES (?,?,?);
- * @param {object} idevento
+ * @param {object} eventoData
  * @return {true|error}
  */
 export async function createEvento(eventoData) {
     try{
-        var valores = [{
-            eventoData:eventofecha,
-            eventoData:eventolugar,
-            eventoData:eventourl
-        }];
+        var valores = {
+            eventofecha:eventoData.eventofecha,
+            eventolugar:eventoData.eventolugar,
+            eventourl:eventoData.eventourl
+        };
         const {error} = await supabase.from('evento').insert(valores);
         
         if(error)throw error;
@@ -104,9 +99,7 @@ export async function updateEvento(idevento, eventoData) {
  */
 export async function deleteEvento(idevento) {
     try{
-
         const {error} = await supabase.from('evento').delete().eq('id',idevento);
-        
         if(error) throw error;
         return true;
     }catch(error){

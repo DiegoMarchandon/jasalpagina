@@ -4,21 +4,17 @@ import supabase from "../../../lib/db";
  * Obtiene todos los pedidos
  * 
  * SELECT * FROM pedido;
- * @return {array}
+ * @return {object|error}
  */
 export async function getAllPedidos(){
-    let connection;
-    try{
-        connection = await pool.getConnection(); 
-        
-        const [respuesta] = await connection.query('SELECT * FROM pedido;');
 
-        return respuesta;
+    try{
+        const {data,error} = await supabase.from('pedido').select('*');
+        if(error) throw error;
+        return data;
     } catch(error){
         throw new Error('getAllPedidos error al obtener los pedidos: ' + error.message);
-    } finally {
-        if(connection) connection.release(); 
-    }
+    } 
 }
 
 /**
@@ -26,18 +22,16 @@ export async function getAllPedidos(){
  * 
  * SELECT * FROM pedido WHERE idpedido = ?
  * @param {int} idpedido
- * @return {object}
+ * @return {object|error}
  */
 export async function getPedidoById(idpedido) {
-    let connection;
+
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.execute('SELECT * FROM pedido WHERE idpedido = ?'+[idpedido]);
-        return resultado;
+        const {data,error} = await supabase.from('pedido').select('*').eq('id',idpedido);
+        if(error) throw error;
+        return data;
     }catch(error){
         throw new Error('getPedidoById error al obtener el pedido: ' + error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -46,23 +40,20 @@ export async function getPedidoById(idpedido) {
  * 
  * INSERT INTO pedido (estadoPedido,idusuario) VALUES (?,?);
  * @param {object} pedidoData 
- * @return {int}
+ * @return {true|error}
  */
 export async function createPedido(pedidoData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var consulta = 'INSERT INTO pedido (estadoPedido,idusuario) VALUES (?,?);';
-        var valores = [
-            pedidoData.estadoPedido,
-            pedidoData.idusuario
-        ];
-        const [resultado] = await connection.execute(consulta,valores);
-        return resultado.insertId;  
+        var valores = {
+            estadoPedido: pedidoData.estadoPedido,
+            idusuario: pedidoData.idusuario
+        };
+        const {error} = await supabase.from('pedido').insert(valores);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error('createPedido error al crear pedido: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -72,33 +63,23 @@ export async function createPedido(pedidoData) {
  * UPDATE pedido SET ... WHERE idpedido = ?
  * @param {int} idpedido
  * @param {object} pedidoData 
- * @return {int} 
+ * @return {true|error} 
  */
 export async function updatePedido(idpedido, pedidoData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var query = 'UPDATE pedido SET ';
-        var valueParts = [];
-        var notUndefined = 0; 
-      for(const [campo,valor] of Object.entries(pedidoData)){
-          if(valor !== undefined){
-            notUndefined++;
-            if(notUndefined > 1){
-              query += ", ";
-            }
-              query += `${campo} = ?`;
-            valueParts.push(valor);
-          }
+        var keyValues = {};
+        for(const[key,value] of Object.entries(pedidoData)){
+            if(value !== "" && value !== null && value !== undefined) keyValues[key] = value; 
         }
-      valueParts.push(idpedido);
-        query += ' WHERE idpedido = ? ;';
-        const [resultado] = await connection.execute(query, valueParts);
-        return resultado.affectedRows; 
+
+        if(Object.keys(keyValues).length === 0) throw new Error("No hay datos válidos para actualizar");
+
+        const {error} = await supabase.from('pedido').update(keyValues).eq('id',idpedido);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error('updatePedido error al actualizar pedido: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -107,20 +88,15 @@ export async function updatePedido(idpedido, pedidoData) {
  * 
  * DELETE FROM pedido WHERE idpedido = ?
  * @param {int} idpedido
- * @return {int}
+ * @return {true|error}
  */
 export async function deletePedido(idpedido) {
-
-    let connection;
     try{
-        connection = await pool.getConnection();
-        var query = 'DELETE FROM pedido WHERE idpedido = ?';
-        const [resultado] = await connection.execute(query,[idpedido]);
-        return resultado.affectedRows;
+        const {error} = await supabase.from('pedido').delete().eq('id',idpedido);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error("deletePedido error al eliminar pedido: "+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 

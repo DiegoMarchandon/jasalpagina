@@ -5,20 +5,16 @@ import supabase from "../../../lib/db";
  * Obtiene todos los mensajes
  * 
  * SELECT * FROM mensaje;
- * @return {array}
+ * @return {object|error}
  */
 export async function getAllMensajes(){
-    let connection;
-    try{
-        connection = await pool.getConnection(); 
-        
-        const [respuesta] = await connection.query('SELECT * FROM mensaje;');
 
-        return respuesta;
+    try{
+        const {data,error} = await supabase.from('mensaje').select('*');
+        if(error) throw error;
+        return data;
     } catch(error){
         throw new Error('getAllMensajes error al obtener los mensajes: ' + error.message);
-    } finally {
-        if(connection) connection.release(); 
     }
 }
 
@@ -27,14 +23,16 @@ export async function getAllMensajes(){
  * 
  * SELECT * FROM mensaje WHERE idmensaje = ?
  * @param {int} idmensaje
- * @return {object}
+ * @return {object|error}
  */
 export async function getMensajeById(idmensaje) {
-    let connection;
+
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.execute('SELECT * FROM mensaje WHERE idmensaje = ?'+[idmensaje]);
-        return resultado;
+        const {data,error} = await supabase.from('mensaje').select('*').eq('id',idmensaje);
+
+        if(error) throw error;
+
+        return data;   
     }catch(error){
         throw new Error('getMensajeById error al obtener al mensaje: ' + error.message);
     }finally{
@@ -47,26 +45,23 @@ export async function getMensajeById(idmensaje) {
  * 
  * INSERT INTO mensaje (asunto,email,idusuario,mensajecontacto,nombre) VALUES (?,?,?)
  * @param {object} mensajeData 
- * @return {int}
+ * @return {true|error}
  */
 export async function createMensaje(mensajeData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var consulta = 'INSERT INTO mensaje (asunto,email,idusuario,mensajecontacto,nombre) VALUES (?,?,?,?,?);';
-        var valores = [
-            mensajeData.asunto,
-            mensajeData.email,
-            mensajeData.idusuario,
-            mensajeData.mensaje,
-            mensajeData.nombre
-        ];
-        const [resultado] = await connection.execute(consulta,valores);
-        return resultado.insertId;  
+        var valores = {
+            asunto:mensajeData.asunto,
+            email:mensajeData.email,
+            idusuario:mensajeData.idusuario,
+            mensaje:mensajeData.mensaje,
+            nombre:mensajeData.nombre
+        };
+        const {error} = await supabase.from('mensaje').insert(valores);
+        if(error) throw error;
+        return true;  
     }catch(error){
         throw new Error('createMensaje error al crear mensaje: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -76,33 +71,23 @@ export async function createMensaje(mensajeData) {
  * UPDATE mensaje SET ... WHERE idmensaje = ?
  * @param {int} idmensaje 
  * @param {object} mensajeData 
- * @return {int} 
+ * @return {true|error} 
  */
 export async function updateMensaje(idmensaje, mensajeData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var query = 'UPDATE mensaje SET ';
-        var valueParts = [];
-        var notUndefined = 0; 
-      for(const [campo,valor] of Object.entries(mensajeData)){
-          if(valor !== undefined){
-            notUndefined++;
-            if(notUndefined > 1){
-              query += ", ";
-            }
-              query += `${campo} = ?`;
-            valueParts.push(valor);
-          }
+        var keyValues = {};
+        for(const[key,value] of Object.entries(mensajeData)){
+            if(value !== "" && value !== null && value !== undefined) keyValues[key] = value; 
         }
-      valueParts.push(idmensaje);
-        query += ' WHERE idmensaje = ? ;';
-        const [resultado] = await connection.execute(query, valueParts);
-        return resultado.affectedRows; 
+
+        if(Object.keys(keyValues).length === 0) throw new Error("No hay datos válidos para actualizar");
+
+        const {error} = await supabase.from('mensaje').update(keyValues).eq('id',idmensaje);
+        if(error) throw error;
+        return true; 
     }catch(error){
         throw new Error('updateMensaje error al actualizar mensaje: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -111,16 +96,16 @@ export async function updateMensaje(idmensaje, mensajeData) {
  * 
  * DELETE FROM mensaje WHERE idmensaje = ?
  * @param {int} idmensaje
- * @return {int}
+ * @return {true|error}
  */
 export async function deleteMensaje(idmensaje) {
 
-    let connection;
     try{
-        connection = await pool.getConnection();
-        var query = 'DELETE FROM mensaje WHERE idmensaje = ?';
-        const [resultado] = await connection.execute(query,[idmensaje]);
-        return resultado.affectedRows;
+        
+        const {error} = await supabase.from('mensaje').delete().eq('id',idmensaje);
+        
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error("deleteMensaje error al eliminar mensaje: "+error.message);
     }finally{

@@ -6,25 +6,16 @@ import supabase from "../../../lib/db";
  * Obtiene todos los productos
  * 
  * SELECT * FROM producto;
- * @return {array}
+ * @return {object|error}
  */
 export async function getAllProductos(){
-    let connection;
+
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.query('SELECT * FROM producto;');
-
-        const productosFormateados = resultado.map(p => ({
-            ...p,
-            prodhabilitado: Buffer.isBuffer(p.prodhabilitado) ? p.prodhabilitado[0] : 
-            (p.prodhabilitado?.data ? p.prodhabilitado.data[0] : p.prodhabilitado)
-          }));
-
-        return productosFormateados;
+      const {data,error} = await supabase.from('producto').select('*');
+      if(error) throw error;
+      return data;
     } catch(error){
         throw new Error('getAllProductos error al obtener los productos: ' + error.message);
-    } finally {
-        if(connection) connection.release(); 
     }
 }
 
@@ -33,18 +24,18 @@ export async function getAllProductos(){
  * 
  * SELECT * FROM producto WHERE idproducto = ?
  * @param {int} idproducto
- * @return {object}
+ * @return {object|error}
  */
 export async function getProductoById(idproducto) {
-    let connection;
+
     try{
-        connection = await pool.getConnection(); 
-        const [resultado] = await connection.execute('SELECT * FROM producto WHERE idproducto = ?'+[idproducto]);
-        return resultado;
+      const {data,error} = await supabase.from('producto').select('*').eq('id',idproducto);
+
+      if(error) throw error;
+
+      return data;
     }catch(error){
         throw new Error('getProductoById error al obtener el producto: ' + error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -53,26 +44,23 @@ export async function getProductoById(idproducto) {
  * 
  * INSERT INTO producto (detalleprod,nombreprod,origenprod,precioprod,stockprod) VALUES (?,?,?,?,?);
  * @param {object} productoData
- * @return {int}
+ * @return {true|error}
  */
 export async function createProducto(productoData) {
-    let connection;
     try{
-        connection = await pool.getConnection();
-        var consulta = 'INSERT INTO producto (detalleprod,nombreprod,origenprod,precioprod,stockprod) VALUES (?,?,?,?,?);';
-        var valores = [
-            productoData.detalleprod,
-            productoData.nombreprod,
-            productoData.origenprod,
-            productoData.precioprod,
-            productoData.stockprod
-        ];
-        const [resultado] = await connection.execute(consulta,valores);
-        return resultado.insertId;  
+
+        var valores = {
+            detalleprod: productoData.detalleprod,
+            nombreprod: productoData.nombreprod,
+            origenprod: productoData.origenprod,
+            precioprod: productoData.precioprod,
+            stockprod: productoData.stockprod
+        };
+        const {error} = await supabase.from('producto').insert(valores);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error('createProducto error al crear producto: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -82,33 +70,23 @@ export async function createProducto(productoData) {
  * UPDATE producto SET ... WHERE idproducto = ?
  * @param {int} idproducto 
  * @param {object} productoData //objeto producto completo. Con todas sus propiedades.
- * @return {int} 
+ * @return {true|error} 
  */
 export async function updateProducto(idproducto, productoData) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var query = 'UPDATE producto SET ';
-        var valueParts = [];
-        var notUndefined = 0; 
-      for(const [campo,valor] of Object.entries(productoData)){
-          if(valor !== undefined && valor !== ""){
-            notUndefined++;
-            if(notUndefined > 1){
-              query += ", ";
-            }
-              query += `${campo} = ?`;
-            valueParts.push(valor);
-          }
-        }
-      valueParts.push(idproducto);
-        query += ' WHERE idproducto = ? ;';
-        const [resultado] = await connection.execute(query, valueParts);
-        return resultado.affectedRows; 
+      var keyValues = {};
+      for(const[key,value] of Object.entries(productoData)){
+          if(value !== "" && value !== null && value !== undefined) keyValues[key] = value; 
+      }
+
+      if(Object.keys(keyValues).length === 0) throw new Error("No hay datos válidos para actualizar");
+
+      const {error} = await supabase.from('producto').update(keyValues).eq('id',idproducto);
+      if(error) throw error;
+      return true; 
     }catch(error){
         throw new Error('updateProducto error al actualizar producto: '+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
@@ -117,19 +95,16 @@ export async function updateProducto(idproducto, productoData) {
  * 
  * DELETE FROM producto WHERE idproducto = ?
  * @param {int} idproducto
- * @return {int}
+ * @return {true|error}
  */
 export async function deleteProducto(idproducto) {
-    let connection;
+
     try{
-        connection = await pool.getConnection();
-        var query = 'DELETE FROM producto WHERE idproducto = ?';
-        const [resultado] = await connection.execute(query,[idproducto]);
-        return resultado.affectedRows;
+      const {error} = await supabase.from('producto').delete().eq('id',idproducto);
+        if(error) throw error;
+        return true;
     }catch(error){
         throw new Error("deleteProducto error al eliminar producto: "+error.message);
-    }finally{
-        if(connection) connection.release();
     }
 }
 
