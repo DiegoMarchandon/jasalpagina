@@ -12,11 +12,11 @@ export async function getAllEventos(){
     try{
         const {data,error} = await supabase.from('evento').select('*');
         if(error) throw error;
-        const eventosFormateados = data.map(evento => ({
+        /* const eventosFormateados = data.map(evento => ({
             ...evento,
             eventoFecha: new Date(evento.eventofecha).toISOString().split('T')[0], // "YYYY-MM-DD"
-        }))
-        return eventosFormateados;
+        })) */
+        return data;
     } catch(error){
         throw new Error('getAllEventos error al obtener los eventos:' + error.message);
     }

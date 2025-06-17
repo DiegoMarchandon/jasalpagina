@@ -24,7 +24,7 @@ function ProxEventos(){
 
   const eventosBD = async() => {
     try{
-      const response = await fetch('/api/requests/evento',{
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/requests/evento`,{
         method: 'GET',
       });
 
@@ -33,7 +33,7 @@ function ProxEventos(){
       }
 
       const data = await response.json();
-      console.log('Enventos obtenidos: ', data.eventos);
+      console.log('Eventos obtenidos: ', data.eventos);
       return data.eventos;
 
     }catch(error){
