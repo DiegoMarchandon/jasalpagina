@@ -24,7 +24,7 @@ function ProxEventos(){
 
   const eventosBD = async() => {
     try{
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/requests/evento`,{
+      const response = await fetch('/api/requests/evento',{
         method: 'GET',
       });
 
