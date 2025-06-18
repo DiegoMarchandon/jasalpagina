@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Router } from 'next/router';
 import styles from '../styles/Ingreso.module.css';
 import { useAuth } from '../context/AuthContext';
-
+import RegistroForm from '../components/RegistroForm';
+import LoginForm from '../components/LoginForm';
 const Ingreso = () => {
 
     const [formData, setFormData] = useState({
@@ -46,7 +47,8 @@ const Ingreso = () => {
                 await login(); // actualiza el contexto global con el user
                 Router.push('/'); //redirigimos
             }catch(err){
-                console.error('Error al registrar: ',err);
+                console.error('Error al registrar: ',err.message);
+                setError(err.message);
             }
         } else if (color === 'sesion') {
             try {
@@ -89,93 +91,22 @@ const Ingreso = () => {
                 </div>
                 {
                     color==='registro' ? (
-                        <form onSubmit={handleSubmit} className={styles.registerForm}>
-                            <div>
-                                <label htmlFor="username">Username:</label>
-                                <input
-                                    type="text"
-                                    className={styles.usernameInput}
-                                    name="usnombre"
-                                    value={formData.usnombre}
-                                    placeholder='nombre de usuario'
-                                    onChange={handleChange}
-                                    autoComplete='username'
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="email">Email:</label>
-                                <input
-                                    type="email"
-                                    className={styles.emailInput}
-                                    name="usmail"
-                                    value={formData.usmail}
-                                    placeholder='correo electrónico'
-                                    onChange={handleChange}
-                                    autoComplete='email'
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="password">Password:</label>
-                                <input
-                                    type="password"
-                                    className={styles.passwordInput}
-                                    name="uspass"
-                                    value={formData.uspass}
-                                    placeholder='contraseña'
-                                    onChange={handleChange}
-                                    autoComplete='new-password'
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="passwordConfirm">Password Confirm:</label>
-                                <input
-                                    type="password"
-                                    className={styles.passwordInput}
-                                    name="passwordConfirm"
-                                    value={formData.passwordConfirm}
-                                    placeholder='confirme su contraseña'
-                                    onChange={handleChange}
-                                    autoComplete='new-password'
-                                    required
-                                />
-                            </div>
-                            <button type="submit" className={styles.passwordInput}>Register</button>
-                        </form>
+                        <RegistroForm
+                            usmail={formData.usmail}
+                            usnombre={formData.usnombre}
+                            uspass={formData.uspass}
+                            passwordConfirm={formData.passwordConfirm}
+                            handleChange={handleChange}
+                            handleSubmit={handleSubmit}
+                        />
                     ) : (
                         color === 'sesion' &&
-                        <form onSubmit={handleSubmit} className={styles.sesionForm}>
-                            {error && <p className={styles.error}>{error}</p>}
-                        <div>
-                            <label htmlFor="username">Username:</label>
-                            <input
-                                type="text"
-                                className={styles.usernameInput}
-                                name="usnombre"
-                                value={formData.usnombre}
-                                placeholder='nombre de usuario'
-                                onChange={handleChange}
-                                autoComplete='username'
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                type="password"
-                                className={styles.passwordInput}
-                                name="uspass"
-                                value={formData.uspass}
-                                placeholder='contraseña'
-                                onChange={handleChange}
-                                autoComplete='current-password'
-                                required
-                            />
-                        </div>
-                        <button type="submit" className={styles.passwordInput}>Register</button>
-                    </form>
+                        <LoginForm
+                            usmail={formData.usmail}
+                            usnombre={formData.uspass}
+                            handleChange={handleChange}
+                            handleSubmit={handleSubmit}
+                        />
                     )
                 }
             </div>
