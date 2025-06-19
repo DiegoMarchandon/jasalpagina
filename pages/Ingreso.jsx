@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Router } from 'next/router';
+import { useRouter } from 'next/router';
 import styles from '../styles/Ingreso.module.css';
-import { useAuth } from '../context/AuthContext';
+import { useAuth, signInNamePass } from '../context/AuthContext';
 import RegistroForm from '../components/RegistroForm';
 import LoginForm from '../components/LoginForm';
+// import createClient from '@supabase/supabase-js';
+import supabase from '../lib/db';
 const Ingreso = () => {
-
+    const router = useRouter();
     const [formData, setFormData] = useState({
         usnombre: '',
         usmail: '',
@@ -24,55 +26,47 @@ const Ingreso = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Form Data Submitted:', formData);
+        // destructuring + alias:
+        const {usmail:email, uspass:password} = formData;
+        var bandera = true;
         if(color === 'registro'){
             if(formData.uspass !== formData.passwordConfirm){
-                alert('las contraseñas no coinciden');
-                return;
+                setError('Las contraseñas no coinciden');
+                bandera = false;
             }
-            try{
-                const response = await fetch('./api/requests/usuario',{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization':'Bearer token'
-                    },
-                    body: JSON.stringify(formData)
-                });
-                const data = await response.json();
-                // console.log('Respuesta del servidor: ',data);
-                if(!response.ok) throw new Error(data.error || 'Error en registro');
-                console.log('usuario registrado: ',data);
-                setError('');
+            // verificando que email y pass no estén vacíos:
+            
+            if(formData.usmail === '' || formData.uspass === ''){
+                setError('Hay campos incompletos');
+                bandera = false;  
+            } 
+            if(!bandera) return;
 
-                await login(); // actualiza el contexto global con el user
-                Router.push('/'); //redirigimos
+            try{
+                
+                
+                const {data,error} = await supabase.auth.signUp({ //registrar usuario
+                    email, password
+                })
+                
+                if(error) throw new Error(error.message ||'Error inesperado');
+                await login(); 
+                router.push('/'); //redirigimos
             }catch(err){
                 console.error('Error al registrar: ',err.message);
                 setError(err.message);
             }
         } else if (color === 'sesion') {
             try {
-                const response = await fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-    
-                const data = await response.json();
-                if (!response.ok){
-                    setError(data.error || 'Error en login');
-                    return;
-                } 
-                console.log('Usuario autenticado:', data);
                 
-                await login(); //actualizo el contexto antes de redirigir
-
+                const {data,error} = await signInNamePass(formData.uspass,formData.usnombre);
+                if(error) throw new Error(error.message ||'Error inesperado');
+                await login();  
+                router.push('/'); //redirigimos
                 setError(''); //limpio errores si login fue exitoso
                 // redirigir
             } catch (err) {
-                setError()
+                setError(err.message);
                 console.error('Error al iniciar sesión:', err);
             }
         }
@@ -102,10 +96,11 @@ const Ingreso = () => {
                     ) : (
                         color === 'sesion' &&
                         <LoginForm
-                            usmail={formData.usmail}
-                            usnombre={formData.uspass}
+                            uspass={formData.uspass}
+                            usnombre={formData.usnombre}
                             handleChange={handleChange}
                             handleSubmit={handleSubmit}
+                            error={error}
                         />
                     )
                 }

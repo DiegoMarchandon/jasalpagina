@@ -1,6 +1,6 @@
 import styles from '../styles/Ingreso.module.css';
 
-function LoginForm({uspass,usnombre,handleChange,handleSubmit}){
+function LoginForm({uspass,usnombre,handleChange,handleSubmit, error}){
 
 
     return (
