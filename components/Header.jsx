@@ -4,8 +4,8 @@ import styles from './css/Header.module.css';
 // import logoSpotify from '../public/assets/logoSpotify.png';
 // import logoYT from '../public/assets/logoYT.png';
 // import logoTiktok from '../public/assets/logoTiktok.png';
-
 function Header() {
+
     return (
       <header className={styles.headerMainContainer}>
         <div className={styles.redesContainer}>

@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import { ShoppingCart } from 'lucide-react';
 import {useAuth} from '../context/AuthContext';
 import styles from './css/Navbar.module.css';
+import supabase from '../lib/db';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     /* const [authenticated, setAuthenticated] = useState(false); */
     const router = useRouter();
-    const { user, setUser } = useAuth();
+    const { user, setUser } = useAuth(); // Accede al usuario autenticado y la función para actualizar el estado
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const handleScroll = () => {
@@ -22,20 +23,9 @@ export default function Navbar() {
     }, []);
 
     const handleLogout = async () => {
-        try {
-            const res = await fetch('/api/auth/logout', {
-                method: 'POST',
-                credentials: 'include'
-            });
-            if (res.ok) {
-                // setAuthenticated(false);
-                setUser(null); // limpiamos el contexto
-                router.push('/Ingreso');
-            }
-        } catch (err) {
-            console.error('Error al cerrar sesión:', err);
-        }
-    };
+        await supabase.auth.signOut(); //cerramos sesión en supabase
+        setUser(null); //limpiamos el estado del usuario en el contexto
+    }
 
     return (
         <nav className={`${styles.navbar} ${scrolled ? styles.sticky : ''}`}>
@@ -51,6 +41,7 @@ export default function Navbar() {
 
                    user ? (
                         <li>
+                            <p>Bienvenido, {user.user_metadata?.usnombre}</p>
                             <button onClick={handleLogout} className={styles.logoutButton}>
                                 Cerrar sesión
                             </button>

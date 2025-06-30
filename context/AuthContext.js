@@ -8,20 +8,56 @@ const AuthContext = createContext();
  * función que valida el ingreso de usuario con nombre + contraseña
  */
 export async function signInNamePass(uspass,usnombre){
-    const data = null;
-    const error = null;
-    // primero buscamos el email asociado al username ingresado
-    const {data:userData,error:userError} = await supabase.from('users').select('usmail').eq('username',usnombre).single();
-    if(userError || !userData) return userError;
-    // segundo, logueamos con el mail obtenido
-    const {data:authData,error:authError} =await supabase.auth.signInWithPassword({
-        email:userData.usmail,
-        password:uspass
-    })
-    if(authError) return authError;
-    // retornamos el usuario y la sesión. Guardando (desestructurando) los valores de las propiedades user y session de authData en otras claves.
-    return {data:{user: authData.user, session: authData.session},error};
+    try{
+
+        // primero buscamos el email asociado al username ingresado
+        const {data:userData,error:userError} = await supabase.from('usuario').select('usmail').eq('usnombre',usnombre).single();
+        if(userError || !userData) return { error: userError || new Error('Usuario no encontrado') };
+        // segundo, logueamos con el mail obtenido
+        const {data:authData,error:authError} =await supabase.auth.signInWithPassword({
+            email:userData.usmail,
+            password:uspass
+        });
+        if(authError) return { error: new Error(authError.message || 'Credenciales inválidas') };
+        // retornamos el usuario y la sesión. Guardando (desestructurando) los valores de las propiedades user y session de authData en otras claves.
+        return {data:{user: authData.user, session: authData.session},error:null};
+    }catch(err){
+        return { error: new Error('Ocurrió un error inesperado. Por favor, intenta nuevamente.')}
+    }
 }
+
+/**
+ * función qe valida el registro de un usuario
+ */
+export const handleRegister = async (formData) => {
+    const { usmail: email, uspass: password, usnombre: username } = formData;
+
+    try {
+        // Registra al usuario en 'auth.users'
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+            email,
+            password,
+        });
+
+        if(authError) return { error: new Error(authError.message || 'Credenciales inválidas') };
+
+        console.log('Usuario registrado en auth.users:', authData);
+
+        // Registra al usuario en 'public.usuario'
+        const { data: usuarioData, error: usuarioError } = await supabase
+            .from('usuario')
+            .insert([{ usmail: email, usnombre: username, uspass: password, ushabilitado: true, usuariorol: "usuario" }]);
+
+            if(usuarioError) return { error: new Error(/* usuarioError.message ||  */'datos de registro inválidos') };
+
+        console.log('Usuario registrado en public.usuario:', usuarioData);
+
+    } catch (err) {
+        console.error('Error inesperado:', err.message);
+        setError('Ocurrió un error inesperado. Por favor, intenta nuevamente.');
+    }
+};
+
 
 // proveedor de contexto/proveedor de autenticación. 
 // "User" almacena información del usuario autenticado.
@@ -58,9 +94,15 @@ export function AuthProvider({ children }) {
     // función que permite verificar nuevamente el estado de autenticación cuando un usuario intenta ingresar. Acepta datos opcionales
     const login = async (userFromOutside = null) => {
         if (userFromOutside) {
-            setUser(userFromOutside);
+            setUser(userFromOutside); //actualizo el estado con el usuario proporcionado
         } else {
-            await checkAuth();
+            // await checkAuth();
+            const { data: { session }, error } = await supabase.auth.getSession(); // Obtén la sesión actual
+            if (error || !session) {
+                setUser(null); // Limpia el estado si no hay sesión
+            } else {
+                setUser(session.user); // Actualiza el estado con el usuario autenticado
+            }
         }
     };
     // provisión del contexto

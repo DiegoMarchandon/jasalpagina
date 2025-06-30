@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Ingreso.module.css';
-import { useAuth, signInNamePass } from '../context/AuthContext';
+import { useAuth, signInNamePass, handleRegister } from '../context/AuthContext';
 import RegistroForm from '../components/RegistroForm';
 import LoginForm from '../components/LoginForm';
 // import createClient from '@supabase/supabase-js';
-import supabase from '../lib/db';
+// import supabase from '../lib/db';
 const Ingreso = () => {
     const router = useRouter();
     const [formData, setFormData] = useState({
@@ -43,14 +43,14 @@ const Ingreso = () => {
             if(!bandera) return;
 
             try{
-                
-                
-                const {data,error} = await supabase.auth.signUp({ //registrar usuario
-                    email, password
-                })
-                
-                if(error) throw new Error(error.message ||'Error inesperado');
-                await login(); 
+
+                await handleRegister(formData); 
+
+                console.log("datos:",formData);
+                if(error){
+                    setError(error.message || 'Error inesperado');
+                    return;
+                } 
                 router.push('/'); //redirigimos
             }catch(err){
                 console.error('Error al registrar: ',err.message);
@@ -60,8 +60,11 @@ const Ingreso = () => {
             try {
                 
                 const {data,error} = await signInNamePass(formData.uspass,formData.usnombre);
-                if(error) throw new Error(error.message ||'Error inesperado');
-                await login();  
+                if(error){
+                    setError(error.message || 'Error inesperado');
+                    return;
+                }
+                await login(data);  
                 router.push('/'); //redirigimos
                 setError(''); //limpio errores si login fue exitoso
                 // redirigir

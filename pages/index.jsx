@@ -4,8 +4,22 @@ import Header from '../components/Header';
 import FormContacto from '../components/FormContacto';
 import ProxEventos from '../components/ProxEventos';
 import styles from '../styles/Inicio.module.css'; // ✅ Usando CSS Modules
+import supabase from '../lib/db';
 
 export default function Home() {
+  console.log("hola desde index.jsx");
+  console.log("NEXT_PUBLIC_SUPABASE_URL:",process.env.NEXT_PUBLIC_SUPABASE_URL);
+  console.log("NEXT_PUBLIC_SUPABASE_ANON_KEY:",process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  
+  const userInfo = async() => {
+    const { data: { session }, error } = await supabase.auth.getSession(); // Obtén la sesión actual
+        if (error || !session) {
+            console.log("naranjas"); // Limpia el estado si no hay sesión
+        } else {
+            console.log(session); // Actualiza el estado con el usuario autenticado
+        }
+  }
+  userInfo();
   return (
     <div>
       <Header />
