@@ -1,5 +1,6 @@
 .siteInicio {
-    background-color:hwb(from color h w b);
+    /* background-color:hwb(from color h w b); */
+    background-image: url('/assets/InicioBackground.jpeg');
     color: white;
     padding: 100px 20px;
     text-align: center;
@@ -37,19 +38,19 @@
     background-color: #e65500;
   }
   
-/* iframes styles */
-.reproductor {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 50%;
-  height: 300px;
-}
+  /* iframes styles */
+  .reproductor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 300px;
+  }
 
 
-.reproformContainer{
-  width: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .reproformContainer{
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

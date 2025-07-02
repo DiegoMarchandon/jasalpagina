@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Menu } from 'lucide-react';
 import {useAuth} from '../context/AuthContext';
 import styles from './css/Navbar.module.css';
 import supabase from '../lib/db';

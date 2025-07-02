@@ -8,9 +8,7 @@ import supabase from '../lib/db';
 
 export default function Home() {
   console.log("hola desde index.jsx");
-  console.log("NEXT_PUBLIC_SUPABASE_URL:",process.env.NEXT_PUBLIC_SUPABASE_URL);
-  console.log("NEXT_PUBLIC_SUPABASE_ANON_KEY:",process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
-  
+
   const userInfo = async() => {
     const { data: { session }, error } = await supabase.auth.getSession(); // Obtén la sesión actual
         if (error || !session) {
@@ -25,9 +23,9 @@ export default function Home() {
       <Header />
 
       <div className={styles.siteInicio}> 
-        <ProxEventos />
+        {/* <ProxEventos /> */}
         <div className={styles.reproformContainer}>
-          <div className={styles.reproductor}>
+          {/* <div className={styles.reproductor}>
             <iframe style={{ borderRadius: "12px" }}
               src="https://open.spotify.com/embed/artist/5p4HoLoWZTHuNysEqoFnX7?utm_source=generator&theme=5"
               title="Reproductor de música de Jasal en Spotify"
@@ -38,7 +36,7 @@ export default function Home() {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy">
             </iframe>
-          </div>
+          </div> */}
           <FormContacto />
         </div>
       </div>
