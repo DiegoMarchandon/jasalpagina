@@ -3,15 +3,16 @@
 .headerMainContainer {
   z-index: 0;
   position: relative;
-  background-color: #DABEC3;
-  background-image: url(../../public/assets/1742315860763.jpg);
-  background-size:cover;
-  background-position: bottom;
+  background-color: #c80000;
+  /* background-image: url(../../public/assets/1742315860763.jpg); */
+  background-image: url('/assets/jasalFuenteBlanco.png');
+  background-size:300px 300px;
+  background-position: top;
   background-repeat: no-repeat;
   background-attachment:fixed;
   color: #B84A3C;
   padding: 5rem 2rem;
-  min-height: 80vh;
+  min-height: 10vh;
   text-align: center;
   border-bottom: 5px solid #F6E5B3;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
