@@ -5,12 +5,12 @@
     width: 100%;
     bottom: 0;
     left: 0;
-    background-color: #ffdb79;
+    background-color: #ff7979;
     color: #5c4b51;
-    padding: 30px 0;
+    padding: 15px 0;
     text-align: center;
     /* margin-top: 20px; */
-   border-top: 5px solid #d4a373;
+   border-top: 5px solid #ff5c5c;
    font-family: 'Georgia', 'Times New Roman', serif;
    font-size: 14px;
    /* clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%); */

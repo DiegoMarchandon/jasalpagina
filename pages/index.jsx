@@ -5,6 +5,7 @@ import FormContacto from '../components/FormContacto';
 import ProxEventos from '../components/ProxEventos';
 import styles from '../styles/Inicio.module.css'; // ✅ Usando CSS Modules
 import supabase from '../lib/db';
+import MisRedes from '../components/MisRedes';
 
 export default function Home() {
   console.log("hola desde index.jsx");
@@ -37,7 +38,10 @@ export default function Home() {
               loading="lazy">
             </iframe>
           </div> */}
+          <div>
           <FormContacto />
+          <MisRedes />
+          </div>
         </div>
       </div>
 

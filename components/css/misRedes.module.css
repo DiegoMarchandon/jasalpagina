@@ -1,0 +1,27 @@
+
+
+.redesContainer{
+  background-color: black;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+
+  .redSocialLogo{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .redSocialLogo:hover{
+    animation: shake 0.5s ease infinite;
+  }
+
+  @keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+  }
