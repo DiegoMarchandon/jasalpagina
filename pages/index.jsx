@@ -3,9 +3,10 @@ import Header from '../components/Header';
 // import Footer from '../components/Footer';
 import FormContacto from '../components/FormContacto';
 import ProxEventos from '../components/ProxEventos';
+import QuePuedoHacer from '../components/QuePuedoHacer';
 import styles from '../styles/Inicio.module.css'; // ✅ Usando CSS Modules
 import supabase from '../lib/db';
-import MisRedes from '../components/MisRedes';
+import MisRedes from '../components/misRedes';
 
 export default function Home() {
   console.log("hola desde index.jsx");
@@ -24,7 +25,9 @@ export default function Home() {
       <Header />
 
       <div className={styles.siteInicio}> 
-        {/* <ProxEventos /> */}
+        <div id="eventos">
+          <ProxEventos />
+        </div>
         <div className={styles.reproformContainer}>
           {/* <div className={styles.reproductor}>
             <iframe style={{ borderRadius: "12px" }}
@@ -38,12 +41,13 @@ export default function Home() {
               loading="lazy">
             </iframe>
           </div> */}
-          <div>
+          <div id="contacto">
           <FormContacto />
           <MisRedes />
           </div>
         </div>
       </div>
+      <QuePuedoHacer />
 
     </div>
   );
