@@ -1,4 +1,4 @@
-import styles from './css/MisRedes.module.css';
+import styles from './css/misRedes.module.css';
 import Image from 'next/image';
 
 function MisRedes(){
